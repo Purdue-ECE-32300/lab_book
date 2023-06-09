@@ -1,9 +1,9 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: My sample book
-author: The Jupyter Book Community
-logo: logo.png
+title: "**ECE 323 ELECTROMECHANICAL MOTION DEVICES:** *Laboratory Manual*"
+author: Maryam Al-Othman, Oleg Wasynczuk
+logo: 323logo.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html

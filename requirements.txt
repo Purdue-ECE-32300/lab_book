@@ -1,2 +1,5 @@
 jupyter-book
 ghp-import
+matplotlib
+numpy
+docutils==0.17.1  # until 0.20 is available [see](https://sourceforge.net/p/docutils/patches/195/)

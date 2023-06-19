@@ -1,4 +1,4 @@
-# Lab 1A
+# Lab 1
 
 Placeholder.
 

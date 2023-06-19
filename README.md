@@ -44,12 +44,17 @@
 
 6. Build the book.
 
+   i. For Unix like systems (Mac, or Linux)
+   ```sh
+   make
+   ```
+   ii. On other systems use:
    ```sh
    jupyter-book build source
    ```
 
-   It is recommended that you preview the local copy book of the book by opening
-   the newly created `source/_build/html/index.html` file in a browser before
+   It is recommended that you preview the local copy of the book by opening the
+   newly created `source/_build/html/index.html` file in a browser before
    publishing any changes.
 
 7. Use an Edit -> Build -> Preview cycle to make changes to the book. Commit the
@@ -63,6 +68,11 @@ the latest source by running `git pull` before editing.
 
 8. Publish your changes.
 
+   i. For Unix like systems (Mac, or Linux)
+   ```sh
+   make pub
+   ```
+   ii. On other systems use:
    ```sh
    ghp-import --no-jekyll --push --no-history ./source/_build/html
    ```

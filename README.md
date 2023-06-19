@@ -24,9 +24,13 @@
    ```sh
    source ./.env3.11/bin/activate
    ```
-   ii. On Windows, activate the virtual environment 
+   ii. In a regular Windows terminal (e.g. cmd.exe) use:
    ```sh
-   TODO
+   venv\Scripts\activate.bat
+   ```
+   ii. In a Windows PowerShell, use:
+   ```sh
+   venv\Scripts\Activate.ps1
    ```
 
 5. Install required Python modules
@@ -38,7 +42,7 @@
 6. Build the book.
 
    ```sh
-   jupyter-book build
+   jupyter-book build source
    ```
 
    It is recommended that you preview the local copy book of the by opening the newly created `index.html` file in a browser before publishing any changes.

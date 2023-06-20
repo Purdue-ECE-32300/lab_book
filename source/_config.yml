@@ -30,3 +30,13 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+
+# Underlines on Firefox were disappearing when using the default chtml output
+# for mathjax.
+# See:
+# - https://github.com/mathjax/MathJax/issues/2795
+# - https://bugzilla.mozilla.org/show_bug.cgi?id=1741887
+# - https://github.com/executablebooks/jupyter-book/issues/1174#issuecomment-759857170
+sphinx:
+  config:
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js

@@ -1,3 +1,52 @@
+```{math}
+
+% Poor man's siunitx
+\newcommand\si[2]{#1~\mathrm{#2}}
+\newcommand\per{/}
+
+% Angle
+\newcommand\rad{rad}
+
+% Time
+\newcommand\second{s}
+
+% Voltage
+\newcommand\millivolt{mV}
+\newcommand\mV{mV}
+\newcommand\volt{V}
+\newcommand\V{V}
+\newcommand\kilovolt{kV}
+\newcommand\kV{kV}
+
+% Current
+\newcommand\milliampereA{mA}
+\newcommand\mA{mA}
+\newcommand\ampere{A}
+\newcommand\A{A}
+\newcommand\kiloampereA{kA}
+\newcommand\kA{kA}
+
+% Resistance
+\newcommand\milliohm{m\Omega}
+\newcommand\ohm{\Omega}
+\newcommand\kilohm{k\Omega}
+\newcommand\megohm{M\Omega}
+
+% Inductance
+\newcommand\millihenry{mH}
+\newcommand\mH{mH}
+\newcommand\henry{H}
+\newcommand\H{H}
+
+% Power
+\newcommand\milliwatt{mW}
+\newcommand\mW{mW}
+\newcommand\watt{W}
+\newcommand\W{W}
+\newcommand\kilowatt{kW}
+\newcommand\kW{kW}
+
+```
 # Experiment 1: Introduction to Lab Experiments
 
 ```{admonition} Objective
@@ -7,8 +56,8 @@ The purpose of this lab session is to introduce the laboratory equipment and
 procedures that will be used to characterize the electromechanical devices
 studied in ECE 321. The main objectives are to:
 
-- Introduce the host and target computers, MATLAB/Simulink&trade; Real
-Time Workshop&reg; (RTW), and the patch panel.
+- Introduce the host and target computers, MATLAB/Simulink(TM) Real
+Time Workshop(R) (RTW), and the patch panel.
 
 - Practice acquiring, storing, and downloading waveforms using the digital
 oscilloscope.
@@ -21,7 +70,7 @@ data.
 - Build and run standalone Simulink models.
 ```
 
-## Introduction:
+## Introduction
 
 The primary focus of this lab course is to reinforce experimentally the basic
 principles of electromechanical energy conversion taught in ECE321 and to study
@@ -92,7 +141,7 @@ computer programs, and the basic procedures that you will be using in future
 labs.
 
 
-## In the Laboratory:
+## In the Laboratory
 
 
 ```{admonition} Equipment
@@ -113,7 +162,7 @@ your computer.  Extract (unzip) and move this folder into {file}`C:\Users\Your
 Name`.  This folder becomes part of your ecn PC roaming profile.  Navigate to
 the {file}`Lab1` folder in this directory.  Double click the
 {file}`ee323lib.slx` icon in the {file}`Lab1` folder to start MATLAB in the
-given folder (directory). 
+given folder (directory).
 
 2. In the MATLAB command window, type {command}`slrtExplorer` ({numref}`fig:2`).
    After a brief (sometimes long) delay, this will open an
@@ -121,13 +170,13 @@ given folder (directory).
 
    ```{figure} ./figures/lab_1/MatlabWindow.png
    :name: fig:2
-   
+
    MATLAB top-level window.
    ```
 
    ```{figure} ./figures/lab_1/SLRTExplorer2.png
    :name: fig:3
-   
+
    {command}`slrtExplorer` window.
    ```
 
@@ -140,7 +189,7 @@ given folder (directory).
    which initially displays {guilabel}`Disconnected`. The display should then
    change to {guilabel}`Connected`.
 
-### Building Target Model:
+### Building Target Model
 
 1. The Simulink model required to execute this experiment will consist of
    blocks from both the Simulink Library Browser and the {file}`ee323lib.slx`
@@ -152,7 +201,7 @@ given folder (directory).
 
    ```{figure} ./figures/lab_1/ECE323lib.png
    :name: fig:EE323lib
-   
+
    Simulink EE323 library.
    ```
 
@@ -179,7 +228,7 @@ given folder (directory).
    outputs:
 
    ```{note}
-   
+
    Some block parameters are in radians.
    ```
 
@@ -192,7 +241,7 @@ given folder (directory).
 
 4. Simulink Real-Time (slrt) is included in the Simulink software. This software
    provides the link between the model code and the test hardware. When a model
-   is initially created, default parameters define the simulation environment. 
+   is initially created, default parameters define the simulation environment.
    Bring to focus the {guilabel}`lab1.slx` window. Select the
    {guilabel}`Modeling` tab.  Then press {guilabel}`Model Settings` button.  In
    the left column of newly created window, select {guilabel}`Solver`. The
@@ -201,7 +250,7 @@ given folder (directory).
 
    ```{figure} ./figures/lab_1/ConfigParam.png
    :name: fig:ConfigParam
-   
+
    Solver parameters for Lab 1.
    ```
 
@@ -212,7 +261,7 @@ given folder (directory).
    {guilabel}`Real Time`.  Select this tab. Near top-left corner, select the
    target PC and press {guilabel}`Disconnect` link to connect. If everything was
    successful, the top-left link should now display {guilabel}`Connected`. If
-   so, press {guilabel}`Run on Target` button. 
+   so, press {guilabel}`Run on Target` button.
 
    ```{figure} ./figures/lab_1/CodeGen.png
    :name: fig:CodeGen
@@ -240,10 +289,10 @@ given folder (directory).
    {file}`ECE323` folder. Select the {file}`lab1` folder and hit {guilabel}`OK`.
    This will ensure that {program}`BenchVue` saves your screenshot in the
    correct location on your account.
- 
+
    ```{figure} ./figures/lab_1/scope.png
    :name: fig:scope
-   
+
    Sample screen shot.
    ```
 
@@ -263,7 +312,7 @@ given folder (directory).
 
 
 10. Create and execute an m-file containing the following commands that load
-    four channels of oscilloscope data into Matlab workspace:
+    four channels of oscilloscope data into MATLAB workspace:
 
     ```matlab
     load lab1_data.mat
@@ -274,13 +323,13 @@ given folder (directory).
     channel4 = Trace_4(:,2);
     ```
 
-    Plot the four channels of data on the computer screen using the Matlab
+    Plot the four channels of data on the computer screen using the MATLAB
     commands plot and subplot. Add a title, labels, and grid. Make a hard copy
     printout of the plot.
 
 11. For each channel, compute the average and RMS values of the signals. This
-    can be accomplished by creating Matlab programs. Using the m-file editor,
-    write the following Matlab commands and save in file avg.m.
+    can be accomplished by creating MATLAB programs. Using the m-file editor,
+    write the following MATLAB commands and save in file avg.m.
 
     ```matlab
     avsum = 0.0;
@@ -290,10 +339,10 @@ given folder (directory).
     av = avsum/length(channel1);
     ```
 
-    When in the Matlab command window, type `avg`. The average value of the
+    When in the MATLAB command window, type `avg`. The average value of the
     Channel 1 data will be computed. Repeat this for Channels 2, 3, and 4.
-    Create a Matlab program to compute the RMS value of each channel.  Do NOT
-    use the built-in Matlab `rms` command.  The RMS value of a continuous signal
+    Create a MATLAB program to compute the RMS value of each channel.  Do NOT
+    use the built-in MATLAB `rms` command.  The RMS value of a continuous signal
     is defined as
 
     ```{math}
@@ -303,79 +352,277 @@ given folder (directory).
 
     ```
     The discrete counterpart is
-    
+
     ```{math}
     :label: eq:discrete_rms
 
-    \hat x = \sqrt{\frac{1}{N}\sum_{n = 0}^N {{x^2}(n)} } 
-    %\hat x = \sqrt{\frac{1}{N}\sum\nolimits_{n = 0}^N {{x^2}(n)} } 
+    \hat x = \sqrt{\frac{1}{N}\sum_{n = 0}^N {{x^2}(n)} }
+    %\hat x = \sqrt{\frac{1}{N}\sum\nolimits_{n = 0}^N {{x^2}(n)} }
     ```
 
     where $N$ is the number of samples in an integer number of periods of the
-    signal.  For those who would like to learn more about Matlab, there are
-    numerous Matlab reference books available at local bookstores. Also, there
-    is extensive online help - simply type help from the Matlab command line.
+    signal.  For those who would like to learn more about MATLAB, there are
+    numerous MATLAB reference books available at local bookstores. Also, there
+    is extensive online help - simply type help from the MATLAB command line.
     Write the results of the calculations on the printouts of the generated
     plots.  Do the results look reasonable?
 
 12. Staple and turn in all printouts with you name on top of all pages.
 
-## Postlab Exercise: Standalone Simulink model:
+## Postlab Exercise: Standalone Simulink model
 
 In this part, we will develop a standalone computer simulation on the host
 computer using Simulink.  The purpose is to become familiarized with some of the
 basic building blocks of Simulink, to build a model of a simple dynamic system,
 learn the steps needed to perform a simulation study and to generate annotated
-and labelled plots. 
+and labelled plots.
 
 1. Consider the equivalent circuit shown in {numref}`fig:ckt`. Using the basic
    equations of an inductor ($v=L\frac{di}{dt}$), and Kirchhoff's voltage law
    (KVL), express the dynamic equations of the circuit in the following form
 
-   ```{figure} ./figures/lab_1/xfmer.pdf
+   ```{figure} ./figures/lab_1/xfmer.png
    :name: fig:ckt
 
    Example circuit.
    ```
 
-   some text
+   ```{math}
+   :label: eq:kvl
 
-$$
-\left[ \begin{array}{c}
-  v_1  \\
-    0 
-\end{array}
-\right]
-$$
+   \newcommand\blank{~\underline{\phantom{spam}}~}
+   \begin{bmatrix}
+     v_1 \\
+       0 \\
+   \end{bmatrix}
+   =
+   \begin{bmatrix}
+     \blank & \blank \\
+     \blank & \blank \\
+   \end{bmatrix}
+   \begin{bmatrix}
+      i_1 \\
+      i_2^\prime \\
+   \end{bmatrix}
+   +
+   \begin{bmatrix}
+     \blank & \blank \\
+     \blank & \blank \\
+   \end{bmatrix}
+   \frac{d}{{dt}}
+   \begin{bmatrix}
+      i_1 \\
+      i_2^\prime \\
+   \end{bmatrix}
+   ```
 
-$$
-\left[
-  \begin{array}{cc}
-    \underline{\hspace{1cm}} & \underline{\hspace{1cm}} \\
-    \underline{\hspace{1cm}} & \underline{\hspace{1cm}} \\
-  \end{array}
-\right]
-$$
+   where $i_1$ and $i_2^\prime$ are the so-called state variables. Replace each
+   of the blanks with expressions involving the circuit parameters. The previous
+   equation may be expressed symbolically as
 
-$$
-\left[ {\begin{array}{*{20}{c}}
-  {{v_1}} \\ 
-  0 
-\end{array}} \right]
-= \left[ {\begin{array}{*{20}{c}}
-  \underline{spam} & \underline{\;\;\;\;\;\;\;\;\;} \\ 
-  \underline{\;\;\;\;\;\;\;\;\;} & \underline{\;\;\;\;\;\;\;\;\;} 
-\end{array}} \right]
-\frac{d}{{dt}}\left[ {\begin{array}{*{20}{c}}
-  {{i_1}} \\ 
-  {{i_2^\prime}} 
-\end{array}} \right]
-+ \left[ {\begin{array}{*{20}{c}}
-  \underline{\;\;\;\;\;\;\;\;\;}&\underline{\;\;\;\;\;\;\;\;\;} \\ 
-  \underline{\;\;\;\;\;\;\;\;\;}&\underline{\;\;\;\;\;\;\;\;\;} 
-\end{array}} \right]
-\left[ {\begin{array}{*{20}{c}}
-  {{i_1}} \\ 
-  {{i_2^\prime}} 
-\end{array}} \right]
-$$
+   ```{math}
+   :label: eq:vector_kvl
+
+   \mathbf{v} = \mathbf{Ri} + \mathbf{L} \frac{d}{dt} \mathbf{i}
+   ```
+
+   Equivalently
+
+   ```{math}
+   :label: eq:vector_kvl_for_di_dt
+
+   \frac{d}{dt} \mathbf{i} = \mathbf{L}^{-1} ( \mathbf{v} - \mathbf{Ri} )
+   ```
+
+   We will build a Simulink model based on this equation. The parameters are
+   given in {numref}`tab:model_parameters`.
+
+   ```{list-table} Parameters
+   :header-rows: 1
+   :name: tab:model_parameters
+
+   * - $r_1$
+     - $r_2^\prime$
+     - $L_{l1}$
+     - $L_{l2}^\prime$
+     - $L_{m1}$
+     - $R_{L}$
+   * - $\si{0.1}{\ohm}$
+     - $\si{0.1}{\ohm}$
+     - $\si{1}{\mH}$
+     - $\si{1}{mH}$
+     - $\si{10}{\mH}$
+     - $\si{1.9}{\ohm}$
+   ```
+
+2. Launch MATLAB, then launch Simulink by pressing the {guilabel}`Simulink` icon
+   shown in {numref}`fig:blankSimulink`.  This opens a blank Simulink model
+   window similar to that shown in {numref}`fig:blankSimulink`.  Note that the
+   default name of the model is {file}`untitled`.  Immediately save this model
+   as {file}`mylab1.slx`.  It is useful to save often since Simulink may
+   occasionally "crash" causing all work since the last save to be lost.  Press
+   the {guilabel}`Simulink Library` icon to open the {guilabel}`Simulink Library
+   Browser`.  From the {guilabel}`Simulink Library`,  open {guilabel}`Commonly
+   Used Blocks`.
+
+   ```{figure} ./figures/lab_1/fig7.png
+   :name: fig:blankSimulink
+
+   Blank Simulink model window.
+   ```
+
+3. Drag the following blocks from the browser into the empty model window:
+   {guilabel}`Sum`, {guilabel}`Integrator`, {guilabel}`Gain`, {guilabel}`Scope`,
+   {guilabel}`Constant`, and {guilabel}`Mux`.  From  {guilabel}`Simulink/Sinks`
+   in the {guilabel}`Library Browser`, drag the {guilabel}`To Workspace` block
+   into the model window.  From  {guilabel}`Simulink/Sources`, drag the
+   {guilabel}`Sine Wave` block into the model window.
+
+4. If the input of the {guilabel}`Integrator` is set to the right-hand side of
+   {eq}`eq:vector_kvl_for_di_dt`, which is $d\mathbf{i}/dt$, then the output
+   becomes $\mathbf{i}$.  Note that Simulink uses the Laplace operator $1/s$ to
+   denote integration with respect to time.  This might lead some to believe
+   that Laplace, transform techniques are used to solve the differential
+   equations; however, this is definitely not the case.  This is just a symbolic
+   way to say that the output is equal to the input integrated with respect to
+   time.  By dragging and connecting the inputs and outputs of the various
+   blocks in accordance with {eq}`eq:vector_kvl_for_di_dt`, form a Simulink
+   model of the given circuit similar to that shown in Figure
+   {numref}`fig:simmdl`.
+
+   ```{figure} ./figures/lab_1/fig8.png
+   :name: fig:simmdl
+
+   Simulink model.
+   ```
+
+5. In this model, the directed lines (lines with arrows) in the Simulink model
+   represent 2-dimensional signals that connect the output of a block to the
+   input of another block. The two components of the output of the integrator
+   block represent $i_1$ and $i_2^\prime$.  In accordance with
+   {eq}`eq:vector_kvl_for_di_dt`, the gain in the triangular block preceding the
+   {guilabel}`Integrator` must be set to $\mathbf{L}^{-1}$.  This is
+   accomplished by double-clicking the {guilabel}`Gain` block to open its dialog
+   window.  In this window, select {guilabel}`Matix (K*u)` from the pull-down
+   field labelled {guilabel}`multiplication` and type {command}`inv(L)` into the
+   text field labeled {guilabel}`Gain`.  You may wish to read more about this
+   block by pressing the help button to open its documentation window.  Follow
+   similar steps to set the gain of the other gain block {guilabel}`Gain1` to
+   {command}`R`.  We will describe how to define the values of {command}`L` and
+   {command}`R` a little later.
+
+
+6. The voltage vector $\textbf{v}$ in {eq}`eq:vector_kvl_for_di_dt` is a
+   2-dimensional vector. However the output of the {guilabel}`Sine-Wave` block
+   is a scalar signal.  To form a 2-dimensional voltage vector, a multiplexer or
+   {guilabel}`mux` block is used as shown in {numref}`fig:simmdl`.  This block
+   converts the two scalar signals into one 2-dimensional signal.  The summer
+   accepts two 2-dimensional inputs and outputs a 2-dimensional signal.  If the
+   inputs were of differing dimensions, an error message would be produced when
+   attempting to run the model.
+
+7. Double-click the {guilabel}`Integrator` block to open its dialog window. In
+   the dialog window, set the initial condition to {command}`[0;0]`.
+
+
+8. To set the parameters for the model, you will create a MATLAB script file
+   named {file}`init.m` where you will define the values of all parameters. For
+   example,
+
+   ```matlab
+   r_1 = 0.1; % primary resistance in Ohms
+   ...
+   L_l1 = 1e-3; % primary leakage inductance in Henries
+   ...
+   L = [? ?; ? ?];
+   R = [? ?; ? ?];
+   ...
+   ```
+   When you run the script file, the parameters are loaded into the MATLAB
+   workspace.  The Simulink model has access to all workspace variables.
+
+9. Double-click the {guilabel}`Sine Wave` icon to open its dialog window.  Set
+   the amplitude to 100 (volts peak) and frequency to $\si{400}{\rad\per\second}$.
+
+10. Before running the simulation, go to the top menu in the Simulink model
+    window and select the {guilabel}`Modelling` tab. Then press {guilabel}`Model
+    Settings` icon.  This will open a very important dialog window.  Set the
+    {guilabel}`solver type` to {command}`variable step`, the {guilabel}`maximum
+    step size` to {command}`0.1`, the {guilabel}`minimum step size` to
+    {command}`1e-20`, and the {guilabel}`solver` to {guilabel}`ode23s`.  Also,
+    set {guilabel}`tstop` to {command}`0.5`. Step sizes and {guilabel}`tstop`
+    have units of seconds.  Leave the other parameter set to their default
+    values.  Double click the {guilabel}`To Workspace` block. Make sure the save
+    format is set to {guilabel}`Timeseries` and {guilabel}`sample time` to
+    {command}`-1`.
+
+11. You are now ready to make a study. Before you do {guilabel}`Save`!  Then
+    press the {guilabel}`Run` icon.  You can double click the {guilabel}`Scope`
+    to see if the run is successful.
+
+12. Although you can print the Scope data from the Scope window, it is
+    preferable instead to generate labelled and annotated printable figures from
+    MATLAB.  Create another script file and label it {file}`plotresults.m`.
+    enter the following lines
+
+    ```matlab
+    figure(1)
+    plot(simout.time, simout.Data(:,1))
+    title('i_1')
+    xlabel('time (sec)')
+
+    figure(2)
+    plot(simout.time, simout.Data(:,2))
+    title('i_2^\prime')
+    xlabel('time (sec)')
+    ```
+
+    From the two figure windows, use {guilabel}`Tools/Data Cursor` to determine
+    the peak values of $I_1(t)$ and $I_2^\prime (t)$ [steady-state $i_1(t)$ and
+    $i_2^\prime(t)$].  Save the figures as {file}`.png` files.
+
+
+## Postlab
+
+1. Using phasor analysis, calculate $\tilde{I}_1$ and $\tilde{I}_2^\prime$.
+   Express $I_1(t)$ and $I_2^\prime(t)$.  What are their peak values?  Compare
+   the calculated results with the simulated values established in lab.
+
+2. Submit printouts of the generated plots and all supporting calculations.  If
+   you used MATLAB to perform calculations, submit the script file or command
+   history.
+
+
+## MATLAB Command Reference
+
+
+| Command | Description |
+|:--------|:------------|
+| `load file` | Load data stored in {file}`file` |
+| `save array file` | Store a variable array into {file}`file.mat` |
+| `fft(array)` | returns a complex array of fft harmonic components |
+| `^2`, `sqrt()` | square/square root of a variable |
+| `sign`, `abs(array)` | sign/absolute value of a variable/array |
+| `sin`, `cos`, `tan` | sine/cosine/tangent of angle (in radians) |
+| `asin`, `acos`, `atan` | arcsin, arccosine, arctangent |
+| `sinh`, `cosh`, `tanh` | hyperbolic sine, hyperbolic cosine, hyperbolic tangent |
+| `length(array)` | number of elements in an array |
+| `min`, `max`, `mean` | minimum, maximum, and mean of an array |
+| `plot(x,y,x,y..)` | create a screen plot of the arrays y vs x. Also used as `plot(y)` |
+| `title('myplot')` | Add a title to a screen plot |
+| `xlabel('horiz')` | Add an x axis label to a screen plot |
+| `ylabel('vert')` | Add a y axis label to a screen plot |
+| `grid` | Add grid lines to a screen plot |
+| `print` | Dump the screen plot to the printer |
+| `whos` | List current variables and sizes in memory |
+| `clear array` | remove a variable/array from memory |
+| `...` | ellipsis for continuation of long lines |
+| Other Misc. | |
+| `! syscommand` | Execute a system command |
+| `dir` or `ls` | list DOS files in current directory |
+| `help ?` | List MATLAB commands and script (.m) files |
+| `quit` or `exit` | end MATLAB program |
+| `linspace(x1,x2,N)` | generates N points between x1 and x2 |
+| `hold on` | subsequent plot commands add to existing plot |
+| `subplot` | create a "vector" or "matrix" of plots |
+| `figure` | open a new figure window for plotting |

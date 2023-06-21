@@ -10,6 +10,21 @@ logo: 323logo.png
 execute:
   execute_notebooks: force
 
+# Parse and render settings
+parse:
+  myst_enable_extensions:
+    # - amsmath
+    - colon_fence
+    # - deflist
+    - dollarmath
+    # - html_admonition
+    # - html_image
+    - linkify
+    - replacements
+    # - smartquotes
+    - substitution
+    - tasklist
+
 # Define the name of the latex output file for PDF builds
 latex:
   latex_documents:

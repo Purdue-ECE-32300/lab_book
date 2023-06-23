@@ -91,3 +91,14 @@ the latest source by running `git pull` before editing.
 9. View the live results
 
    https://pages.github.itap.purdue.edu/ECE-32300/lab_book/intro.html
+
+
+# Reference Material
+
+- [MyST Parser](https://myst-parser.readthedocs.io/en/latest/index.html)
+- [Jupyter Book](https://jupyterbook.org/en/stable/intro.html)
+- [Roles and Directives](https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.html#)
+  - [Docutils roles](https://docutils.sourceforge.io/docs/ref/rst/roles.html)
+  - [Sphinx roles](https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html)
+  - [Docutils directives](https://docutils.sourceforge.io/docs/ref/rst/directives.html)
+  - [Sphinx directives](https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html)

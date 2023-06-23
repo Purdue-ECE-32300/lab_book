@@ -23,23 +23,34 @@
 
 4. Activate the new virtual environment.
 
-   i. For Unix like systems (Mac, or Linux)
-   ```sh
-   source ./.env3.11/bin/activate
-   ```
-   ii. In a regular Windows terminal (e.g. cmd.exe) use:
-   ```sh
-   venv\Scripts\activate.bat
-   ```
-   ii. In a Windows PowerShell, use:
-   ```sh
-   venv\Scripts\Activate.ps1
-   ```
+   - For Unix like systems (Mac, or Linux)
+
+     ```sh
+     source ./.env3.11/bin/activate
+     ```
+
+   - On Windows:
+
+     i. First launch Power Shell from the Start Menu using the Run as
+        administrator option.
+        ```sh
+        Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+        ```
+     ii. Then activate the virtual environment.
+
+        - In a Windows PowerShell, use:
+          ```sh
+          .env3.11\Scripts\Activate.ps1
+          ```
+        - Or in a regular Windows terminal (e.g. cmd.exe) use:
+          ```sh
+          .env3.11\Scripts\activate.bat
+          ```
 
 5. Install required Python modules
 
    ```sh
-   python3.11 -m pip install -r requirements.txt
+   python -m pip install -r requirements.txt
    ```
 
 6. Build the book.

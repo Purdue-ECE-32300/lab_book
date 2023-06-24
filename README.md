@@ -61,7 +61,7 @@
    ```
    ii. On other systems use:
    ```sh
-   jupyter-book build source
+   jupyter-book build -W source
    ```
 
    It is recommended that you preview the local copy of the book by opening the
@@ -95,8 +95,9 @@ the latest source by running `git pull` before editing.
 
 # Reference Material
 
-- [MyST Parser](https://myst-parser.readthedocs.io/en/latest/index.html)
+- [Executable Books](https://executablebooks.org/en/latest/)
 - [Jupyter Book](https://jupyterbook.org/en/stable/intro.html)
+- [MyST Parser](https://myst-parser.readthedocs.io/en/latest/index.html)
 - [Roles and Directives](https://myst-parser.readthedocs.io/en/latest/syntax/roles-and-directives.html#)
   - [Docutils roles](https://docutils.sourceforge.io/docs/ref/rst/roles.html)
   - [Sphinx roles](https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html)

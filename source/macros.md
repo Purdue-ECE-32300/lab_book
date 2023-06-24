@@ -1,7 +1,9 @@
 ```{math}
 
 % Poor man's siunitx
-\newcommand\si[2]{#1~\mathrm{#2}}
+\newcommand\ang[1]{#1^\circ}
+\newcommand\qty[2]{#1~\mathrm{#2}}
+
 \newcommand\per{/}
 %
 % Angle

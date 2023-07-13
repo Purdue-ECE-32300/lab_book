@@ -149,7 +149,7 @@ Figure 2.3 (Figure 2.5 from OG)
 
 ## Appendix A : Plotting measured Data
 
-```{code-cell} MATLAB
+```matlab
     % Plotting Impedance versus Frequency. Calculating Inductance
     freq = [1,2,4,7,10,20,40,70,100]';
     omega_vector = 2*pi*freq;
@@ -176,7 +176,7 @@ Figure 2.3 (Figure 2.5 from OG)
 
 ## Appendix B
 
-```{code-cell} MATLAB
+```matlab
     function [a_new, L_fitted] = solenoid(L_meas,x,a);
         % L_meas = n vector of measured inductances
         % x = n vector of displacements

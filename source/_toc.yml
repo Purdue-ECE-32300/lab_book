@@ -5,6 +5,18 @@ format: jb-book
 root: intro
 chapters:
 - file: lab_1
-- file: markdown
-- file: notebooks
-- file: markdown-notebooks
+- file: lab_2
+#- file: lab_3A
+#- file: lab_3B
+#- file: lab_4A
+#- file: lab_4B
+#- file: lab_5A
+#- file: lab_5B
+#- file: lab_6A
+#- file: lab_6B
+#- file: lab_7B
+#- file: lab_8A
+#- file: lab_8B
+#- file: markdown
+#- file: notebooks
+#- file: markdown-notebooks

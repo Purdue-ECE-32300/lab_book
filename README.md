@@ -103,3 +103,35 @@ the latest source by running `git pull` before editing.
   - [Sphinx roles](https://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html)
   - [Docutils directives](https://docutils.sourceforge.io/docs/ref/rst/directives.html)
   - [Sphinx directives](https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html)
+
+
+# Docker
+
+1. To build the development image.
+
+   ```sh
+   docker build -t jhcole/lab_book .
+   ```
+
+2. Push to docker hub.
+
+   ```sh
+   docker push jhcole/lab_book
+   ``
+
+3. From the docker hub.
+
+   ```sh
+   docker pull jhcole/lab_book
+   ```
+
+4. To run the development image.
+
+   ```sh
+   docker run -dit --rm -p 8000:8000 --name lab_book jhcole/lab_book
+   ```
+5. Connect to the running container
+
+   ```sh
+   docker exec -it lab_book bash
+   ```

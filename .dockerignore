@@ -1,0 +1,38 @@
+# Virtual environments
+.env*
+
+# Jupyter-Book output
+source/_build/
+source/_build/**/
+
+# Python byte code
+__pycache__/
+**/__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# VS Code
+.vscode
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# Other
+*.swp
+*.swo
+*.swn
+*.log
+*.bak
+*.orig
+*.old

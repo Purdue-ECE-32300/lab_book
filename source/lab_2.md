@@ -15,25 +15,58 @@
 - Postlab report
 
 ## Introduction
-In this experiment, we will investigate the electromagnetic properties of a cylindrical solenoid. A simplified cutaway view of the solenoid is shown in {numref}`Figure 2.1`. The solenoid is wound such that an axial magnetic field is produced in the movable plunger. This magnetic field circulates aroun the outer shell forming closed flux lines.
-A cross-sectional view of the solenoid along with the representative lines of the magnetic flux is shown in {numref}`Figure 2.2`. The strength of the magnetic field is dependent upon the amount of current in the coil and the displacement of the plunger, 'x'. In the Prelab, it will be shown that the inductance of the coil (Ratio of flux linking the coil to the current flowing in the coil) may be approximated for this solenoid as
+In this experiment, we will investigate the electromagnetic properties of a
+cylindrical solenoid. A simplified cutaway view of the solenoid is shown in
+{numref}`fig:2.1`. The solenoid is wound such that an axial magnetic field is
+produced in the movable plunger. This magnetic field circulates around the outer
+shell forming closed flux lines.  A cross-sectional view of the solenoid along
+with the representative lines of the magnetic flux is shown in
+{numref}`fig:2.2`. The strength of the magnetic field is dependent upon the
+amount of current in the coil and the displacement of the plunger, 'x'. In the
+Prelab, it will be shown that the inductance of the coil (Ratio of flux linking
+the coil to the current flowing in the coil) may be approximated for this
+solenoid as
 
 $ L(x) = L_l + (K/(k_0 + x))$ --- (2.1)
+
+```{figure} ./figures/lab_2/fig1.pdf
+:name: fig:2.1
+
+Simplified cutaway view of cylindrical solenoid.
+```
+
+```{figure} ./figures/lab_2/fig2.pdf
+:name: fig:2.2
+
+Simplified cross-sectional view of cylindrical solenoid.
+```
 
 Hopefully, our experimental measurements will confirm the general form of this equation.
 
 ## Prelab
 Before beginning the lab, please familiariza yourself wirh the material in Sections 1.2, 1.4 and 1.7 of Electromechanical Motion Devices by P. Krause and O. Wasynczuk (Abbreviated as KWP hereafter). 
-In this experiment, we will investigate the electrical properties of the solenoid as shown in {numref}`Figure 2.1`. The coil The coil is wound such that an axial magnetic field is produced in the movable plunger (i.e along the length of the plunger). This magnetic field crosses the air gap and circulates around the outer shell forming closed flux lines as shown in the sideway cross-sectional view in {numref}`Figure 2.2`. The magnetic flux density is dependent upon the amount of current in the coil and the displacement of hte plunger, 'x'. In this prelab, we will establish an expression for the self inductance of the coil in terms of the displacement, 'x' of the plunger. Using this expression, we will later relate the electromagnetic force to the current, 'i' and the displacement, 'x'. This will be done in the next lab.
-In the following analysis, we will assume that the magmetic materials (Plunger, Outer Shell, End Plates) have infinite permeability (i.e $$ µ_r = ∞ $$). Otherwise, we would have an analytical mess. Also, we will assume that the lines of magnetic flux in the air gap between the plunger and the end plate on the RHS of {numref}`Figure 2.2` are uniformly distributed and are constrained ot the volumer whose cross-sectional area is equal to that of the plunger and length is 'x'.
+In this experiment, we will investigate the electrical properties of the solenoid as shown in {numref}`fig:2.1`. The coil The coil is wound such that an axial magnetic field is produced in the movable plunger (i.e along the length of the plunger). This magnetic field crosses the air gap and circulates around the outer shell forming closed flux lines as shown in the sideway cross-sectional view in {numref}`fig:2.2`. The magnetic flux density is dependent upon the amount of current in the coil and the displacement of hte plunger, 'x'. In this prelab, we will establish an expression for the self inductance of the coil in terms of the displacement, 'x' of the plunger. Using this expression, we will later relate the electromagnetic force to the current, 'i' and the displacement, 'x'. This will be done in the next lab.
+In the following analysis, we will assume that the magmetic materials (Plunger, Outer Shell, End Plates) have infinite permeability (i.e $$ µ_r = ∞ $$). Otherwise, we would have an analytical mess. Also, we will assume that the lines of magnetic flux in the air gap between the plunger and the end plate on the RHS of {numref}`fig:2.2` are uniformly distributed and are constrained ot the volumer whose cross-sectional area is equal to that of the plunger and length is 'x'.
 Using these assumptions, establish and express in terms of 'x' and '$x_0$', the reluctance of the magnetic circuit associated with the air gap between the plunger and the RHS plate.
 
 R = (Some function of $r_0$ and x) --- (2.2)
 
-A second air gap exists in the end plate on the LHS of {numref}`Figure 2.2`. The cross-sectional area of this air gap is 
+A second air gap exists in the end plate on the LHS of {numref}`fig:2.2`. The cross-sectional area of this air gap is 
 $2*\pi*(r_0+g)*w \approx 2*\pi*r_0*w$ and the length is g. Establish and express the reluctance associated with the gap g. Specifically,
 
 R = (Some function fo g, w and $r_0$)
+
+```{figure} ./figures/lab_2/fig1.pdf
+:name: fig:2.3
+
+Simplified cutaway view of cylindrical solenoid.
+```
+
+```{figure} ./figures/lab_2/fig2.pdf
+:name: fig:2.4
+
+Simplified cross-sectional view of cylindrical solenoid.
+```
 
 Let N represent the total number of turns associated with the coil. The self inductance may be expressed as 
 
@@ -132,7 +165,13 @@ Figure 2.3 (Figure 2.5 from OG)
     
     1. Plot the measured impedance versus frequency characteristics with x = 0. Superimpose the calculated impedance versus frequency characteristics of an ideal circuit using the largest value of inductance from |Z| versus $$w_e$$ data. Describe the differences.
 
-    2. The deviations that should be observed above may be attributed to Eddy currents induced in the plunger. The presence of eddy currents may be explained with reference to {numref}`Figure 2.3`. Assume the current in the coil is increasing with respect to time in accordance with the reference direction shown in {numref}`Figure 2.3`. This will cause the flux to increase in the direction shown (Determined by the Right hand rule). The Plunger is made of magnetic steel (Good Conductor). Currents will be induced in the plunger which will oppose the increase in flux. This is Lenz's law. These currents are shown in {numref}`Figure 2.5`. as dots and crosses representing directions. In practice, currents are continuously distributed in the plunger. We can calculate these currents using Maxwell's Equations. This is a difficult task. We are not doing this but it needs to be acknowledged. Since these eddy currents oppose the change in flux, what effect would they have upon the impedance versus frequency characteristics when compared to the case where eddy currents do not exist which would occur if the plunger were made of a non-conductive material? Explain briefly.
+    2. The deviations that should be observed above may be attributed to Eddy currents induced in the plunger. The presence of eddy currents may be explained with reference to {numref}`fig:2.3`. Assume the current in the coil is increasing with respect to time in accordance with the reference direction shown in {numref}`fig:2.3`. This will cause the flux to increase in the direction shown (Determined by the Right hand rule). The Plunger is made of magnetic steel (Good Conductor). Currents will be induced in the plunger which will oppose the increase in flux. This is Lenz's law. These currents are shown in {numref}`fig:2.5`. as dots and crosses representing directions. In practice, currents are continuously distributed in the plunger. We can calculate these currents using Maxwell's Equations. This is a difficult task. We are not doing this but it needs to be acknowledged. Since these eddy currents oppose the change in flux, what effect would they have upon the impedance versus frequency characteristics when compared to the case where eddy currents do not exist which would occur if the plunger were made of a non-conductive material? Explain briefly.
+
+    ```{figure} ./figures/lab_2/fig4.pdf
+    :name: fig:2.5
+
+    Simplified cross-sectional view of cylindrical solenoid.
+    ```
 
     3. For low frequencies, the induced eddy currents will be small because the flux does not change very rapidly. Therefore, they may be ignored. However, if the frequency is too small, it is difficult to extract the inductance from using the formula. Why? Explain briefly.
 

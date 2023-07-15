@@ -284,7 +284,7 @@ Qx = y --- (4A.31)
 
 Here, Q is a nonsingular square matrix (3*3). Thus, there exists a unique solution x that is established by solving (4A.31). A simple MATLAB script that evaluates the vector of unknown parameters is given below.
 
-```{code-cell} MATLAB
+```matlab
     function x = fit8(las,theta)
         for i = 1:length(las)
             A(i,1) = 1;

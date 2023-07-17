@@ -2,8 +2,12 @@
 
 \newcommand\blank{~\underline{\hspace{1.2cm}}~}
 
+% Bold symbols (vectors)
+\newcommand\bs[1]{\mathbf{#1}}
+
 % Poor man's siunitx
 \newcommand\unit[1]{\mathrm{#1}}
+\newcommand\num[1]{#1}
 \newcommand\qty[2]{#1~\unit{#2}}
 
 \newcommand\per{/}
@@ -22,6 +26,10 @@
 %
 % Distance
 \newcommand\meter{\unit{m}}
+\newcommand\inch{\unit{in}}
+%
+% Frequency
+\newcommand\hertz{\unit{Hz}}
 %
 % Voltage
 \newcommand\volt{\unit{V}}

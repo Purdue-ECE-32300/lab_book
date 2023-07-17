@@ -24,6 +24,7 @@ parse:
     # - smartquotes
     - substitution
     - tasklist
+    # - attrs_block
 
 # Define the name of the latex output file for PDF builds
 latex:

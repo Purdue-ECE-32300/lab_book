@@ -1,3 +1,15 @@
+% This is a hack to add the Bootstrap "d-none" class to these math macros so
+% that they won't take up any space on the page. Once myst-parser 0.19 or
+% greater is available, we will be able to use block attributes to do this by
+% simply placeing {.d-none} above the math directive.
+%
+% https://myst-parser.readthedocs.io/en/latest/syntax/optional.html#syntax-attributes-block
+
+```{role} raw-html(raw)
+:format: html
+```
+{raw-html}`<div class="d-none">`
+%{.d-none}
 ```{math}
 
 \newcommand\blank{~\underline{\hspace{1.2cm}}~}
@@ -69,3 +81,4 @@
 \newcommand\kilowatt{\kilo\watt}
 \newcommand\kW{\kilo\watt}
 ```
+{raw-html}`</div>`

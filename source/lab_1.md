@@ -188,13 +188,13 @@ given folder (directory).
    ```{table} Target model parameters
    :name: tab:target_model_parameters
 
-   |  D/A |  Wave Type |     Amplitude |      DC level | Phase Shift | Oscope |                 Scale |
-   |-----:|-----------:|--------------:|--------------:|------------:|-------:|----------------------:|
-   | Ch 1 |       Sine | $\qty{5}{\V}$ | $\qty{0}{\V}$ |   $\ang{0}$ |   Ch 1 | $\qty{5}{\V\per div}$ |
-   | Ch 2 |       Sine | $\qty{5}{\V}$ | $\qty{5}{\V}$ | $\ang{-90}$ |   Ch 2 | $\qty{5}{\V\per div}$ |
-   | Ch 3 |     Square | $\qty{5}{\V}$ | $\qty{0}{\V}$ |   $\ang{0}$ |   Ch 3 | $\qty{5}{\V\per div}$ |
+   |  D/A |  Wave Type |      Amplitude |       DC level |          Phase Shift | Oscope |                   Scale |
+   |-----:|-----------:|---------------:|---------------:|---------------------:|-------:|------------------------:|
+   | Ch 1 |       Sine |  $\qty{5}{\V}$ |  $\qty{0}{\V}$ |   $\qty{0}{\degree}$ |   Ch 1 |   $\qty{5}{\V\per div}$ |
+   | Ch 2 |       Sine |  $\qty{5}{\V}$ |  $\qty{5}{\V}$ | $\qty{-90}{\degree}$ |   Ch 2 |   $\qty{5}{\V\per div}$ |
+   | Ch 3 |     Square |  $\qty{5}{\V}$ |  $\qty{0}{\V}$ |   $\qty{0}{\degree}$ |   Ch 3 |   $\qty{5}{\V\per div}$ |
    ```
-   %| Ch 4 | Sawtooth  | 10 V      | -10 V    |   0 deg     | Ch 4   | 10 mA/div |
+   %| Ch 4 |   Sawtooth | $\qty{10}{\V}$ | $\qty{-10}{\V} |   $\qty{0}{\degree}$ |   Ch 4 | $\qty{10}{\mA\per div}$ |
 
 4. Simulink Real-Time (slrt) is included in the Simulink software. This software
    provides the link between the model code and the test hardware. When a model
@@ -347,7 +347,6 @@ and labelled plots.
    ```{math}
    :label: eq:kvl
 
-   \newcommand\blank{~\underline{\phantom{spam}}~}
    \begin{bmatrix}
      v_1 \\
        0 \\
@@ -490,7 +489,7 @@ and labelled plots.
 
 9. Double-click the {guilabel}`Sine Wave` icon to open its dialog window.  Set
    the amplitude to 100 (volts peak) and frequency to
-   $\qty{400}{\rad\per\second}$.
+   $\qty{400}{\radian\per\second}$.
 
 10. Before running the simulation, go to the top menu in the Simulink model
     window and select the {guilabel}`Modelling` tab. Then press {guilabel}`Model

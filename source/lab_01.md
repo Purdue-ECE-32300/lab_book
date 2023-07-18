@@ -1,6 +1,6 @@
 ```{include} ./macros.md
 ```
-# Experiment 1: Introduction to Lab Experiments
+# Introduction to Lab Experiments
 
 ```{admonition} Objective
 :class: note

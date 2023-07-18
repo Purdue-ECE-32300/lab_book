@@ -3,21 +3,21 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: lab_1
-- file: lab_2
-#- file: lab_3A
-#- file: lab_3B
-#- file: lab_4A
-#- file: lab_4B
-#- file: lab_5A
-#- file: lab_5B
-#- file: lab_6A
-#- file: lab_6B
-#- file: lab_7A
-#- file: lab_7B
-#- file: lab_8A
-#- file: lab_8B
-#- file: markdown
-#- file: notebooks
-#- file: markdown-notebooks
+parts:
+  - caption: Experiments
+    numbered: 3
+    chapters:
+    - file: lab_01
+    - file: lab_02
+    - file: lab_03
+    - file: lab_04
+    - file: lab_05
+    - file: lab_06
+    - file: lab_07
+    - file: lab_08
+    - file: lab_09
+    - file: lab_10
+    - file: lab_11
+    - file: lab_12
+    - file: lab_13
+    - file: lab_14

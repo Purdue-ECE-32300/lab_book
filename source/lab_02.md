@@ -1,6 +1,6 @@
 ```{include} ./macros.md
 ```
-# Experiment 2: Inductance and Magnetic Circuits
+# Inductance and Magnetic Circuits
 
 ```{admonition} Objective
 :class: note

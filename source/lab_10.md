@@ -1,0 +1,1 @@
+# Permanent Magnet Synchronous Motor (B)

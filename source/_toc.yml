@@ -21,3 +21,7 @@ parts:
     - file: lab_12
     - file: lab_13
     - file: lab_14
+  - caption: Appendices
+    numbered: False
+    chapters:
+    - file: contributors

@@ -2,7 +2,8 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: "**ECE 323 ELECTROMECHANICAL MOTION DEVICES:** *Laboratory Manual*"
-author: Maryam Al-Othman, Oleg Wasynczuk
+author: '<a href="contributors.html">Contributors</a>'
+copyright: "2023"
 logo: 323logo.png
 
 # Force re-execution of notebooks on each build.

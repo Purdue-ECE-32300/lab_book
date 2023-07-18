@@ -23,6 +23,7 @@
 \newcommand\qty[2]{#1~\unit{#2}}
 
 \newcommand\per{/}
+\newcommand\squared{{}^2}
 %
 % Scale
 \newcommand\milli{\unit{m}}
@@ -38,7 +39,13 @@
 %
 % Distance
 \newcommand\meter{\unit{m}}
+\newcommand\m{\meter}
 \newcommand\inch{\unit{in}}
+\newcommand\in{\inch}
+%
+% Mass
+\newcommand\gram{\unit{g}}
+\newcommand\g{\gram}
 %
 % Frequency
 \newcommand\hertz{\unit{Hz}}

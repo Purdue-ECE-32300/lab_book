@@ -57,8 +57,8 @@ Simplified cutaway view of cylindrical solenoid.
 
 ## In the Laboratory
 
-```{admonition} Warning
-:class: Warning
+```{admonition} Attention
+:class: Attention
 
 You must wear eye protection for this lab.
 ```
@@ -85,8 +85,8 @@ connectors of the power amplifier.
    $\qty{10}{\g}$.  Either round up or down but be consistent from one
    measurement to next.
    
-   ```{admonition} Warning
-   :class: Warning
+   ```{admonition} Caution
+   :class: Caution
    
    Be careful not to drop the weights on your (or your lab partner's) foot.  You
    may use the lab chairs to prevent dropping weights on the floor.

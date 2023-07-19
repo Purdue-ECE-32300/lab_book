@@ -1,5 +1,6 @@
 ```{include} ./macros.md
 ```
+(introduction_to_lab_experiments)=
 # Introduction to Lab Experiments
 
 ```{admonition} Objective
@@ -64,7 +65,7 @@ oscilloscope has the ability to capture and store up to 4 channels of data. The
 oscilloscope is connected to the host computer through a universal serial bus
 (USB) connection.
 
-```{figure} ./figures/lab_1/fig1n.png
+```{figure} ./figures/lab_01/fig1n.png
 :name: fig:1
 
 Patch panel.

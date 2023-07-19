@@ -1,15 +1,17 @@
 ```{include} ./macros.md
 ```
+(electromagnetic_forces_a)=
 # Electromagnetic Forces (A)
 
 ```{admonition} Objective
 :class: note
 
-The primary objective of this experiment is to study the interaction between electrical
-and mechanical systems that are magnetically coupled. The electromechanical relay (solenoid)
-studied in Experiment 2 will be analyzed to predict its steady-state force-versus-position
-and force-versus-current characteristics. In the follow-up lab, computer simulation
-will be used to predict its dynamic force-versus-time characteristics. The analytical and
+The primary objective of this experiment is to study the interaction between
+electrical and mechanical systems that are magnetically coupled. The
+electromechanical relay (solenoid) studied in Experiment 2 will be analyzed to
+predict its steady-state force-versus-position and force-versus-current
+characteristics. In the follow-up lab, computer simulation will be used to
+predict its dynamic force-versus-time characteristics. The analytical and
 simulated results will be compared with laboratory measurements.
 ```
 

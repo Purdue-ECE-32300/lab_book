@@ -1,5 +1,6 @@
 ```{include} ./macros.md
 ```
+(inductance_and_magnetic_circuits)=
 # Inductance and Magnetic Circuits
 
 ```{admonition} Objective

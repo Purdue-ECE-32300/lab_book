@@ -40,6 +40,7 @@ this equation.
 Simplified cutaway view of cylindrical solenoid.
 ```
 
+(prelab_electromagnetic_forces_a)=
 ## Prelab
 
 1. For an electromechanical device whose inductance versus position is given by

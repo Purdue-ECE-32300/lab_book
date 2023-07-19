@@ -121,13 +121,13 @@ given folder (directory).
    After a brief (sometimes long) delay, this will open an
    {command}`slrtExplorer` window similar to that shown in {numref}`fig:3`.
 
-   ```{figure} ./figures/lab_1/MatlabWindow.png
+   ```{figure} ./figures/lab_01/MatlabWindow.png
    :name: fig:2
 
    MATLAB top-level window.
    ```
 
-   ```{figure} ./figures/lab_1/SLRTExplorer2.png
+   ```{figure} ./figures/lab_01/SLRTExplorer2.png
    :name: fig:3
 
    {command}`slrtExplorer` window.
@@ -152,7 +152,7 @@ given folder (directory).
    {menuselection}`New --> Blank Model`.  This will open a blank Simulink
    window.  Save the model window as {file}`lab1.slx`.
 
-   ```{figure} ./figures/lab_1/ECE323lib.png
+   ```{figure} ./figures/lab_01/ECE323lib.png
    :name: fig:EE323lib
 
    Simulink EE323 library.
@@ -170,7 +170,7 @@ given folder (directory).
    Browser and the {file}`ee323lib.slx` file to construct the waveform generator
    model shown in {numref}`fig:lab1`.
 
-   ```{figure} ./figures/lab_1/lab1.png
+   ```{figure} ./figures/lab_01/lab1.png
    :name: fig:lab1
 
    Simulink project window for Lab 1.
@@ -205,7 +205,7 @@ given folder (directory).
    window should now appear similar to {numref}`fig:ConfigParam`.  Change all
    settings to match {numref}`fig:ConfigParam`.
 
-   ```{figure} ./figures/lab_1/ConfigParam.png
+   ```{figure} ./figures/lab_01/ConfigParam.png
    :name: fig:ConfigParam
 
    Solver parameters for Lab 1.
@@ -220,7 +220,7 @@ given folder (directory).
    successful, the top-left link should now display {guilabel}`Connected`. If
    so, press {guilabel}`Run on Target` button.
 
-   ```{figure} ./figures/lab_1/CodeGen.png
+   ```{figure} ./figures/lab_01/CodeGen.png
    :name: fig:CodeGen
 
    Code generation parameters for Lab 1.
@@ -247,7 +247,7 @@ given folder (directory).
    This will ensure that {program}`BenchVue` saves your screenshot in the
    correct location on your account.
 
-   ```{figure} ./figures/lab_1/scope.png
+   ```{figure} ./figures/lab_01/scope.png
    :name: fig:scope
 
    Sample screen shot.
@@ -338,7 +338,7 @@ and labelled plots.
    equations of an inductor ($v=L\frac{di}{dt}$), and Kirchhoff's voltage law
    (KVL), express the dynamic equations of the circuit in the following form
 
-   ```{figure} ./figures/lab_1/xfmer.png
+   ```{figure} ./figures/lab_01/xfmer.png
    :name: fig:ckt
 
    Example circuit.
@@ -411,7 +411,7 @@ and labelled plots.
    Browser`.  From the {guilabel}`Simulink Library`,  open {guilabel}`Commonly
    Used Blocks`.
 
-   ```{figure} ./figures/lab_1/fig7.png
+   ```{figure} ./figures/lab_01/fig7.png
    :name: fig:blankSimulink
 
    Blank Simulink model window.
@@ -436,7 +436,7 @@ and labelled plots.
    model of the given circuit similar to that shown in Figure
    {numref}`fig:simmdl`.
 
-   ```{figure} ./figures/lab_1/fig8.png
+   ```{figure} ./figures/lab_01/fig8.png
    :name: fig:simmdl
 
    Simulink model.

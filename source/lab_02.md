@@ -19,7 +19,7 @@ cylindrical solenoid. A simplified cutaway view of the solenoid is shown in
 produced in the moveable plunger. This magnetic field circulates around the
 outer shell forming closed flux lines. 
 
-```{figure} ./figures/lab_2/fig1.png
+```{figure} ./figures/lab_02/fig1.png
 :name: fig:2.1
 :width: 80%
 
@@ -39,7 +39,7 @@ L(x) = L_l + (K/(k_0 + x))
 ```
 Hopefully, our experimental measurements will confirm the general form of this equation.
 
-```{figure} ./figures/lab_2/fig2.png
+```{figure} ./figures/lab_02/fig2.png
 :name: fig:2.2
 :width: 80%
 
@@ -93,14 +93,14 @@ reluctance associated with the gap $g$*. Specifically,
 \mathcal{R}_2 = (\text{some function fo $g$, $w$, and $r_0$})
 ```
 
-```{figure} ./figures/lab_2/fig1.png
+```{figure} ./figures/lab_02/fig1.png
 :name: fig:2.3
 :width: 80%
 
 Simplified cutaway view of cylindrical solenoid.
 ```
 
-```{figure} ./figures/lab_2/fig2.png
+```{figure} ./figures/lab_02/fig2.png
 :name: fig:2.4
 :width: 80%
 
@@ -320,7 +320,7 @@ Carefully examine the numerical procedure described in [Appendix B](Appendix-B).
    eddy currents do not exist, which would occur if the plunger were made of a
    nonconductive material?  Explain briefly.
 
-   ```{figure} ./figures/lab_2/fig4.png
+   ```{figure} ./figures/lab_02/fig4.png
    :name: fig:2.5
    :width: 80%
 

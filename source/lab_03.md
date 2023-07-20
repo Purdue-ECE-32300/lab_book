@@ -111,7 +111,7 @@ Our next objective will be to measure force versus current at a fixed position.
 1. Apply a DC voltage to the coil so that $i=\qty{60}{\mA}$. Use Ohm's law to
    determine the required voltage using the value of $R$. Measure the current
    using the oscilloscope to be sure.  If necessary, adjust the applied voltage
-   to achieve the desired current.  Position plunger at $x = \qty{1/8}{\in}$.
+   to achieve the desired current.  Position plunger at $x = \qty{1/8}{\inch}$.
    Add weight to coil plunger until plunger pulls out. Again, be careful not to
    drop the weights.
 
@@ -122,7 +122,7 @@ Our next objective will be to measure force versus current at a fixed position.
 ## Postlab
 
 1. Plot, on the same axis, the measured and calculated electromagnetic force
-   versus current with $x = \qty{1/8}{\in}.$ Compare the results and explain
+   versus current with $x = \qty{1/8}{\inch}.$ Compare the results and explain
    discrepancies.
 
    ```{admonition} Hint

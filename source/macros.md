@@ -41,7 +41,6 @@
 \newcommand\meter{\unit{m}}
 \newcommand\m{\meter}
 \newcommand\inch{\unit{in}}
-\newcommand\in{\inch}
 %
 % Mass
 \newcommand\gram{\unit{g}}

@@ -13,11 +13,6 @@ torque-versus-position characteristics.
 
 ```
 
-## Prelab
-
-Review Sections 9.1 through 9.4 of EE321 text.
-
-
 ## Introduction
 
 The voltage equations of a three-stack variable-reluctance stepper motor may be
@@ -111,6 +106,12 @@ T_e
 \right]
 ```
 
+
+## Prelab
+
+Review Sections 9.1 through 9.4 of EE321 text.
+
+
 ## In the Laboratory
 
 In the first part of the lab, we will determine the step length and number of
@@ -142,14 +143,14 @@ Setup for lab 5.
    encoder through the torque transducer and the cable from the position encoder
    to the 25-pin Digital Input port of the Patch Panel as shown in {numref}`fig:5:fig1`.
 
-2. Open the model {file}`lab5_tgt.slx` located in the {file}`Lab 5` directory.
-   The main window should look similar to {numref}`fig:5:fig2`.  The switches
-   are actuated by a mouse double-click. Set the {guilabel}`To_IP_Address` to
-   the IP number to the host computer on your station.
+2. Open the model {download}`lab5_tgt.slx <lab_files/lab_05/lab5_tgt.slx>`.  The
+   main window should look similar to {numref}`fig:5:fig2`.  The switches are
+   actuated by a mouse double-click.  Set the {guilabel}`To_IP_Address` to the
+   IP number to the host computer on your station.
 
    ```{figure} ./figures/lab_05/lab5_tgt.png
    :name: fig:5:fig2
-   :width: 80%
+   :width: 100%
 
    Simulink target model {file}`lab5_tgt.slx` for measuring step length.
    ```
@@ -160,8 +161,9 @@ Setup for lab 5.
    From {guilabel}`REAL-TIME` tab, connect to target on your station and press
    {guilabel}`Run on Target`.
 
-4. Open the Simulink model {file}`lab5_host.slx`, which reads the position
-   transducer in radians. The main window should look similar to
+4. Open the Simulink model
+   {download}`lab5_host.slx<lab_files/lab_05/lab5_host.slx>`, which reads the
+   position transducer in radians. The main window should look similar to
    {numref}`fig:5:fig3`.  Set the {guilabel}`FromAddress` to the IP number of
    the target computer at your station. The model is configured as a
    {guilabel}`Normal` simulation with the simulation parameters set to
@@ -170,7 +172,7 @@ Setup for lab 5.
 
    ```{figure} ./figures/lab_05/lab5_host.png
    :name: fig:5:fig3
-   :width: 80%
+   :width: 100%
 
    Simulink host PC model {file}`lab5_host.slx` for measuring step length.
    ```
@@ -202,30 +204,33 @@ Setup for lab 5.
 
 1. Measure the DC resistance of the stator winding by applying a DC voltage to
    one of the windings and measuring the resulting current. Record this value
-   for use in the postlab.
+   for use in the postlab.  When complete, stop the host simulation, then stop
+   the target and disconnect from the target.
 
 
 ### Measuring Inductance-Versus-Position
 
 1. This procedure requires the use of the prebuilt target-based Simulink model
-   {file}`L_vs_pos_tgt.slx`, and the host-based Simulink model
-   {file}`L_vs_pos_host.slx`. The top-level view of {file}`L_vs_pos_tgt.slx` is
-   shown in {numref}`fig:5:fig4`.  This model generates a $5$-$\volt$
-   $20$-$\hertz$ sinusoidal voltage that is to be applied to one phase of the
-   stepper motor. The voltage-output signal of the power amplifier will be used
-   to measure the phase voltage, and the current-output signal of the power
-   amplifier will be used to measure the corresponding phase current. The
-   voltage-output signal should be connected to {guilabel}`Analog Input Channel
-   1` with the gain knob set to $10$. The current-output signal should be
-   connected to {guilabel}`Analog Input Channel 2` with the gain knob of that
-   input channel set to $1$. The measured voltage and current signals along with
-   the $20$-$\hertz$ sine and cosine signals are supplied to a block that
-   calculates the inductance at selected rotor positions. This block is
-   described in {ref}`Appendix-5A`.  The calculated inductance and measured
-   rotor position are then supplied to the host model {file}`L_vs_pos_host.slx`.
-   The top level view of {file}`L_vs_pos_host.slx` is shown in 
-   {numref}`fig:5:fig5`.  Therein, the numerical values of the measured position
-   and calculated inductance will be displayed in numeric display blocks. 
+   {download}`L_vs_pos_tgt.slx<lab_files/lab_05/L_vs_pos_tgt.slx>`, and the
+   host-based Simulink model
+   {download}`L_vs_pos_host.slx<lab_files/lab_05/L_vs_pos_host.slx>`. The
+   top-level view of {file}`L_vs_pos_tgt.slx` is shown in {numref}`fig:5:fig4`.
+   This model generates a $5$-$\volt$ $20$-$\hertz$ sinusoidal voltage that is
+   to be applied to one phase of the stepper motor. The voltage-output signal of
+   the power amplifier will be used to measure the phase voltage, and the
+   current-output signal of the power amplifier will be used to measure the
+   corresponding phase current. The voltage-output signal should be connected to
+   {guilabel}`Analog Input Channel 1` with the gain knob set to $10$. The
+   current-output signal should be connected to {guilabel}`Analog Input Channel
+   2` with the gain knob of that input channel set to $1$. The measured voltage
+   and current signals along with the $20$-$\hertz$ sine and cosine signals are
+   supplied to a block that calculates the inductance at selected rotor
+   positions. This block is described in {ref}`Appendix-5A`.  The calculated
+   inductance and measured rotor position are then supplied to the host model
+   {file}`L_vs_pos_host.slx`.  The top level view of {file}`L_vs_pos_host.slx`
+   is shown in {numref}`fig:5:fig5`.  Therein, the numerical values of the
+   measured position and calculated inductance will be displayed in numeric
+   display blocks. 
 
    ```{figure} ./figures/lab_05/L_vs_pos_tgt.png
    :name: fig:5:fig4
@@ -258,13 +263,14 @@ Setup for lab 5.
    This host model samples the selected signals in the target code
    {file}`L_vs_pos_tgt.slx` and displays the measured values in numerical
    display blocks.  Using both hands, rotate the motor rotor slowly and
-   smoothly. As the rotor rotates, the computer calculates a new value of
-   inductance for each rotor position and updates the digital displays in the
-   host model.  After rotating the rotor through one complete revolution, stop
-   the host simulation. In the MATLAB command window, type `plot(position,
-   inductance)` to verify that the position and inductance data have been
-   written to the MATLAB workspace. Use the following MATLAB command to save the
-   inductance-versus-position data: 
+   smoothly. Choose and record the direction of rotation (either CW or CCW) when
+   looking from the motor toward the torque transducer.  As the rotor rotates,
+   the computer calculates a new value of inductance for each rotor position and
+   updates the digital displays in the host model.  After rotating the rotor
+   through one complete revolution, stop the host simulation. In the MATLAB
+   command window, type `plot(position, inductance)` to verify that the position
+   and inductance data have been written to the MATLAB workspace. Use the
+   following MATLAB command to save the inductance-versus-position data: 
    ```matlab
    stepind ('la.mat', position, inductance)
    ```
@@ -274,12 +280,13 @@ Setup for lab 5.
 4. Disconnect the $a$-phase from {guilabel}`Analog Output 1` and connect the
    $b$-phase to {guilabel}`Analog Output 1`. Restart the host simulation.
    Measure the inductance versus position of the phase $b$ winding as done with
-   the $a$ winding. Again, save the data in file {file}`lb.mat`. Repeat the
-   previous steps for the phase $c$ winding, saving the data in {file}`lc.mat`.
-   Load {file}`la.mat` into MATLAB with the command `load la.mat` in your
-   plotting script. The data will be stored as 2-column matrices of position
-   (radians) and inductance (Henrys).  Separate the data into vectors of
-   inductance and position, i.e.
+   the $a$ winding, being sure to rotate the rotor in the same direction as
+   before. Again, save the data in file {file}`lb.mat`. Repeat the previous
+   steps for the phase $c$ winding, saving the data in {file}`lc.mat`.  Load
+   {file}`la.mat` into MATLAB with the command `load la.mat` in your plotting
+   script. The data will be stored as 2-column matrices of position (radians)
+   and inductance (Henries).  Separate the data into vectors of inductance and
+   position, i.e.
 
    ```matlab
    qrma = position
@@ -429,7 +436,7 @@ and {eq}`eq:5:Bf`.  The resistance and reactance, along with the encoder
 position are sampled by the host model, which is responsible for plotting and
 storing the results.
 
-```{figure} ./figures/lab_05/RLcalc.png
+```{figure} ./figures/lab_05/L_vs_pos_tgt_RL_calc.png
 :name: fig:5:6
 
 Simulink subsystem block that calculates resistance and reactance.

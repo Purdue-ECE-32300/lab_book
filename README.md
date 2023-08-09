@@ -6,12 +6,12 @@
 2. Download this repository via HTTPS using your Purdue career account and password,
 
    ```sh
-   git clone https://github.itap.purdue.edu/ECE-32300/lab_book.git
+   git clone https://github.com/Purdue-ECE-32300/lab_book.git
    ```
    or via SSH if you already have set up SSH key based authentication.
 
    ```sh
-   git clone git@github.itap.purdue.edu:ECE-32300/lab_book.git
+   git clone git@github.com:Purdue-ECE-32300/lab_book.git
    ```
 
 3. Set up a Python virtual environment.
@@ -90,7 +90,7 @@ the latest source by running `git pull` before editing.
 
 9. View the live results
 
-   https://pages.github.itap.purdue.edu/ECE-32300/lab_book/intro.html
+   https://purdue-ece-32300.github.io/lab_book/intro.html
 
 
 # Reference Material

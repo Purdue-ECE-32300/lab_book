@@ -133,7 +133,7 @@ as follows:
 :name: fig:5:fig1
 :width: 80%
 
-Setup for lab 5.
+Setup for lab {ref}`variable_reluctance_stepper_motor_a`.
 ```
 
 

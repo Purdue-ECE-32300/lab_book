@@ -48,6 +48,7 @@
 %
 % Frequency
 \newcommand\hertz{\unit{Hz}}
+\newcommand\rpm{\unit{rpm}}
 %
 % Voltage
 \newcommand\volt{\unit{V}}
@@ -86,5 +87,9 @@
 \newcommand\mW{\milli\watt}
 \newcommand\kilowatt{\kilo\watt}
 \newcommand\kW{\kilo\watt}
+%
+% Torque
+\newcommand\ozin{\unit{oz}\text{-}\unit{in}}
+\newcommand\newtonmeter{\unit{N\text{-}m}}
 ```
 {raw-html}`</div>`

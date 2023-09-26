@@ -5,6 +5,7 @@
 
 
 ```{admonition} Objective
+:class: note
 
 In this experiment, the electromechanical characteristics of a
 variable-reluctance stepper motor will be investigated. The static
@@ -244,7 +245,7 @@ Setup for lab {ref}`variable_reluctance_stepper_motor_b`.
    Simulink model for operation at constant stepping rate, {file}`full\_step.slx`.
    ```
 
-2. Using the digital oscilloscope and {guilabel}`BenchVue`, record and print the
+2. Using the digital oscilloscope and {program}`BenchVue`, record and print the
    phase-$a$ voltage, phase-$b$ voltage, phase-$a$ current, and phase-$b$
    current in the full stepping mode.  Do you see any similarity to the current
    waveform and the current waveform for the solenoid pull-in measured in
@@ -294,7 +295,7 @@ Setup for lab {ref}`variable_reluctance_stepper_motor_b`.
 
 2. Open the Simulink model {download}`half_step.slx
    <lab_files/lab_06/half_step.slx>`, shown in {numref}`fig:6:half_step_model`.
-   Using the digital oscilloscope and {guilabel}`BenchVue`, record and print the
+   Using the digital oscilloscope and {program}`BenchVue`, record and print the
    phase $a$ voltage, phase $b$ voltage, phase $a$ current, and phase $b$
    current in the half-stepping mode.  What is the duty cycle of each phase for
    half stepping (i.e. what percent of time each phase on?). What is the duty

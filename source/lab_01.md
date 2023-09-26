@@ -177,7 +177,7 @@ given folder (directory).
    Simulink project window for Lab 1.
    ```
 
-3. In the model window, double click on the appropriate source block and use the
+3. In the model window, double-click on the appropriate source block and use the
    mouse and keyboard to set up the following 50-Hz waveforms on the D/A
    outputs:
 
@@ -409,7 +409,7 @@ and labelled plots.
    as {file}`mylab1.slx`.  It is useful to save often since Simulink may
    occasionally "crash" causing all work since the last save to be lost.  Press
    the {guilabel}`Simulink Library` icon to open the {guilabel}`Simulink Library
-   Browser`.  From the {guilabel}`Simulink Library`,  open {guilabel}`Commonly
+   Browser`.  From the {guilabel}`Simulink Library`, open {guilabel}`Commonly
    Used Blocks`.
 
    ```{figure} ./figures/lab_01/fig7.png
@@ -420,9 +420,9 @@ and labelled plots.
 
 3. Drag the following blocks from the browser into the empty model window:
    {guilabel}`Sum`, {guilabel}`Integrator`, {guilabel}`Gain`, {guilabel}`Scope`,
-   {guilabel}`Constant`, and {guilabel}`Mux`.  From  {guilabel}`Simulink/Sinks`
+   {guilabel}`Constant`, and {guilabel}`Mux`.  From {guilabel}`Simulink/Sinks`
    in the {guilabel}`Library Browser`, drag the {guilabel}`To Workspace` block
-   into the model window.  From  {guilabel}`Simulink/Sources`, drag the
+   into the model window.  From {guilabel}`Simulink/Sources`, drag the
    {guilabel}`Sine Wave` block into the model window.
 
 4. If the input of the {guilabel}`Integrator` is set to the right-hand side of
@@ -460,7 +460,7 @@ and labelled plots.
 
 
 6. The voltage vector $\textbf{v}$ in {eq}`eq:vector_kvl_for_di_dt` is a
-   2-dimensional vector. However the output of the {guilabel}`Sine-Wave` block
+   2-dimensional vector. However, the output of the {guilabel}`Sine-Wave` block
    is a scalar signal.  To form a 2-dimensional voltage vector, a multiplexer or
    {guilabel}`mux` block is used as shown in {numref}`fig:simmdl`.  This block
    converts the two scalar signals into one 2-dimensional signal.  The summer
@@ -500,18 +500,18 @@ and labelled plots.
     {command}`1e-20`, and the {guilabel}`solver` to {guilabel}`ode23s`.  Also,
     set {guilabel}`tstop` to {command}`0.5`. Step sizes and {guilabel}`tstop`
     have units of seconds.  Leave the other parameter set to their default
-    values.  Double click the {guilabel}`To Workspace` block. Make sure the save
+    values.  Double-click the {guilabel}`To Workspace` block. Make sure the save
     format is set to {guilabel}`Timeseries` and {guilabel}`sample time` to
     {command}`-1`.
 
 11. You are now ready to make a study. Before you do {guilabel}`Save`!  Then
-    press the {guilabel}`Run` icon.  You can double click the {guilabel}`Scope`
+    press the {guilabel}`Run` icon.  You can double-click the {guilabel}`Scope`
     to see if the run is successful.
 
 12. Although you can print the Scope data from the Scope window, it is
     preferable instead to generate labelled and annotated printable figures from
     MATLAB.  Create another script file and label it {file}`plotresults.m`.
-    enter the following lines
+    Enter the following lines
 
     ```matlab
     figure(1)

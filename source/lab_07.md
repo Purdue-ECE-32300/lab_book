@@ -1,6 +1,6 @@
 ```{include} ./macros.md
 ```
-(dc_motor_a_b)=
+(dc_motor_a)=
 # DC Motor (A)
 
 
@@ -17,6 +17,7 @@ with experimental measurements.
 
 ```
 
+(dc_motor_a_prelab)=
 ## Prelab
 
 The electromechanical equations of a permanent-magnet DC machine can be expressed
@@ -161,7 +162,7 @@ $r_a$, and $k_v$.\\
    :name: fig:7:target_model
    :width: 60%
    
-   Simulink target model for {ref}`dc_motor_a_b`.
+   Simulink target model for {ref}`dc_motor_a`.
    ```
 
 
@@ -224,7 +225,7 @@ $r_a$, and $k_v$.\\
 % In 2011, we varied the voltage from +16 to -16. When and why was the voltage
 % range decreased to +8 to -8?
 3. Vary the voltage applied to the armature of Motor 2 from $\qty{+8}{\V}$ to
-   $\qty{-8}{\V} in $2$-$\V$ steps and record the Motor-1 open-circuit voltage,
+   $\qty{-8}{\V}$ in $2$-$\V$ steps and record the Motor-1 open-circuit voltage,
    the tachometer voltage, and the torque transducer output voltage at each
    step.
    
@@ -251,7 +252,8 @@ $r_a$, and $k_v$.\\
    the slope of given plot.
 
 
-## Postlab:
+(dc_motor_a_postlab)=
+## Postlab
 
 1. How much do $r_a$ and $L_{AA}$ vary? Why do they vary?
 

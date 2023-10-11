@@ -13,6 +13,7 @@
 ```{math}
 
 \newcommand\blank{~\underline{\hspace{1.2cm}}~}
+\newcommand\phase[1]{\enclose{phasorangle}{#1}}
 
 % Bold symbols (vectors)
 \newcommand\bs[1]{\mathbf{#1}}

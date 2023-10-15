@@ -33,7 +33,7 @@
 %
 % Angle
 \newcommand\radian{\unit{rad}}
-\newcommand\degree{\unit{{}^\circ}}
+\newcommand\degree{\unit{\kern{-0.5ex}{}^\circ}}
 %
 % Time
 \newcommand\second{\unit{s}}

@@ -77,13 +77,13 @@ Let $\tilde{I}_{as}$ and $\tilde{I}_{bs}$ be the phase currents in phasor form, 
 produce clockwise and counterclockwise rotating fields. Now
  
 ```{math}
-:label: eq:8:Ias
+:label: eq:9:Ias
 
 \tilde{I}_{as} = \tilde{I}_{+} + \tilde{I}_{-}
 ```
  
 ```{math}
-:label: eq:8:Ibs
+:label: eq:9:Ibs
 
 \tilde{I}_{bs} = j\tilde{I}_{+} - j \tilde{I}_{-}
 ```
@@ -91,7 +91,7 @@ produce clockwise and counterclockwise rotating fields. Now
 or
  
 ```{math}
-:label: eq:8:current_matrix
+:label: eq:9:current_matrix
 
 \left[
   \begin{array}{c}
@@ -116,7 +116,7 @@ or
 Inverting, the forward and backward components can be expressed
 
 ```{math}
-:label: eq:8:current_matrix_inv
+:label: eq:9:current_matrix_inv
 
 \left[
   \begin{array}{c}
@@ -142,14 +142,14 @@ Inverting, the forward and backward components can be expressed
 4. Suppose $\tilde{I}_{as} = 1 \phase{0}$ and $\tilde{I}_{bs} = 0.5
    \phase{90\degree}$.  Determine the relative strength of the CW and CCW
    rotating components of the magnetic field using
-   {eq}`eq:8:current_matrix_inv`. Use Matlab to do the math.  Repeat (3) for the
+   {eq}`eq:9:current_matrix_inv`. Use Matlab to do the math.  Repeat (3) for the
    given $\tilde{I}_{as}$ and $\tilde{I}_{bs}$. Note that when the source is
    unbalanced, the magnetic field may be decomposed into two components, each
    with different strengths.
 
 5. Suppose $\tilde{I}_{as} = 1\phase{0}$ and $\tilde{I}_{bs} = 0$.  Determine
    the relative strength of the CW and CCW rotating components of the magnetic
-   field using {eq}`eq:8:current_matrix_inv`.  Repeat question 3 from
+   field using {eq}`eq:9:current_matrix_inv`.  Repeat question 3 from
    {numref}`pmag_sync_motor_a_dev_rot_mag_fields` for the given $\tilde{I}_{as}$
    and $\tilde{I}_{bs}$.
 

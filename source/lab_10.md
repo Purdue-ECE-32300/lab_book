@@ -158,13 +158,13 @@ In an ideal machine,
 ```{math}
 :label: eq:10:lambda_bsm
 
-\lambda_{bsm} = \lambda_m^\prime \sin (\theta_r - \qty{120}{\degree}).
+\lambda_{bsm} = \lambda_m^\prime \sin (\theta_r - \qty{120}{\degree})
 ```
 
 ```{math}
 :label: eq:10:lambda_csm
 
-\lambda_{csm} = \lambda_m^\prime \sin (\theta_r + \qty{120}{\degree})
+\lambda_{csm} = \lambda_m^\prime \sin (\theta_r + \qty{120}{\degree}).
 ```
 
 **Substitute {eq}`eq:10:lambda_asm`-{eq}`eq:10:lambda_csm` into {eq}`eq:10:T_e` and show that**
@@ -210,7 +210,7 @@ in the given device.  Connect the machine as shown in {numref}`fig:10:setup`.
 :name: fig:10:setup
 :width: 80%
 
-Experimental setup for Lab 10.
+Experimental setup for {ref}`pmag_sync_motor_b`.
 ```
 
 1. Using {download}`lab_10_target.slx<lab_files/lab_10/lab_10_target.slx>`
@@ -233,7 +233,7 @@ Experimental setup for Lab 10.
    :name: fig:10:target_model
    :width: 50%
    
-   Target model for Lab 10.
+   Target model for {ref}`pmag_sync_motor_b`.
    ```
  
 2. Record the direction of rotation (CW or CCW) as viewed from the right end of

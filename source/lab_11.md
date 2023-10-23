@@ -17,10 +17,6 @@ that of the conventional brush-type permanent-magnet DC machine.
 ```
 
 
-## Prelab
-
-Read the introduction below.
-
 ## Introduction
 
 The electromechanical equations of a 3-phase $P$-pole permanent-magnet AC
@@ -217,7 +213,7 @@ assume that the applied voltages may be approximated as sinusoidal functions
 with $v_s$ representing the RMS amplitude of the fundamental component of
 $v_{as}$, $v_{bs}$, and $v_{cs}$.
 
-To analyze three-phase brushless DC machines, we define the transformation of
+To analyze 3-phase brushless DC machines, we define the transformation of
 variables
 
 ```{math}
@@ -304,6 +300,11 @@ T_e
     - \omega_r \lambda_m^\prime
 \right).
 ```
+
+
+## Prelab
+
+Read the preceding introduction.
 
  
 ## In the Laboratory

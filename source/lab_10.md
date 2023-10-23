@@ -8,14 +8,14 @@
 :class: note
 
 The purpose of this experiment is to establish the fundamental electrical
-parameters of the permanent-magnet ac motor studied last week.
+parameters of the permanent-magnet AC motor studied last week.
 
 ```
 
 
 ## Prelab
 
-The electromechanical equations of a 3-phase $P$-pole permanent-magnet ac
+The electromechanical equations of a 3-phase $P$-pole permanent-magnet AC
 machine can be expressed in the form
 
 

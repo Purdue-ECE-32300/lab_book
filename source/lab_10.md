@@ -247,7 +247,7 @@ Experimental setup for {ref}`pmag_sync_motor_b`.
    direction of rotation? Explain why this happens.
 
 4. Next, hold the pulley to lock the position of the rotor.  Measure the
-   phase-$a$ current and shaft torque, displaying both signals on the
+   phase $a$ current and shaft torque, displaying both signals on the
    oscilloscope. What is the frequency of torque pulsation? How does this
    frequency relate to the frequency of the applied voltages? Explain briefly. 
 
@@ -272,7 +272,7 @@ $L_{ss}$, and $\lambda_m^\prime$.
    $\qty{1}{\hertz}$ and the amplitude to $\qty{0.5}{\volt}$ peak. Make sure
    that the voltages are displaced from one another by $\qty{120}{\degree}$.
    Block the rotor to prevent it from turning.  Measure the phase-$a$-to-ground
-   voltage and the current into phase-$a$ using the oscilloscope.  Verify that
+   voltage and the current into phase $a$ using the oscilloscope.  Verify that
    the voltage and current are essentially in-phase at this frequency. Divide
    the peak voltage by the peak current. This is $r_s$.
 

@@ -174,7 +174,7 @@ Setup for lab {ref}`variable_reluctance_stepper_motor_b`.
    ```
 
 2. Open {file}`T_vs_pos_tgt.slx`.  Build, connect to target, and run this
-   model. Connect phase-$a$ to channel 1 of the patch panel.  A successful build
+   model. Connect phase $a$ to channel 1 of the patch panel.  A successful build
    will be noted in the {guilabel}`View Diagnostics` window.
 
 3. The simulation that will run on the host computer is configured as a

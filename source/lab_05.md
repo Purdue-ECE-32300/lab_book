@@ -192,8 +192,8 @@ Setup for lab {ref}`variable_reluctance_stepper_motor_a`.
 
 1. Record the position of the rotor. Without disturbing the rotor, turn off the
    DC signal to the phase-$a$ winding and then energize the phase-$b$ winding
-   and allow the rotor to settle to its equilibrium position. Turn off phase-$b$
-   and turn on phase-$c$. Continue manually stepping the phase voltages through
+   and allow the rotor to settle to its equilibrium position. Turn off phase $b$
+   and turn on phase $c$. Continue manually stepping the phase voltages through
    the $a$-$b$-$c$ $\cdots$ sequence until the motor has made one full
    revolution.  Record the number of steps required to complete a full
    revolution. From this, calculate the step length (degrees per step) and
@@ -248,7 +248,7 @@ Setup for lab {ref}`variable_reluctance_stepper_motor_a`.
 
 2. Open {file}`L_vs_pos_tgt.slx`. Build, connect to target, and start this
    model.  Excite the phase-$a$ winding with the AC voltage from
-   {guilabel}`Channel 1`. Connect stepper motor phase-$a$ to {guilabel}`Analog
+   {guilabel}`Channel 1`. Connect stepper motor phase $a$ to {guilabel}`Analog
    Output 1`. Remove the connections to the {guilabel}`Analog Output 2` and
    {guilabel}`Analog Output 3`. Connect the voltage signal from
    {guilabel}`Analog Output 1` to {guilabel}`Analog Input 1`, and connect the

@@ -1,3 +1,9 @@
+% Add a role to format inline code blocks as MATLAB code.
+% usage: {matlab}`code`
+```{role} matlab(code)
+:language: matlab
+```
+
 % This is a hack to add the Bootstrap "d-none" class to these math macros so
 % that they won't take up any space on the page. Once myst-parser 0.19 or
 % greater is available, we will be able to use block attributes to do this by
@@ -14,6 +20,8 @@
 
 \newcommand\blank{~\underline{\hspace{1.2cm}}~}
 \newcommand\phase[1]{\enclose{phasorangle}{#1}}
+\newcommand\RE{\mathrm{Re}}
+\newcommand\IM{\mathrm{Im}}
 
 % Bold symbols (vectors)
 \newcommand\bs[1]{\mathbf{#1}}

@@ -1,0 +1,677 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>3. Electromagnetic Forces (A) &#8212; Purdue University ECE 32300</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lab_03';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. Electromagnetic Forces (B)" href="lab_04.html" />
+    <link rel="prev" title="2. Inductance and Magnetic Circuits" href="lab_02.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/323logo.png" class="logo__image only-light" alt="Purdue University ECE 32300 - Home"/>
+    <script>document.write(`<img src="_static/323logo.png" class="logo__image only-dark" alt="Purdue University ECE 32300 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lab_01.html">1. Introduction to Lab Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_02.html">2. Inductance and Magnetic Circuits</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Electromagnetic Forces (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_04.html">4. Electromagnetic Forces (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_05.html">5. Variable Reluctance Stepper Motor (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_06.html">6. Variable Reluctance Stepper Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_07.html">7. DC Motor (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_08.html">8. DC Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_09.html">9. Permanent Magnet Synchronous Motor (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_10.html">10. Permanent Magnet Synchronous Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_11.html">11. Brushless DC Motor (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_12.html">12. Brushless DC Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_13.html">13. Induction Motors and Two Phase Servo Motors (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_14.html">14. Induction Motors and Two Phase Servo Motors (B)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="contributors.html">Contributors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/lab_03.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Electromagnetic Forces (A)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">3.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prelab">3.2. Prelab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-laboratory">3.3. In the Laboratory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#force-versus-position">3.3.1. Force versus Position</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#force-versus-current">3.3.2. Force versus Current</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postlab">3.4. Postlab</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p><span class="raw-html"><div class="d-none"></span></p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\newcommand\blank{~\underline{\hspace{1.2cm}}~}
+\newcommand\phase[1]{\enclose{phasorangle}{#1}}
+\newcommand\RE{\mathrm{Re}}
+\newcommand\IM{\mathrm{Im}}\\% Bold symbols (vectors)
+\newcommand\bs[1]{\mathbf{#1}}\\% Poor man's siunitx
+\newcommand\unit[1]{\mathrm{#1}}
+\newcommand\num[1]{#1}
+\newcommand\qty[2]{#1~\unit{#2}}\\\newcommand\per{/}
+\newcommand\squared{{}^2}
+%
+% Scale
+\newcommand\milli{\unit{m}}
+\newcommand\kilo{\unit{k}}
+\newcommand\mega{\unit{M}}
+%
+% Angle
+\newcommand\radian{\unit{rad}}
+\newcommand\degree{\unit{\kern{-0.5ex}{}^\circ}}
+%
+% Time
+\newcommand\second{\unit{s}}
+%
+% Distance
+\newcommand\meter{\unit{m}}
+\newcommand\m{\meter}
+\newcommand\inch{\unit{in}}
+%
+% Mass
+\newcommand\gram{\unit{g}}
+\newcommand\g{\gram}
+%
+% Frequency
+\newcommand\hertz{\unit{Hz}}
+\newcommand\rpm{\unit{rpm}}
+%
+% Voltage
+\newcommand\volt{\unit{V}}
+\newcommand\V{\volt}
+\newcommand\millivolt{\milli\volt}
+\newcommand\mV{\milli\volt}
+\newcommand\kilovolt{\kilo\volt}
+\newcommand\kV{\kilo\volt}
+%
+% Current
+\newcommand\ampere{\unit{A}}
+\newcommand\A{\ampere}
+\newcommand\milliampereA{\milli\ampere}
+\newcommand\mA{\milli\ampere}
+\newcommand\kiloampereA{\kilo\ampere}
+\newcommand\kA{\kilo\ampere}
+%
+% Resistance
+\newcommand\ohm{\Omega}
+\newcommand\milliohm{\milli\ohm}
+\newcommand\kiloohm{\kilo\ohm} % correct SI spelling
+\newcommand\kilohm{\kilo\ohm} % &quot;American&quot; spelling used in siunitx
+\newcommand\megaohm{\mega\ohm} % correct SI spelling
+\newcommand\megohm{\mega\ohm} % &quot;American&quot; spelling used in siunitx
+%
+% Inductance
+\newcommand\henry{\unit{H}}
+\newcommand\H{\henry}
+\newcommand\millihenry{\milli\henry}
+\newcommand\mH{\milli\henry}
+%
+% Power
+\newcommand\watt{\unit{W}}
+\newcommand\W{\watt}
+\newcommand\milliwatt{\milli\watt}
+\newcommand\mW{\milli\watt}
+\newcommand\kilowatt{\kilo\watt}
+\newcommand\kW{\kilo\watt}
+%
+% Torque
+\newcommand\ozin{\unit{oz}\text{-}\unit{in}}
+\newcommand\newtonmeter{\unit{N\text{-}m}}\end{aligned}\end{align} \]</div>
+<p><span class="raw-html"></div></span></p>
+<section class="tex2jax_ignore mathjax_ignore" id="electromagnetic-forces-a">
+<span id="id1"></span><h1><span class="section-number">3. </span>Electromagnetic Forces (A)<a class="headerlink" href="#electromagnetic-forces-a" title="Permalink to this heading">#</a></h1>
+<div class="note admonition">
+<p class="admonition-title">Objective</p>
+<p>The primary objective of this experiment is to study the interaction between
+electrical and mechanical systems that are magnetically coupled. The
+electromechanical relay (solenoid) studied in Experiment 2 will be analyzed to
+predict its steady-state force-versus-position and force-versus-current
+characteristics. In the follow-up lab, computer simulation will be used to
+predict its dynamic force-versus-time characteristics. The analytical and
+simulated results will be compared with laboratory measurements.</p>
+</div>
+<section id="introduction">
+<h2><span class="section-number">3.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>In this lab, we will consider the cylindrical solenoid depicted in
+<a class="reference internal" href="#fig-3-1"><span class="std std-numref">Fig. 3.1</span></a>.  In the previous experiment, it was shown that the
+self-inductance can be approximated as</p>
+<div class="math notranslate nohighlight" id="equation-eq-3-solenoid-inductance">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-eq-3-solenoid-inductance" title="Permalink to this equation">#</a></span>\[L(x) = L_l + \frac{K}{k_0+x}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(k_0\)</span> are assumed to be known constants and <span class="math notranslate nohighlight">\(L_l\)</span> is the leakage
+inductance.  In the prelab, we will establish an expression for the force versus
+position and set forth the electrical and mechanical equations in state-space
+form.  Hopefully, our experimental measurements will confirm the general form of
+this equation.</p>
+<figure class="align-default" id="fig-3-1">
+<a class="reference internal image-reference" href="_images/fig11.png"><img alt="_images/fig11.png" src="_images/fig11.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.1 </span><span class="caption-text">Simplified cutaway view of cylindrical solenoid.</span><a class="headerlink" href="#fig-3-1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="prelab">
+<span id="prelab-electromagnetic-forces-a"></span><h2><span class="section-number">3.2. </span>Prelab<a class="headerlink" href="#prelab" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>For an electromechanical device whose inductance versus position is given by
+<a class="reference internal" href="#equation-eq-3-solenoid-inductance">(3.1)</a>, express the electromagnetic force as a
+function of current and position.</p>
+<div class="math notranslate nohighlight" id="equation-eq-3-solenoid-force">
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-eq-3-solenoid-force" title="Permalink to this equation">#</a></span>\[f_e(i,x) = (\text{some function of $i$, $x$, $K$, $k_0$})\]</div>
+</li>
+<li><p>Using the <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(k_0\)</span> values (in metric units) determined in Experiment 2,
+plot <span class="math notranslate nohighlight">\(f_e\)</span> versus <span class="math notranslate nohighlight">\(i\)</span> for <span class="math notranslate nohighlight">\(0 &lt; i &lt; \qty{200}{\mA}\)</span> and <span class="math notranslate nohighlight">\(x =
+\qty{0.0032}{\m}\)</span>.  Plot <span class="math notranslate nohighlight">\(f_e\)</span> versus <span class="math notranslate nohighlight">\(x\)</span> for <span class="math notranslate nohighlight">\(0 &lt; x &lt; \qty{0.0127}{\m}\)</span> and
+<span class="math notranslate nohighlight">\(i = \qty{200}{\mA}\)</span>.</p></li>
+</ol>
+</section>
+<section id="in-the-laboratory">
+<h2><span class="section-number">3.3. </span>In the Laboratory<a class="headerlink" href="#in-the-laboratory" title="Permalink to this heading">#</a></h2>
+<div class="attention admonition">
+<p class="admonition-title">Attention</p>
+<p>You must wear eye protection for this lab.</p>
+</div>
+<section id="force-versus-position">
+<h3><span class="section-number">3.3.1. </span>Force versus Position<a class="headerlink" href="#force-versus-position" title="Permalink to this heading">#</a></h3>
+<p>Our first objective will be to measure the force-versus-position characteristics
+with a constant current. You will need to measure current in the solenoid.  A
+voltage signal proportional to the current is available on one of the BNC
+connectors of the power amplifier.</p>
+<ol class="arabic">
+<li><p>Energize the solenoid coil with <span class="math notranslate nohighlight">\(\qty{12}{\V}\)</span> (DC).  Use <span class="math notranslate nohighlight">\(R\)</span> from previous
+experiment, calculate expected current.  Measure coil current and compare
+with expected value. Provide reasonable explanation for any difference.
+Connect the lower BNC output to the oscilloscope to read the current on an
+open circuit.  Record this value, which will be subtracted from future DC
+current measurements.</p></li>
+<li><p>Position the solenoid plunger at <span class="math notranslate nohighlight">\(x = 0\)</span> (the set screw should be all the way
+out).  Add weights to the solenoid plunger until plunger pulls out.  Record
+the mass that is required to just pull the solenoid plunger out to nearest
+<span class="math notranslate nohighlight">\(\qty{10}{\g}\)</span>.  Either round up or down but be consistent from one
+measurement to next.</p>
+<div class="caution admonition">
+<p class="admonition-title">Caution</p>
+<p>Be careful not to drop the weights on your (or your lab partner’s) foot.  You
+may use the lab chairs to prevent dropping weights on the floor.</p>
+</div>
+</li>
+<li><p>Repeat the measurements with plunger position varied from <span class="math notranslate nohighlight">\(0\)</span> to
+<span class="math notranslate nohighlight">\(\qty{1/2}{\inch}\)</span> at <span class="math notranslate nohighlight">\(\qty{1/32}{\inch}\)</span> intervals (1 screw turn =
+<span class="math notranslate nohighlight">\(\qty{1/32}{\inch}\)</span>).  Ensure that the screw is touching the plunger before
+counting turns.  If the minimum (<span class="math notranslate nohighlight">\(\qty{50}{\g}\)</span>) level is reached, then stop.</p></li>
+<li><p>Calculate the plunger force using <span class="math notranslate nohighlight">\(F=mg\)</span> where <span class="math notranslate nohighlight">\(g =
+\qty{9.8}{\meter\per\second\squared}\)</span> and <span class="math notranslate nohighlight">\(m\)</span> is the external mass. This is
+approximately equal to the magnitude of the electromagnetic force developed
+by the solenoid.</p></li>
+</ol>
+</section>
+<section id="force-versus-current">
+<h3><span class="section-number">3.3.2. </span>Force versus Current<a class="headerlink" href="#force-versus-current" title="Permalink to this heading">#</a></h3>
+<p>Our next objective will be to measure force versus current at a fixed position.</p>
+<ol class="arabic simple">
+<li><p>Apply a DC voltage to the coil so that <span class="math notranslate nohighlight">\(i=\qty{60}{\mA}\)</span>. Use Ohm’s law to
+determine the required voltage using the value of <span class="math notranslate nohighlight">\(R\)</span>. Measure the current
+using the oscilloscope to be sure.  If necessary, adjust the applied voltage
+to achieve the desired current.  Position plunger at <span class="math notranslate nohighlight">\(x = \qty{1/8}{\inch}\)</span>.
+Add weight to coil plunger until plunger pulls out. Again, be careful not to
+drop the weights.</p></li>
+<li><p>Repeat measurements at the same position for coil currents from <span class="math notranslate nohighlight">\(60\)</span> to
+<span class="math notranslate nohighlight">\(\qty{105}{\mA}\)</span> in <span class="math notranslate nohighlight">\(5\)</span>-<span class="math notranslate nohighlight">\(\mA\)</span> intervals. Record the maximum weight values as
+the current varies.</p></li>
+</ol>
+</section>
+</section>
+<section id="postlab">
+<h2><span class="section-number">3.4. </span>Postlab<a class="headerlink" href="#postlab" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Plot, on the same axis, the measured and calculated electromagnetic force
+versus current with <span class="math notranslate nohighlight">\(x = \qty{1/8}{\inch}.\)</span> Compare the results and explain
+discrepancies.</p>
+<div class="hint admonition">
+<p class="admonition-title">Hint</p>
+<p>The most common problem involves mixing Standard International (SI) and
+English units. It is best to convert all measured data to SI units before
+making any comparisons.</p>
+</div>
+</li>
+<li><p>Plot, on the same axis, the measured and calculated electromagnetic
+force-versus-position characteristics with constant <span class="math notranslate nohighlight">\(i\)</span>. Compare the results
+and explain discrepancies.</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab_02.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Inductance and Magnetic Circuits</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab_04.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Electromagnetic Forces (B)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">3.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prelab">3.2. Prelab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-laboratory">3.3. In the Laboratory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#force-versus-position">3.3.1. Force versus Position</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#force-versus-current">3.3.2. Force versus Current</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postlab">3.4. Postlab</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href="contributors.html">Contributors</a>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

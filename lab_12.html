@@ -1,0 +1,743 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>12. Brushless DC Motor (B) &#8212; Purdue University ECE 32300</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lab_12';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="13. Induction Motors and Two Phase Servo Motors (A)" href="lab_13.html" />
+    <link rel="prev" title="11. Brushless DC Motor (A)" href="lab_11.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/323logo.png" class="logo__image only-light" alt="Purdue University ECE 32300 - Home"/>
+    <script>document.write(`<img src="_static/323logo.png" class="logo__image only-dark" alt="Purdue University ECE 32300 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lab_01.html">1. Introduction to Lab Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_02.html">2. Inductance and Magnetic Circuits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_03.html">3. Electromagnetic Forces (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_04.html">4. Electromagnetic Forces (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_05.html">5. Variable Reluctance Stepper Motor (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_06.html">6. Variable Reluctance Stepper Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_07.html">7. DC Motor (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_08.html">8. DC Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_09.html">9. Permanent Magnet Synchronous Motor (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_10.html">10. Permanent Magnet Synchronous Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_11.html">11. Brushless DC Motor (A)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. Brushless DC Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_13.html">13. Induction Motors and Two Phase Servo Motors (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_14.html">14. Induction Motors and Two Phase Servo Motors (B)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="contributors.html">Contributors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/lab_12.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Brushless DC Motor (B)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">12.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prelab">12.2. Prelab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-laboratory">12.3. In the Laboratory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#static-torque-versus-position-characteristics">12.3.1. Static Torque-Versus-Position Characteristics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postlab">12.4. Postlab</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p><span class="raw-html"><div class="d-none"></span></p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\newcommand\blank{~\underline{\hspace{1.2cm}}~}
+\newcommand\phase[1]{\enclose{phasorangle}{#1}}
+\newcommand\RE{\mathrm{Re}}
+\newcommand\IM{\mathrm{Im}}\\% Bold symbols (vectors)
+\newcommand\bs[1]{\mathbf{#1}}\\% Poor man's siunitx
+\newcommand\unit[1]{\mathrm{#1}}
+\newcommand\num[1]{#1}
+\newcommand\qty[2]{#1~\unit{#2}}\\\newcommand\per{/}
+\newcommand\squared{{}^2}
+%
+% Scale
+\newcommand\milli{\unit{m}}
+\newcommand\kilo{\unit{k}}
+\newcommand\mega{\unit{M}}
+%
+% Angle
+\newcommand\radian{\unit{rad}}
+\newcommand\degree{\unit{\kern{-0.5ex}{}^\circ}}
+%
+% Time
+\newcommand\second{\unit{s}}
+%
+% Distance
+\newcommand\meter{\unit{m}}
+\newcommand\m{\meter}
+\newcommand\inch{\unit{in}}
+%
+% Mass
+\newcommand\gram{\unit{g}}
+\newcommand\g{\gram}
+%
+% Frequency
+\newcommand\hertz{\unit{Hz}}
+\newcommand\rpm{\unit{rpm}}
+%
+% Voltage
+\newcommand\volt{\unit{V}}
+\newcommand\V{\volt}
+\newcommand\millivolt{\milli\volt}
+\newcommand\mV{\milli\volt}
+\newcommand\kilovolt{\kilo\volt}
+\newcommand\kV{\kilo\volt}
+%
+% Current
+\newcommand\ampere{\unit{A}}
+\newcommand\A{\ampere}
+\newcommand\milliampereA{\milli\ampere}
+\newcommand\mA{\milli\ampere}
+\newcommand\kiloampereA{\kilo\ampere}
+\newcommand\kA{\kilo\ampere}
+%
+% Resistance
+\newcommand\ohm{\Omega}
+\newcommand\milliohm{\milli\ohm}
+\newcommand\kiloohm{\kilo\ohm} % correct SI spelling
+\newcommand\kilohm{\kilo\ohm} % &quot;American&quot; spelling used in siunitx
+\newcommand\megaohm{\mega\ohm} % correct SI spelling
+\newcommand\megohm{\mega\ohm} % &quot;American&quot; spelling used in siunitx
+%
+% Inductance
+\newcommand\henry{\unit{H}}
+\newcommand\H{\henry}
+\newcommand\millihenry{\milli\henry}
+\newcommand\mH{\milli\henry}
+%
+% Power
+\newcommand\watt{\unit{W}}
+\newcommand\W{\watt}
+\newcommand\milliwatt{\milli\watt}
+\newcommand\mW{\milli\watt}
+\newcommand\kilowatt{\kilo\watt}
+\newcommand\kW{\kilo\watt}
+%
+% Torque
+\newcommand\ozin{\unit{oz}\text{-}\unit{in}}
+\newcommand\newtonmeter{\unit{N\text{-}m}}\end{aligned}\end{align} \]</div>
+<p><span class="raw-html"></div></span></p>
+<section class="tex2jax_ignore mathjax_ignore" id="brushless-dc-motor-b">
+<span id="id1"></span><h1><span class="section-number">12. </span>Brushless DC Motor (B)<a class="headerlink" href="#brushless-dc-motor-b" title="Permalink to this heading">#</a></h1>
+<div class="note admonition">
+<p class="admonition-title">Objective</p>
+<p>In this experiment, the rotor position of the permanent-magnet synchronous
+machine considered in <a class="reference internal" href="lab_11.html#brushless-dc-motor-a"><span class="std std-numref">Experiment 11</span></a> will
+be measured and used to control the frequency of a variable-frequency source
+(inverter).  The purpose of this experiment is to show that the
+torque-versus-speed characteristics of the motor-inverter combination, which
+constitute a brushless DC motor, is similar to that of the conventional
+permanent-magnet AC machine.</p>
+</div>
+<section id="introduction">
+<h2><span class="section-number">12.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>Using the parameters established in previous experiments, we should be able to
+predict the torque-versus-speed characteristics of the given brushless DC motor.
+These characteristics were plotted as part of last week’s postlab.  In this lab,
+we will attempt to verify these characteristics by experimental measurement.</p>
+<p>There are several challenges in measuring the torque-versus-speed
+characteristics of this motor.  First, because the motor is relatively small,
+the friction and windage torques may be sizable relative to the electromagnetic
+torque.  Thus, the reading from the torque transducer, which represents the
+shaft torque (electromagnetic torque minus the friction and windage torques),
+may not be an accurate indication of the actual electromagnetic torque except at
+low speeds where friction and windage effects are less important.  In addition,
+during normal operation, we are not applying sinusoidal voltages (we are
+applying square-wave voltages).  Consequently, the electromagnetic torque will
+not be constant in the steady state but will vary as a function of <span class="math notranslate nohighlight">\(\theta_r\)</span>.
+Nonetheless, the average torque at a given speed should be in reasonable
+agreement with the value established using the analytical torque-versus-speed
+characteristics.  The trouble is that we need a means of establishing the
+average electromagnetic torque (not the average shaft torque).</p>
+<p>The measurement of the average torque-versus-speed characteristic will be
+accomplished in two steps.  First, we will measure the so-called static
+torque-versus-position characteristics.  In particular, we will measure the
+electromagnetic torque as a function of rotor position at stall (<span class="math notranslate nohighlight">\(\omega_r =
+0\)</span>).  In an ideal brushless DC machine, the electromagnetic torque will be
+constant (independent of rotor position).  However, because of previously
+mentioned factors, the electromagnetic torque will vary as a function of rotor
+position. If the torque versus position is averaged over one period (a quarter
+rotation in an 8-pole motor), the average torque should be reasonably close to
+the value predicted using the analytical torque-versus-speed formula with
+<span class="math notranslate nohighlight">\(\omega_r = 0\)</span>.  Using previously measured data, we should be able to relate the
+stator currents <span class="math notranslate nohighlight">\(i_{as}\)</span>, <span class="math notranslate nohighlight">\(i_{bs}\)</span>, and <span class="math notranslate nohighlight">\(i_{cs}\)</span> to the electromagnetic torque.
+We will verify this relationship for the static case (<span class="math notranslate nohighlight">\(\omega_r = 0\)</span>) and use it
+for the general case (<span class="math notranslate nohighlight">\(\omega_r \ne 0\)</span>).</p>
+<p>Although the following relationships were given in previous lab documents, we
+will repeat them here for convenience:</p>
+<div class="math notranslate nohighlight" id="equation-eq-12-t-e">
+<span class="eqno">(12.1)<a class="headerlink" href="#equation-eq-12-t-e" title="Permalink to this equation">#</a></span>\[T_e
+= \frac{P}{2} \left(
+    i_{as} \frac{d \lambda_{asm}}{d \theta_r}
+    + i_{bs} \frac{d \lambda_{bsm}}{d \theta_r}
+    + i_{cs} \frac{d \lambda_{csm}}{d \theta_r}
+\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\displaystyle \frac{d\lambda_{asm}}{d\theta_r}\)</span>, <span class="math notranslate nohighlight">\(\displaystyle
+\frac{d\lambda_{bsm}}{d\theta_r}\)</span>, and <span class="math notranslate nohighlight">\(\displaystyle
+\frac{d\lambda_{csm}}{d\theta_r}\)</span> are functions of <span class="math notranslate nohighlight">\(\theta_r\)</span>. In particular,</p>
+<div class="math notranslate nohighlight" id="equation-eq-12-lambda-asm">
+<span class="eqno">(12.2)<a class="headerlink" href="#equation-eq-12-lambda-asm" title="Permalink to this equation">#</a></span>\[\frac{d\lambda_{asm}}{d\theta_r} = \lambda_m^\prime \cos (\theta_r)\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-12-lambda-bsm">
+<span class="eqno">(12.3)<a class="headerlink" href="#equation-eq-12-lambda-bsm" title="Permalink to this equation">#</a></span>\[\frac{d\lambda_{bsm}}{d\theta_r} = \lambda_m^\prime \cos (\theta_r - \qty{120}{\degree})\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-12-lambda-csm">
+<span class="eqno">(12.4)<a class="headerlink" href="#equation-eq-12-lambda-csm" title="Permalink to this equation">#</a></span>\[\frac{d\lambda_{csm}}{d\theta_r} = \lambda_m^\prime \cos (\theta_r + \qty{120}{\degree}).\]</div>
+</section>
+<section id="prelab">
+<h2><span class="section-number">12.2. </span>Prelab<a class="headerlink" href="#prelab" title="Permalink to this heading">#</a></h2>
+<p>Read the preceding introduction.</p>
+</section>
+<section id="in-the-laboratory">
+<h2><span class="section-number">12.3. </span>In the Laboratory<a class="headerlink" href="#in-the-laboratory" title="Permalink to this heading">#</a></h2>
+<section id="static-torque-versus-position-characteristics">
+<h3><span class="section-number">12.3.1. </span>Static Torque-Versus-Position Characteristics<a class="headerlink" href="#static-torque-versus-position-characteristics" title="Permalink to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>Connect phase <span class="math notranslate nohighlight">\(a\)</span> to the amplifier output of <em>Channel 1</em> and phase <span class="math notranslate nohighlight">\(b\)</span> to
+ground.  Leave phase <span class="math notranslate nohighlight">\(c\)</span> unconnected. The output of the position transducer
+should be connected to the <em>Digital Data Inputs</em> port.</p></li>
+<li><p>Connect the amplifier output of the torque transducer to <em>Analog Input 1</em>.
+Set the range of the <em>Channel 1</em> input to <span class="math notranslate nohighlight">\(\qty{+1}{\V}\)</span> (middle position).
+Tare the torque transducer before applying voltage to the motor.</p></li>
+<li><p>The torque-versus-position will be measured using the prebuilt
+<strong class="program">Simulink</strong> models
+<a class="reference download internal" download="" href="_downloads/dee93e18ace11a37159420e9aa08e8ce/T_vs_pos_tgt.slx"><code class="xref download docutils literal notranslate"><span class="pre">T_vs_pos_tgt.slx</span></code></a> and
+<a class="reference download internal" download="" href="_downloads/cc04d5e366b69589be7fbfce74bda1a0/T_vs_pos_host.slx"><code class="xref download docutils literal notranslate"><span class="pre">T_vs_pos_host.slx</span></code></a>.
+The top-level views of these models are shown in <a class="reference internal" href="#fig-12-tgt"><span class="std std-numref">Fig. 12.1</span></a> and
+<a class="reference internal" href="#fig-12-host"><span class="std std-numref">Fig. 12.2</span></a>, respectively.</p>
+<figure class="align-default" id="fig-12-tgt">
+<a class="reference internal image-reference" href="_images/tgt.png"><img alt="_images/tgt.png" src="_images/tgt.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 12.1 </span><span class="caption-text">Simulink target model <code class="file docutils literal notranslate"><span class="pre">T_vs_pos_tgt.slx</span></code> for measuring torque
+versus position.</span><a class="headerlink" href="#fig-12-tgt" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="fig-12-host">
+<a class="reference internal image-reference" href="_images/host.png"><img alt="_images/host.png" src="_images/host.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 12.2 </span><span class="caption-text">Simulink host model <code class="file docutils literal notranslate"><span class="pre">T_vs_pos_host.slx</span></code> for measuring torque
+versus position.</span><a class="headerlink" href="#fig-12-host" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Open <code class="file docutils literal notranslate"><span class="pre">T_vs_pos_tgt.slx</span></code>.  The model consists of a <em>Constant</em> source,
+set to 1, connected to <em>Channel 1</em> of the <em>Analog Output Module</em>, a <em>Ground</em>
+source connected to the remaining channels of the <em>Analog Output Module</em>, and
+an Encoder block connected to a <em>Terminator sink</em>. It also includes an
+<em>Analog Input Module</em> with all ports connected to terminators. Build the
+model, and confirm a successful build in the <em>View Diagnostics</em> window.</p></li>
+<li><p>The simulation that will run on the host computer is configured as a Normal
+simulation.  This simulation samples the output of blocks in the target
+computer simulation, <code class="file docutils literal notranslate"><span class="pre">T_vs_pos_tgt.slx</span></code>.  The position and torque of
+the BDC motor are displayed in digital displays in the model window.</p></li>
+<li><p>Apply a <span class="math notranslate nohighlight">\(\qty{1}{\V}\)</span> DC signal to the phase-<span class="math notranslate nohighlight">\(a\)</span> winding by running the
+model.  Open <code class="file docutils literal notranslate"><span class="pre">T_vs_pos_host.slx</span></code> and select <span class="guilabel">Run</span> to begin
+the host simulation. Allow the rotor to settle out to its equilibrium
+position.  Record the position of the rotor from the numeric display. Measure
+and record <span class="math notranslate nohighlight">\(i_{as} = -i_{bs}\)</span>.</p></li>
+<li><p>Using your hand, rotate the motor rotor slowly and smoothly from the encoder
+end of the torque transducer. As the rotor rotates, the computer calculates a
+new value of torque for each position the motor rotates through and updates
+the digital displays of the host simulation.</p>
+<p>Use the following <strong class="program">MATLAB</strong> command line to save the data:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">bdctorq</span><span class="w"> </span><span class="p">(</span><span class="s">&#39;ta.mat&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">torque</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The resulting data file <code class="file docutils literal notranslate"><span class="pre">ta.mat</span></code> can be used for subsequent plotting
+and analysis using <strong class="program">MATLAB</strong>.</p>
+</li>
+<li><p>Disconnect the power amplifier output from phase <span class="math notranslate nohighlight">\(a\)</span> and connect it to phase
+<span class="math notranslate nohighlight">\(b\)</span>. Connect phase <span class="math notranslate nohighlight">\(c\)</span> to ground. Restart the host simulation and tare the
+torque transducer. Measure the currents and torque versus position of the
+phase <span class="math notranslate nohighlight">\(b\)</span> winding as done with the <span class="math notranslate nohighlight">\(a\)</span> winding. Again, save the data in file
+<code class="file docutils literal notranslate"><span class="pre">tb.mat</span></code>.  Repeat the previous steps for the phase-<span class="math notranslate nohighlight">\(c\)</span> winding with
+phase <span class="math notranslate nohighlight">\(a\)</span> connected to ground and phase <span class="math notranslate nohighlight">\(b\)</span> disconnected, saving the data in
+<code class="file docutils literal notranslate"><span class="pre">tc.mat</span></code>.  Load <code class="file docutils literal notranslate"><span class="pre">ta.mat</span></code> into Matlab. The data will be stored as
+2-column matrices of position (<span class="math notranslate nohighlight">\(\radian\)</span>) and torque (<span class="math notranslate nohighlight">\(\newtonmeter\)</span>).
+Separate the data into vectors of torque and position.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">qrma</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">position</span>
+<span class="n">torquea</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">torque</span>
+</pre></div>
+</div>
+</li>
+<li><p>Repeat these <strong class="program">MATLAB</strong> commands for phases <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(c\)</span>, by loading
+<code class="file docutils literal notranslate"><span class="pre">tb.mat</span></code> and <code class="file docutils literal notranslate"><span class="pre">tc.mat</span></code>, substituting the appropriate letter for
+the <code class="docutils literal notranslate"><span class="pre">a</span></code> in <code class="docutils literal notranslate"><span class="pre">qrma</span></code> and <code class="docutils literal notranslate"><span class="pre">torquea</span></code>. Plot and print the three torque curves.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">plot</span><span class="p">(</span><span class="n">qrma</span><span class="p">,</span><span class="w"> </span><span class="n">torquea</span><span class="p">,</span><span class="w"> </span><span class="n">qrmb</span><span class="p">,</span><span class="w"> </span><span class="n">torqueb</span><span class="p">,</span><span class="w"> </span><span class="n">qrmc</span><span class="p">,</span><span class="w"> </span><span class="n">torquec</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Print the results and save your Matlab workspace by typing</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">save</span><span class="w"> </span><span class="n">lab12_te</span>
+</pre></div>
+</div>
+</li>
+<li><p>Email the file <code class="file docutils literal notranslate"><span class="pre">lab12_te.mat</span></code> to your partner in a zipped folder. You
+will need this file to complete the postlab.  Based upon the measured
+torque-versus-position characteristic and the measured currents, calculate
+<span class="math notranslate nohighlight">\(\lambda_m^\prime\)</span>.  Use the average current to find
+<span class="math notranslate nohighlight">\(\lambda_{m,ab}^\prime\)</span>, <span class="math notranslate nohighlight">\(\lambda_{m,bc}^\prime\)</span>, and
+<span class="math notranslate nohighlight">\(\lambda_{m,ca}^\prime\)</span>.  Then average to find <span class="math notranslate nohighlight">\(\lambda_m^\prime\)</span>. Compare
+with previously calculated values.  Stop simulations.</p></li>
+<li><p>Next, connect phases <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, and <span class="math notranslate nohighlight">\(c\)</span> to the outputs of <em>Channels 1, 2, and
+3</em>, respectively and execute
+<a class="reference download internal" download="" href="_downloads/b179668b40ed6099c981559e151ada2d/lab_11_bdc3_target.slx"><code class="xref download docutils literal notranslate"><span class="pre">lab_11_bdc3_target.slx</span></code></a>
+which implements the switching algorithm used in last week’s experiment.
+Turn the motor on, and apply a load torque to the motor to stall the motor.
+Measure the torque transducer amplifier output voltage on the oscilloscope
+to establish the shaft torque. Rotate the rotor slowly to determine the
+maximum shaft torque and record this as the measured stall torque. Tare the
+torque transducer prior to this test to obtain the correct value.</p></li>
+<li><p>Ask your instructor to disconnect the rotor from the torque transducer (to
+reduce friction and windage losses) and turn the motor back on. Measure the
+frequency of the applied voltages <span class="math notranslate nohighlight">\(v_{ag}\)</span>, <span class="math notranslate nohighlight">\(v_{bg}\)</span>, and <span class="math notranslate nohighlight">\(v_{cg}\)</span> and
+calculate the no-load electrical speed from the average frequency. Plot the
+torque-versus-electrical speed characteristic assuming it is a straight
+line, with the predicted characteristic (from <a class="reference internal" href="lab_11.html#equation-eq-11-t-e-4">(11.26)</a>) on one axis.</p></li>
+</ol>
+</section>
+</section>
+<section id="postlab">
+<h2><span class="section-number">12.4. </span>Postlab<a class="headerlink" href="#postlab" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Plot the predicted torque-versus-electrical speed characteristics and the
+measured results on the same axis.</p></li>
+<li><p>Compare analytical and measured stall torques.</p></li>
+<li><p>Compare analytical and measured no-load electrical speeds.</p></li>
+<li><p>In each of the above items, provide plausible explanations for any
+discrepancies between measured and predicted values.</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab_11.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Brushless DC Motor (A)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab_13.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Induction Motors and Two Phase Servo Motors (A)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">12.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prelab">12.2. Prelab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-laboratory">12.3. In the Laboratory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#static-torque-versus-position-characteristics">12.3.1. Static Torque-Versus-Position Characteristics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postlab">12.4. Postlab</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href="contributors.html">Contributors</a>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

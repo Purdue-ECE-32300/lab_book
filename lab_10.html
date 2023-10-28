@@ -1,0 +1,795 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>10. Permanent Magnet Synchronous Motor (B) &#8212; Purdue University ECE 32300</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lab_10';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="11. Brushless DC Motor (A)" href="lab_11.html" />
+    <link rel="prev" title="9. Permanent Magnet Synchronous Motor (A)" href="lab_09.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/323logo.png" class="logo__image only-light" alt="Purdue University ECE 32300 - Home"/>
+    <script>document.write(`<img src="_static/323logo.png" class="logo__image only-dark" alt="Purdue University ECE 32300 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lab_01.html">1. Introduction to Lab Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_02.html">2. Inductance and Magnetic Circuits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_03.html">3. Electromagnetic Forces (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_04.html">4. Electromagnetic Forces (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_05.html">5. Variable Reluctance Stepper Motor (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_06.html">6. Variable Reluctance Stepper Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_07.html">7. DC Motor (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_08.html">8. DC Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_09.html">9. Permanent Magnet Synchronous Motor (A)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Permanent Magnet Synchronous Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_11.html">11. Brushless DC Motor (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_12.html">12. Brushless DC Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_13.html">13. Induction Motors and Two Phase Servo Motors (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_14.html">14. Induction Motors and Two Phase Servo Motors (B)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="contributors.html">Contributors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/lab_10.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Permanent Magnet Synchronous Motor (B)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prelab">10.1. Prelab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-laboratory">10.2. In the Laboratory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#establish-a-rotating-magnetic-field">10.2.1. Establish a Rotating Magnetic Field</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-electrical-parameters">10.2.2. Measure Electrical Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stator-resistance">Stator resistance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stator-inductance">Stator inductance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#flux-constant">Flux constant</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postlab">10.3. Postlab</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p><span class="raw-html"><div class="d-none"></span></p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\newcommand\blank{~\underline{\hspace{1.2cm}}~}
+\newcommand\phase[1]{\enclose{phasorangle}{#1}}
+\newcommand\RE{\mathrm{Re}}
+\newcommand\IM{\mathrm{Im}}\\% Bold symbols (vectors)
+\newcommand\bs[1]{\mathbf{#1}}\\% Poor man's siunitx
+\newcommand\unit[1]{\mathrm{#1}}
+\newcommand\num[1]{#1}
+\newcommand\qty[2]{#1~\unit{#2}}\\\newcommand\per{/}
+\newcommand\squared{{}^2}
+%
+% Scale
+\newcommand\milli{\unit{m}}
+\newcommand\kilo{\unit{k}}
+\newcommand\mega{\unit{M}}
+%
+% Angle
+\newcommand\radian{\unit{rad}}
+\newcommand\degree{\unit{\kern{-0.5ex}{}^\circ}}
+%
+% Time
+\newcommand\second{\unit{s}}
+%
+% Distance
+\newcommand\meter{\unit{m}}
+\newcommand\m{\meter}
+\newcommand\inch{\unit{in}}
+%
+% Mass
+\newcommand\gram{\unit{g}}
+\newcommand\g{\gram}
+%
+% Frequency
+\newcommand\hertz{\unit{Hz}}
+\newcommand\rpm{\unit{rpm}}
+%
+% Voltage
+\newcommand\volt{\unit{V}}
+\newcommand\V{\volt}
+\newcommand\millivolt{\milli\volt}
+\newcommand\mV{\milli\volt}
+\newcommand\kilovolt{\kilo\volt}
+\newcommand\kV{\kilo\volt}
+%
+% Current
+\newcommand\ampere{\unit{A}}
+\newcommand\A{\ampere}
+\newcommand\milliampereA{\milli\ampere}
+\newcommand\mA{\milli\ampere}
+\newcommand\kiloampereA{\kilo\ampere}
+\newcommand\kA{\kilo\ampere}
+%
+% Resistance
+\newcommand\ohm{\Omega}
+\newcommand\milliohm{\milli\ohm}
+\newcommand\kiloohm{\kilo\ohm} % correct SI spelling
+\newcommand\kilohm{\kilo\ohm} % &quot;American&quot; spelling used in siunitx
+\newcommand\megaohm{\mega\ohm} % correct SI spelling
+\newcommand\megohm{\mega\ohm} % &quot;American&quot; spelling used in siunitx
+%
+% Inductance
+\newcommand\henry{\unit{H}}
+\newcommand\H{\henry}
+\newcommand\millihenry{\milli\henry}
+\newcommand\mH{\milli\henry}
+%
+% Power
+\newcommand\watt{\unit{W}}
+\newcommand\W{\watt}
+\newcommand\milliwatt{\milli\watt}
+\newcommand\mW{\milli\watt}
+\newcommand\kilowatt{\kilo\watt}
+\newcommand\kW{\kilo\watt}
+%
+% Torque
+\newcommand\ozin{\unit{oz}\text{-}\unit{in}}
+\newcommand\newtonmeter{\unit{N\text{-}m}}\end{aligned}\end{align} \]</div>
+<p><span class="raw-html"></div></span></p>
+<section class="tex2jax_ignore mathjax_ignore" id="permanent-magnet-synchronous-motor-b">
+<span id="pmag-sync-motor-b"></span><h1><span class="section-number">10. </span>Permanent Magnet Synchronous Motor (B)<a class="headerlink" href="#permanent-magnet-synchronous-motor-b" title="Permalink to this heading">#</a></h1>
+<div class="note admonition">
+<p class="admonition-title">Objective</p>
+<p>The purpose of this experiment is to establish the fundamental electrical
+parameters of the permanent-magnet AC motor studied last week.</p>
+</div>
+<section id="prelab">
+<h2><span class="section-number">10.1. </span>Prelab<a class="headerlink" href="#prelab" title="Permalink to this heading">#</a></h2>
+<p>The electromechanical equations of a 3-phase <span class="math notranslate nohighlight">\(P\)</span>-pole permanent-magnet AC
+machine can be expressed in the form</p>
+<div class="math notranslate nohighlight" id="equation-eq-10-v-as">
+<span class="eqno">(10.1)<a class="headerlink" href="#equation-eq-10-v-as" title="Permalink to this equation">#</a></span>\[v_{as}
+= r_s i_{as}
++ (L_{ls} + L_{ms}) p i_{as}
+- \frac{1}{2} L_{ms} p i_{bs}
+- \frac{1}{2} L_{ms} p i_{cs}
++ e_{as}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-10-v-bs">
+<span class="eqno">(10.2)<a class="headerlink" href="#equation-eq-10-v-bs" title="Permalink to this equation">#</a></span>\[v_{bs}
+= r_s i_{bs}
++ (L_{ls} + L_{ms}) p i_{bs}
+- \frac{1}{2} L_{ms} p i_{as}
+- \frac{1}{2} L_{ms} p i_{cs}
++ e_{bs}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-10-v-cs">
+<span class="eqno">(10.3)<a class="headerlink" href="#equation-eq-10-v-cs" title="Permalink to this equation">#</a></span>\[v_{cs}
+= r_s i_{cs}
++ (L_{ls} + L_{ms}) p i_{cs}
+- \frac{1}{2} L_{ms} p i_{as}
+- \frac{1}{2} L_{ms} p i_{bs}
++ e_{cs}\]</div>
+<p>where <span class="math notranslate nohighlight">\(p\)</span> is the differential operator <span class="math notranslate nohighlight">\(\frac{d}{dt}\)</span>, and</p>
+<div class="math notranslate nohighlight" id="equation-eq-10-e-as">
+<span class="eqno">(10.4)<a class="headerlink" href="#equation-eq-10-e-as" title="Permalink to this equation">#</a></span>\[e_{as}
+= \frac{d \lambda_{asm}}{d \theta_r} \frac{d \theta_r}{dt}
+= \omega_r \frac{d \lambda_{asm}}{d \theta_r}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-10-e-bs">
+<span class="eqno">(10.5)<a class="headerlink" href="#equation-eq-10-e-bs" title="Permalink to this equation">#</a></span>\[e_{bs}
+= \frac{d \lambda_{bsm}}{d \theta_r} \frac{d \theta_r}{dt}
+= \omega_r \frac{d \lambda_{bsm}}{d \theta_r}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-10-e-cs">
+<span class="eqno">(10.6)<a class="headerlink" href="#equation-eq-10-e-cs" title="Permalink to this equation">#</a></span>\[e_{cs}
+= \frac{d \lambda_{csm}}{d \theta_r} \frac{d \theta_r}{dt}
+= \omega_r \frac{d \lambda_{csm}}{d \theta_r}.\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(\lambda_{asm}\)</span>, <span class="math notranslate nohighlight">\(\lambda_{bsm}\)</span>, and <span class="math notranslate nohighlight">\(\lambda_{csm}\)</span> represent the flux
+linkages of the stator <span class="math notranslate nohighlight">\(as\)</span>, <span class="math notranslate nohighlight">\(bs\)</span>, and <span class="math notranslate nohighlight">\(cs\)</span> windings, respectively, due to the
+permanent-magnet rotor while <span class="math notranslate nohighlight">\(e_{as}\)</span>, <span class="math notranslate nohighlight">\(e_{bs}\)</span>, and <span class="math notranslate nohighlight">\(e_{cs}\)</span> represent the
+corresponding induced voltages. Also,</p>
+<div class="math notranslate nohighlight" id="equation-eq-10-theta-r">
+<span class="eqno">(10.7)<a class="headerlink" href="#equation-eq-10-theta-r" title="Permalink to this equation">#</a></span>\[\theta_r = \frac{P}{2} \theta_{rm}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\theta_r\)</span> represents the “electrical” position of the rotor whereas
+<span class="math notranslate nohighlight">\(\theta_{rm}\)</span> represents the actual mechanical position.  If <span class="math notranslate nohighlight">\(i_{as} = -i_{bs}
+-i_{cs}\)</span>, which is true due to Kirchhoff’s current law, <strong>show that
+<a class="reference internal" href="#equation-eq-10-v-as">(10.1)</a> can be expressed as</strong></p>
+<div class="math notranslate nohighlight" id="equation-eq-10-v-as2">
+<span class="eqno">(10.8)<a class="headerlink" href="#equation-eq-10-v-as2" title="Permalink to this equation">#</a></span>\[v_{as}
+= r_s i_{as}
++ (L_{ls} + \frac{3}{2} L_{ms}) p i_{as}
++ e_{as}.\]</div>
+<p>Equivalently,</p>
+<div class="math notranslate nohighlight" id="equation-eq-10-v-as3">
+<span class="eqno">(10.9)<a class="headerlink" href="#equation-eq-10-v-as3" title="Permalink to this equation">#</a></span>\[v_{as}
+= r_s i_{as}
++ L_{ss} p i_{as}
++ e_{as}\]</div>
+<p>where <span class="math notranslate nohighlight">\(L_{ss} = L_{ls} + \frac{3}{2} L_{ms}\)</span>. Similarly,</p>
+<div class="math notranslate nohighlight" id="equation-eq-10-v-bs3">
+<span class="eqno">(10.10)<a class="headerlink" href="#equation-eq-10-v-bs3" title="Permalink to this equation">#</a></span>\[v_{bs}
+= r_s i_{bs}
++ L_{ss} p i_{bs}
++ e_{bs}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-10-v-cs3">
+<span class="eqno">(10.11)<a class="headerlink" href="#equation-eq-10-v-cs3" title="Permalink to this equation">#</a></span>\[v_{cs}
+= r_s i_{cs}
++ L_{ss} p i_{cs}
++ e_{cs}.\]</div>
+<p>The electromagnetic torque may be expressed</p>
+<div class="math notranslate nohighlight" id="equation-eq-10-t-e">
+<span class="eqno">(10.12)<a class="headerlink" href="#equation-eq-10-t-e" title="Permalink to this equation">#</a></span>\[T_e
+= \frac{P}{2} \left(
+    i_{as} \frac{d \lambda_{asm}}{d \theta_r}
+    + i_{bs} \frac{d \lambda_{bsm}}{d \theta_r}
+    + i_{cs} \frac{d \lambda_{csm}}{d \theta_r}
+\right).\]</div>
+<p>In an ideal machine,</p>
+<div class="math notranslate nohighlight" id="equation-eq-10-lambda-asm">
+<span class="eqno">(10.13)<a class="headerlink" href="#equation-eq-10-lambda-asm" title="Permalink to this equation">#</a></span>\[\lambda_{asm} = \lambda_m^\prime \sin \theta_r\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-10-lambda-bsm">
+<span class="eqno">(10.14)<a class="headerlink" href="#equation-eq-10-lambda-bsm" title="Permalink to this equation">#</a></span>\[\lambda_{bsm} = \lambda_m^\prime \sin (\theta_r - \qty{120}{\degree})\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-10-lambda-csm">
+<span class="eqno">(10.15)<a class="headerlink" href="#equation-eq-10-lambda-csm" title="Permalink to this equation">#</a></span>\[\lambda_{csm} = \lambda_m^\prime \sin (\theta_r + \qty{120}{\degree}).\]</div>
+<p><strong>Substitute <a class="reference internal" href="#equation-eq-10-lambda-asm">(10.13)</a>-<a class="reference internal" href="#equation-eq-10-lambda-csm">(10.15)</a> into <a class="reference internal" href="#equation-eq-10-t-e">(10.12)</a> and show that</strong></p>
+<div class="math notranslate nohighlight" id="equation-eq-10-t-e2">
+<span class="eqno">(10.16)<a class="headerlink" href="#equation-eq-10-t-e2" title="Permalink to this equation">#</a></span>\[T_e
+= \frac{P}{2} \lambda_m^\prime \left[
+    i_{as} \cos \theta_r
+    + i_{bs} \cos (\theta_r - \qty{120}{\degree})
+    + i_{cs} \cos (\theta_r + \qty{120}{\degree})
+\right].\]</div>
+<p>Equations <a class="reference internal" href="#equation-eq-10-v-as3">(10.9)</a>-<a class="reference internal" href="#equation-eq-10-v-cs3">(10.11)</a> and <a class="reference internal" href="#equation-eq-10-t-e2">(10.16)</a> define the
+electromechanical behavior of the given machine in phase variables. There are
+four basic parameters of the given machine: <span class="math notranslate nohighlight">\(r_s\)</span>, <span class="math notranslate nohighlight">\(L_{ss}\)</span>, <span class="math notranslate nohighlight">\(\lambda_m^\prime\)</span>,
+and <span class="math notranslate nohighlight">\(P\)</span>.</p>
+<p>Next, suppose <span class="math notranslate nohighlight">\(i_{as} = I_p \cos{\omega_e t}\)</span>, <span class="math notranslate nohighlight">\(i_{bs} = I_p \cos{(\omega_e t -
+\frac{2\pi}{3})}\)</span>, and <span class="math notranslate nohighlight">\(i_{cs} = I_p \cos{(\omega_e t + \frac{2\pi}{3})}\)</span> where
+<span class="math notranslate nohighlight">\(I_p\)</span> is the peak current.  <strong>Substitute these currents into <a class="reference internal" href="#equation-eq-10-t-e2">(10.16)</a>
+and show that</strong></p>
+<div class="math notranslate nohighlight" id="equation-eq-10-t-e3">
+<span class="eqno">(10.17)<a class="headerlink" href="#equation-eq-10-t-e3" title="Permalink to this equation">#</a></span>\[T_e
+= \frac{3}{2} \frac{P}{2} \lambda_m^\prime I_p \cos{(\theta_r - \omega_e t)}.\]</div>
+</section>
+<section id="in-the-laboratory">
+<h2><span class="section-number">10.2. </span>In the Laboratory<a class="headerlink" href="#in-the-laboratory" title="Permalink to this heading">#</a></h2>
+<section id="establish-a-rotating-magnetic-field">
+<h3><span class="section-number">10.2.1. </span>Establish a Rotating Magnetic Field<a class="headerlink" href="#establish-a-rotating-magnetic-field" title="Permalink to this heading">#</a></h3>
+<p>Our first objective will be to verify that a rotating magnetic field is produced
+in the given device.  Connect the machine as shown in <a class="reference internal" href="#fig-10-setup"><span class="std std-numref">Fig. 10.1</span></a>.</p>
+<figure class="align-default" id="fig-10-setup">
+<a class="reference internal image-reference" href="_images/setup.png"><img alt="_images/setup.png" src="_images/setup.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 10.1 </span><span class="caption-text">Experimental setup for <a class="reference internal" href="#pmag-sync-motor-b"><span class="std std-ref">Permanent Magnet Synchronous Motor (B)</span></a>.</span><a class="headerlink" href="#fig-10-setup" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ol class="arabic">
+<li><p>Using <a class="reference download internal" download="" href="_downloads/15b721ed73cd913d3ab62b0193b389e3/lab_10_target.slx"><code class="xref download docutils literal notranslate"><span class="pre">lab_10_target.slx</span></code></a>
+<a class="reference internal" href="#fig-10-target-model"><span class="std std-numref">Fig. 10.2</span></a>, apply balanced three-phase voltages to the
+three-phase windings.  Set the frequency to <span class="math notranslate nohighlight">\(\qty{5}{\hertz}\)</span> and the
+amplitude to <span class="math notranslate nohighlight">\(\qty{0.5}{\volt}\)</span> peak. Make sure that the voltages are
+displaced from one another by <span class="math notranslate nohighlight">\(\qty{120}{\degree}\)</span>.  Record the applied
+voltages <span class="math notranslate nohighlight">\(v_{ag}\)</span>, <span class="math notranslate nohighlight">\(v_{bg}\)</span>, and <span class="math notranslate nohighlight">\(v_{cg}\)</span> including their amplitude,
+frequency, and phase delay.</p>
+<div class="warning admonition">
+<p class="admonition-title">Caution</p>
+<p>Never apply more than <span class="math notranslate nohighlight">\(\qty{2}{\volt}\)</span> to the motor or irreparable damage may
+result.  When the motor is not being used, be sure to unplug the motor from
+the patch panel.</p>
+</div>
+<figure class="align-default" id="fig-10-target-model">
+<a class="reference internal image-reference" href="_images/target_model1.png"><img alt="_images/target_model1.png" src="_images/target_model1.png" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 10.2 </span><span class="caption-text">Target model for <a class="reference internal" href="#pmag-sync-motor-b"><span class="std std-ref">Permanent Magnet Synchronous Motor (B)</span></a>.</span><a class="headerlink" href="#fig-10-target-model" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Record the direction of rotation (CW or CCW) as viewed from the right end of
+the AC motor.  Approximate the speed of the rotor as follows. While your
+partner looks at their watch, count the number of revolutions of the pulley
+in a 1-minute period.  Convert revolutions per minute to radians per second.
+How does this speed relate to the frequency of the applied voltages? How many
+poles does this machine have?</p></li>
+<li><p>Interchange the <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(c\)</span> leads to the voltage source. What happens to the
+direction of rotation? Explain why this happens.</p></li>
+<li><p>Next, hold the pulley to lock the position of the rotor.  Measure the
+phase <span class="math notranslate nohighlight">\(a\)</span> current and shaft torque, displaying both signals on the
+oscilloscope. What is the frequency of torque pulsation? How does this
+frequency relate to the frequency of the applied voltages? Explain briefly.</p></li>
+<li><p>Record the peak-to-peak current and the peak-to-peak output voltage of the
+torque transducer (you may use the horizontal cursors to establish this
+value).  What is the corresponding peak torque in <span class="math notranslate nohighlight">\(\newtonmeter\)</span>? From
+<a class="reference internal" href="#equation-eq-10-t-e3">(10.17)</a>, this peak torque is equal to <span class="math notranslate nohighlight">\(\frac{3}{2}\frac{P}{2}
+\lambda_m^\prime I_p\)</span> where <span class="math notranslate nohighlight">\(I_p\)</span> is the peak current (<span class="math notranslate nohighlight">\(I_p = I_{\rm
+pk-pk}/2\)</span>).  Calculate <span class="math notranslate nohighlight">\(\lambda_m^\prime\)</span>.  Using <strong class="program">BenchVue</strong>, print
+the data captured on the oscilloscope.</p></li>
+</ol>
+</section>
+<section id="measure-electrical-parameters">
+<h3><span class="section-number">10.2.2. </span>Measure Electrical Parameters<a class="headerlink" href="#measure-electrical-parameters" title="Permalink to this heading">#</a></h3>
+<p>Our next objective will be to measure the electrical parameters: <span class="math notranslate nohighlight">\(r_s\)</span>,
+<span class="math notranslate nohighlight">\(L_{ss}\)</span>, and <span class="math notranslate nohighlight">\(\lambda_m^\prime\)</span>.</p>
+<section id="stator-resistance">
+<h4>Stator resistance<a class="headerlink" href="#stator-resistance" title="Permalink to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>Apply balanced voltages to the three phase windings.  Set the frequency to
+<span class="math notranslate nohighlight">\(\qty{1}{\hertz}\)</span> and the amplitude to <span class="math notranslate nohighlight">\(\qty{0.5}{\volt}\)</span> peak. Make sure
+that the voltages are displaced from one another by <span class="math notranslate nohighlight">\(\qty{120}{\degree}\)</span>.
+Block the rotor to prevent it from turning.  Measure the phase-<span class="math notranslate nohighlight">\(a\)</span>-to-ground
+voltage and the current into phase <span class="math notranslate nohighlight">\(a\)</span> using the oscilloscope.  Verify that
+the voltage and current are essentially in-phase at this frequency. Divide
+the peak voltage by the peak current. This is <span class="math notranslate nohighlight">\(r_s\)</span>.</p></li>
+</ol>
+</section>
+<section id="stator-inductance">
+<h4>Stator inductance<a class="headerlink" href="#stator-inductance" title="Permalink to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>Increase the frequency of the applied voltages to <span class="math notranslate nohighlight">\(\qty{100}{\hertz}\)</span>.
+Calculate the impedance magnitude by dividing the peak voltage by the peak
+current.  Calculate the inductance at this frequency. This is <span class="math notranslate nohighlight">\(L_{ss}\)</span>.</p></li>
+<li><p>Move the rotor to several different but fixed positions. Compare peak
+<span class="math notranslate nohighlight">\(I_{as}\)</span> at each fixed position.  Record your observations. Based upon your
+observations, does the inductance vary with rotor position?</p></li>
+</ol>
+</section>
+<section id="flux-constant">
+<h4>Flux constant<a class="headerlink" href="#flux-constant" title="Permalink to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>Apply <span class="math notranslate nohighlight">\(\qty{3}{\volt}\)</span> to the armature of the DC motor, causing both motors
+to rotate.</p></li>
+</ol>
+<ol class="arabic simple" start="2">
+<li><p>Measure the phase <span class="math notranslate nohighlight">\(a\)</span> to phase <span class="math notranslate nohighlight">\(b\)</span> open-circuit voltages of the AC motor.</p></li>
+</ol>
+<ol class="arabic simple" start="3">
+<li><p>Measure the electrical frequency <span class="math notranslate nohighlight">\(\omega_e\)</span> of <span class="math notranslate nohighlight">\(e_{ab}\)</span> and calculate
+<span class="math notranslate nohighlight">\(\lambda_m^\prime\)</span>. From the equations given at the beginning of this lab,
+show that the peak value of <span class="math notranslate nohighlight">\(e_{ab}\)</span> is equal to <span class="math notranslate nohighlight">\(\sqrt{3}\omega_r
+\lambda_m^\prime\)</span>.  Use this information to calculate <span class="math notranslate nohighlight">\(\lambda_m^\prime\)</span>.</p></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="postlab">
+<h2><span class="section-number">10.3. </span>Postlab<a class="headerlink" href="#postlab" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Compare the values of <span class="math notranslate nohighlight">\(\lambda_m^\prime\)</span> established using the two methods in
+this lab. Which do you think is more accurate? Why?</p></li>
+</ol>
+<ol class="arabic" start="2">
+<li><p>What is the relationship between the mechanical rotor speed and the frequency
+of the open-circuit voltages?</p></li>
+<li><p>If the stator windings are short-circuited and the rotor is mechanically
+rotated at a speed of <span class="math notranslate nohighlight">\(\omega_{rm}\)</span>, based upon the parameters established in
+this lab, what will be the peak amplitude of the resulting stator currents.</p>
+<div class="hint dropdown admonition">
+<p class="admonition-title">Hint</p>
+<p>Consider <a class="reference internal" href="#equation-eq-10-v-as2">(10.8)</a>.</p>
+</div>
+</li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab_09.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Permanent Magnet Synchronous Motor (A)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab_11.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Brushless DC Motor (A)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prelab">10.1. Prelab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-laboratory">10.2. In the Laboratory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#establish-a-rotating-magnetic-field">10.2.1. Establish a Rotating Magnetic Field</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-electrical-parameters">10.2.2. Measure Electrical Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stator-resistance">Stator resistance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stator-inductance">Stator inductance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#flux-constant">Flux constant</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postlab">10.3. Postlab</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href="contributors.html">Contributors</a>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

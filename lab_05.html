@@ -1,0 +1,1014 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>5. Variable Reluctance Stepper Motor (A) &#8212; Purdue University ECE 32300</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lab_05';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="6. Variable Reluctance Stepper Motor (B)" href="lab_06.html" />
+    <link rel="prev" title="4. Electromagnetic Forces (B)" href="lab_04.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/323logo.png" class="logo__image only-light" alt="Purdue University ECE 32300 - Home"/>
+    <script>document.write(`<img src="_static/323logo.png" class="logo__image only-dark" alt="Purdue University ECE 32300 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lab_01.html">1. Introduction to Lab Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_02.html">2. Inductance and Magnetic Circuits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_03.html">3. Electromagnetic Forces (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_04.html">4. Electromagnetic Forces (B)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Variable Reluctance Stepper Motor (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_06.html">6. Variable Reluctance Stepper Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_07.html">7. DC Motor (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_08.html">8. DC Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_09.html">9. Permanent Magnet Synchronous Motor (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_10.html">10. Permanent Magnet Synchronous Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_11.html">11. Brushless DC Motor (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_12.html">12. Brushless DC Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_13.html">13. Induction Motors and Two Phase Servo Motors (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_14.html">14. Induction Motors and Two Phase Servo Motors (B)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="contributors.html">Contributors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/lab_05.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Variable Reluctance Stepper Motor (A)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">5.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prelab">5.2. Prelab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-laboratory">5.3. In the Laboratory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-number-of-rotor-teeth">5.3.1. Measuring Number of Rotor Teeth</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-step-length">5.3.2. Measuring Step Length</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-dc-resistance">5.3.3. Measuring DC Resistance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-inductance-versus-position">5.3.4. Measuring Inductance-Versus-Position</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postlab">5.4. Postlab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-a-measuring-inductance-versus-position">5.5. Appendix A: Measuring Inductance Versus Position</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-b-fitting-parameters-to-measured-data">5.6. Appendix B: Fitting Parameters to Measured Data</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p><span class="raw-html"><div class="d-none"></span></p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\newcommand\blank{~\underline{\hspace{1.2cm}}~}
+\newcommand\phase[1]{\enclose{phasorangle}{#1}}
+\newcommand\RE{\mathrm{Re}}
+\newcommand\IM{\mathrm{Im}}\\% Bold symbols (vectors)
+\newcommand\bs[1]{\mathbf{#1}}\\% Poor man's siunitx
+\newcommand\unit[1]{\mathrm{#1}}
+\newcommand\num[1]{#1}
+\newcommand\qty[2]{#1~\unit{#2}}\\\newcommand\per{/}
+\newcommand\squared{{}^2}
+%
+% Scale
+\newcommand\milli{\unit{m}}
+\newcommand\kilo{\unit{k}}
+\newcommand\mega{\unit{M}}
+%
+% Angle
+\newcommand\radian{\unit{rad}}
+\newcommand\degree{\unit{\kern{-0.5ex}{}^\circ}}
+%
+% Time
+\newcommand\second{\unit{s}}
+%
+% Distance
+\newcommand\meter{\unit{m}}
+\newcommand\m{\meter}
+\newcommand\inch{\unit{in}}
+%
+% Mass
+\newcommand\gram{\unit{g}}
+\newcommand\g{\gram}
+%
+% Frequency
+\newcommand\hertz{\unit{Hz}}
+\newcommand\rpm{\unit{rpm}}
+%
+% Voltage
+\newcommand\volt{\unit{V}}
+\newcommand\V{\volt}
+\newcommand\millivolt{\milli\volt}
+\newcommand\mV{\milli\volt}
+\newcommand\kilovolt{\kilo\volt}
+\newcommand\kV{\kilo\volt}
+%
+% Current
+\newcommand\ampere{\unit{A}}
+\newcommand\A{\ampere}
+\newcommand\milliampereA{\milli\ampere}
+\newcommand\mA{\milli\ampere}
+\newcommand\kiloampereA{\kilo\ampere}
+\newcommand\kA{\kilo\ampere}
+%
+% Resistance
+\newcommand\ohm{\Omega}
+\newcommand\milliohm{\milli\ohm}
+\newcommand\kiloohm{\kilo\ohm} % correct SI spelling
+\newcommand\kilohm{\kilo\ohm} % &quot;American&quot; spelling used in siunitx
+\newcommand\megaohm{\mega\ohm} % correct SI spelling
+\newcommand\megohm{\mega\ohm} % &quot;American&quot; spelling used in siunitx
+%
+% Inductance
+\newcommand\henry{\unit{H}}
+\newcommand\H{\henry}
+\newcommand\millihenry{\milli\henry}
+\newcommand\mH{\milli\henry}
+%
+% Power
+\newcommand\watt{\unit{W}}
+\newcommand\W{\watt}
+\newcommand\milliwatt{\milli\watt}
+\newcommand\mW{\milli\watt}
+\newcommand\kilowatt{\kilo\watt}
+\newcommand\kW{\kilo\watt}
+%
+% Torque
+\newcommand\ozin{\unit{oz}\text{-}\unit{in}}
+\newcommand\newtonmeter{\unit{N\text{-}m}}\end{aligned}\end{align} \]</div>
+<p><span class="raw-html"></div></span></p>
+<section class="tex2jax_ignore mathjax_ignore" id="variable-reluctance-stepper-motor-a">
+<span id="id1"></span><h1><span class="section-number">5. </span>Variable Reluctance Stepper Motor (A)<a class="headerlink" href="#variable-reluctance-stepper-motor-a" title="Permalink to this heading">#</a></h1>
+<div class="note admonition">
+<p class="admonition-title">Objective</p>
+<p>In this experiment, the electromechanical characteristics of a
+variable-reluctance stepper motor will be investigated. The basic parameters
+will be measured experimentally and used to predict the static
+torque-versus-position characteristics.</p>
+</div>
+<section id="introduction">
+<h2><span class="section-number">5.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>The voltage equations of a three-stack variable-reluctance stepper motor may be
+expressed</p>
+<div class="math notranslate nohighlight" id="equation-eq-5-v-as">
+<span class="eqno">(5.1)<a class="headerlink" href="#equation-eq-5-v-as" title="Permalink to this equation">#</a></span>\[v_{as} = r_s i_{as} + \frac{d\lambda_{as}}{dt}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-5-v-bs">
+<span class="eqno">(5.2)<a class="headerlink" href="#equation-eq-5-v-bs" title="Permalink to this equation">#</a></span>\[v_{bs} = r_s i_{bs} + \frac{d\lambda_{bs}}{dt}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-5-v-cs">
+<span class="eqno">(5.3)<a class="headerlink" href="#equation-eq-5-v-cs" title="Permalink to this equation">#</a></span>\[v_{cs} = r_s i_{cs} + \frac{d\lambda_{cs}}{dt}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight" id="equation-eq-5-flux-linkages">
+<span class="eqno">(5.4)<a class="headerlink" href="#equation-eq-5-flux-linkages" title="Permalink to this equation">#</a></span>\[\begin{split}\left[
+  \begin{array}{c}
+    \lambda_{as} \\
+    \lambda_{bs} \\ 
+    \lambda_{cs}
+  \end{array}
+\right]
+= \left[
+  \begin{array}{ccc}
+    L_{asas} &amp; 0 &amp; 0 \\
+    0 &amp; L_{bsbs} &amp; 0 \\
+    0 &amp; 0 &amp; L_{cscs}
+  \end{array}
+\right]\left[
+  \begin{array}{c}
+    i_{as} \\
+    i_{bs} \\
+    i_{cs} 
+  \end{array}
+\right]\end{split}\]</div>
+<p>The self-inductances may be expressed</p>
+<div class="math notranslate nohighlight" id="equation-eq-5-l-asas">
+<span class="eqno">(5.5)<a class="headerlink" href="#equation-eq-5-l-asas" title="Permalink to this equation">#</a></span>\[L_{asas} = L_A + L_B \cos{RT \theta_{rm}}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-5-l-bsbs">
+<span class="eqno">(5.6)<a class="headerlink" href="#equation-eq-5-l-bsbs" title="Permalink to this equation">#</a></span>\[L_{bsbs} = L_A + L_B \cos{RT ( \theta_{rm} + SL)}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-5-l-cscs">
+<span class="eqno">(5.7)<a class="headerlink" href="#equation-eq-5-l-cscs" title="Permalink to this equation">#</a></span>\[L_{cscs} = L_A + L_B \cos{RT ( \theta_{rm} - SL)}\]</div>
+<p>where <span class="math notranslate nohighlight">\(RT\)</span> denotes the number of rotor teeth and <span class="math notranslate nohighlight">\(SL\)</span> is the step length. From
+(9.2-3) of the EE321 text,</p>
+<div class="math notranslate nohighlight" id="equation-eq-5-step-length">
+<span class="eqno">(5.8)<a class="headerlink" href="#equation-eq-5-step-length" title="Permalink to this equation">#</a></span>\[SL = \frac{2\pi}{RT\;N}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(N = 3\)</span> is the number of phases. The electromagnetic torque may be
+expressed</p>
+<div class="math notranslate nohighlight" id="equation-eq-5-torque">
+<span class="eqno">(5.9)<a class="headerlink" href="#equation-eq-5-torque" title="Permalink to this equation">#</a></span>\[T_e
+= -\frac{RT}{2} L_B \left [
+    i_{as}^2 \sin{RT \theta_{rm} }
+  + i_{bs}^2 \sin{RT ( \theta_{rm} + SL )}
+  + i_{cs}^2 \sin{RT ( \theta_{rm} - SL )}
+\right]\]</div>
+</section>
+<section id="prelab">
+<h2><span class="section-number">5.2. </span>Prelab<a class="headerlink" href="#prelab" title="Permalink to this heading">#</a></h2>
+<p>Review Sections 9.1 through 9.4 of EE321 text.</p>
+</section>
+<section id="in-the-laboratory">
+<h2><span class="section-number">5.3. </span>In the Laboratory<a class="headerlink" href="#in-the-laboratory" title="Permalink to this heading">#</a></h2>
+<p>In the first part of the lab, we will determine the step length and number of
+rotor teeth.  The given motor is a 3-phase device with polarity markings defined
+as follows:</p>
+<table class="colwidths-auto table" id="tab-5-polarity-markings" style="width: 50%">
+<caption><span class="caption-number">Table 5.1 </span><span class="caption-text">Stepper Motor Polarity Markings</span><a class="headerlink" href="#tab-5-polarity-markings" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="text-center head"><p>Phase</p></th>
+<th class="head"><p>Positive</p></th>
+<th class="head"><p>Negative</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(a\)</span></p></td>
+<td><p>Black</p></td>
+<td><p>Yellow</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(b\)</span></p></td>
+<td><p>Orange</p></td>
+<td><p>Blue</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(c\)</span></p></td>
+<td><p>Red</p></td>
+<td><p>Green</p></td>
+</tr>
+</tbody>
+</table>
+<figure class="align-default" id="fig-5-fig1">
+<a class="reference internal image-reference" href="_images/fig12.png"><img alt="_images/fig12.png" src="_images/fig12.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.1 </span><span class="caption-text">Setup for lab <a class="reference internal" href="#variable-reluctance-stepper-motor-a"><span class="std std-ref">Variable Reluctance Stepper Motor (A)</span></a>.</span><a class="headerlink" href="#fig-5-fig1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="measuring-number-of-rotor-teeth">
+<h3><span class="section-number">5.3.1. </span>Measuring Number of Rotor Teeth<a class="headerlink" href="#measuring-number-of-rotor-teeth" title="Permalink to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>Ensure that the rotor of the stepper motor is connected to the position
+encoder through the torque transducer and the cable from the position encoder
+to the 25-pin Digital Input port of the Patch Panel as shown in <a class="reference internal" href="#fig-5-fig1"><span class="std std-numref">Fig. 5.1</span></a>.</p></li>
+<li><p>Open the model <a class="reference download internal" download="" href="_downloads/d03b57abff998b710cd201d3f981e55c/lab5_tgt.slx"><code class="xref download docutils literal notranslate"><span class="pre">lab5_tgt.slx</span></code></a>.  The
+main window should look similar to <a class="reference internal" href="#fig-5-fig2"><span class="std std-numref">Fig. 5.2</span></a>.  The switches are
+actuated by a mouse double-click.  Set the <span class="guilabel">To_IP_Address</span> to the
+IP number to the host computer on your station.</p>
+<figure class="align-default" id="fig-5-fig2">
+<a class="reference internal image-reference" href="_images/lab5_tgt.png"><img alt="_images/lab5_tgt.png" src="_images/lab5_tgt.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.2 </span><span class="caption-text">Simulink target model <code class="file docutils literal notranslate"><span class="pre">lab5_tgt.slx</span></code> for measuring step length.</span><a class="headerlink" href="#fig-5-fig2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>From <span class="guilabel">REAL-TIME</span> tab, connect to target on your station and press
+<span class="guilabel">Run on Target</span>.</p>
+</li>
+<li><p>Open the Simulink model
+<a class="reference download internal" download="" href="_downloads/8d81e2d41e6d0c0b668439360b8e2c90/lab5_host.slx"><code class="xref download docutils literal notranslate"><span class="pre">lab5_host.slx</span></code></a>, which reads the
+position transducer in radians. The main window should look similar to
+<a class="reference internal" href="#fig-5-fig3"><span class="std std-numref">Fig. 5.3</span></a>.  Set the <span class="guilabel">FromAddress</span> to the IP number of
+the target computer at your station. The model is configured as a
+<span class="guilabel">Normal</span> simulation with the simulation parameters set to
+<span class="guilabel">Variable-Step</span> with <code class="docutils literal notranslate"><span class="pre">inf</span></code> as the Stop time. This model runs on the
+host computer, so it should not be compiled/built.</p>
+<figure class="align-default" id="fig-5-fig3">
+<a class="reference internal image-reference" href="_images/lab5_host.png"><img alt="_images/lab5_host.png" src="_images/lab5_host.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.3 </span><span class="caption-text">Simulink host PC model <code class="file docutils literal notranslate"><span class="pre">lab5_host.slx</span></code> for measuring step length.</span><a class="headerlink" href="#fig-5-fig3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Apply the <span class="math notranslate nohighlight">\(10\)</span>-<span class="math notranslate nohighlight">\(\volt\)</span> DC signal to the phase-<span class="math notranslate nohighlight">\(a\)</span> winding by clicking in the
+manual switch in the <code class="file docutils literal notranslate"><span class="pre">lab5_tgt</span></code> window. In the <code class="file docutils literal notranslate"><span class="pre">lab5_host</span></code>
+window, press <span class="guilabel">Run</span>. Allow the rotor to settle out to its
+equilibrium position. Record the position of the rotor from the numeric
+display. Rotate the rotor by hand in either the CW or CCW direction and let
+it settle to its closest neighboring equilibrium position. Continue turning
+and stopping the rotor until it has made a full revolution. How many
+equilibrium points are there in one motor revolution? From this information,
+how many rotor teeth does the motor possess?</p></li>
+</ol>
+</section>
+<section id="measuring-step-length">
+<h3><span class="section-number">5.3.2. </span>Measuring Step Length<a class="headerlink" href="#measuring-step-length" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Record the position of the rotor. Without disturbing the rotor, turn off the
+DC signal to the phase-<span class="math notranslate nohighlight">\(a\)</span> winding and then energize the phase-<span class="math notranslate nohighlight">\(b\)</span> winding
+and allow the rotor to settle to its equilibrium position. Turn off phase <span class="math notranslate nohighlight">\(b\)</span>
+and turn on phase <span class="math notranslate nohighlight">\(c\)</span>. Continue manually stepping the phase voltages through
+the <span class="math notranslate nohighlight">\(a\)</span>-<span class="math notranslate nohighlight">\(b\)</span>-<span class="math notranslate nohighlight">\(c\)</span> <span class="math notranslate nohighlight">\(\cdots\)</span> sequence until the motor has made one full
+revolution.  Record the number of steps required to complete a full
+revolution. From this, calculate the step length (degrees per step) and
+verify <a class="reference internal" href="#equation-eq-5-step-length">(5.8)</a>.</p></li>
+</ol>
+</section>
+<section id="measuring-dc-resistance">
+<h3><span class="section-number">5.3.3. </span>Measuring DC Resistance<a class="headerlink" href="#measuring-dc-resistance" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Measure the DC resistance of the stator winding by applying a DC voltage to
+one of the windings and measuring the resulting current. Record this value
+for use in the postlab.  When complete, stop the host simulation, then stop
+the target and disconnect from the target.</p></li>
+</ol>
+</section>
+<section id="measuring-inductance-versus-position">
+<h3><span class="section-number">5.3.4. </span>Measuring Inductance-Versus-Position<a class="headerlink" href="#measuring-inductance-versus-position" title="Permalink to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>This procedure requires the use of the prebuilt target-based Simulink model
+<a class="reference download internal" download="" href="_downloads/7cf0c25c5989fe060f2deb8b82e020dd/L_vs_pos_tgt.slx"><code class="xref download docutils literal notranslate"><span class="pre">L_vs_pos_tgt.slx</span></code></a>, and the
+host-based Simulink model
+<a class="reference download internal" download="" href="_downloads/d8dfbb3aff489ca180a81954b9f80a58/L_vs_pos_host.slx"><code class="xref download docutils literal notranslate"><span class="pre">L_vs_pos_host.slx</span></code></a>. The
+top-level view of <code class="file docutils literal notranslate"><span class="pre">L_vs_pos_tgt.slx</span></code> is shown in <a class="reference internal" href="#fig-5-fig4"><span class="std std-numref">Fig. 5.4</span></a>.
+This model generates a <span class="math notranslate nohighlight">\(5\)</span>-<span class="math notranslate nohighlight">\(\volt\)</span> <span class="math notranslate nohighlight">\(20\)</span>-<span class="math notranslate nohighlight">\(\hertz\)</span> sinusoidal voltage that is
+to be applied to one phase of the stepper motor. The voltage-output signal of
+the power amplifier will be used to measure the phase voltage, and the
+current-output signal of the power amplifier will be used to measure the
+corresponding phase current. The voltage-output signal should be connected to
+<span class="guilabel">Analog Input Channel 1</span> with the gain knob set to <span class="math notranslate nohighlight">\(10\)</span>. The
+current-output signal should be connected to <span class="guilabel">Analog Input Channel 2</span> with the gain knob of that input channel set to <span class="math notranslate nohighlight">\(1\)</span>. The measured voltage
+and current signals along with the <span class="math notranslate nohighlight">\(20\)</span>-<span class="math notranslate nohighlight">\(\hertz\)</span> sine and cosine signals are
+supplied to a block that calculates the inductance at selected rotor
+positions. This block is described in <a class="reference internal" href="#appendix-5a"><span class="std std-ref">Appendix A: Measuring Inductance Versus Position</span></a>.  The calculated
+inductance and measured rotor position are then supplied to the host model
+<code class="file docutils literal notranslate"><span class="pre">L_vs_pos_host.slx</span></code>.  The top level view of <code class="file docutils literal notranslate"><span class="pre">L_vs_pos_host.slx</span></code>
+is shown in <a class="reference internal" href="#fig-5-fig5"><span class="std std-numref">Fig. 5.5</span></a>.  Therein, the numerical values of the
+measured position and calculated inductance will be displayed in numeric
+display blocks.</p>
+<figure class="align-default" id="fig-5-fig4">
+<a class="reference internal image-reference" href="_images/L_vs_pos_tgt.png"><img alt="_images/L_vs_pos_tgt.png" src="_images/L_vs_pos_tgt.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.4 </span><span class="caption-text">Top-level view of <code class="file docutils literal notranslate"><span class="pre">L_vs_pos_tgt.slx</span></code>.</span><a class="headerlink" href="#fig-5-fig4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="fig-5-fig5">
+<a class="reference internal image-reference" href="_images/L_vs_pos_host.png"><img alt="_images/L_vs_pos_host.png" src="_images/L_vs_pos_host.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.5 </span><span class="caption-text">Top-level view of <code class="file docutils literal notranslate"><span class="pre">L_vs_pos_host.slx</span></code>.</span><a class="headerlink" href="#fig-5-fig5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Open <code class="file docutils literal notranslate"><span class="pre">L_vs_pos_tgt.slx</span></code>. Build, connect to target, and start this
+model.  Excite the phase-<span class="math notranslate nohighlight">\(a\)</span> winding with the AC voltage from
+<span class="guilabel">Channel 1</span>. Connect stepper motor phase <span class="math notranslate nohighlight">\(a\)</span> to <span class="guilabel">Analog Output 1</span>. Remove the connections to the <span class="guilabel">Analog Output 2</span> and
+<span class="guilabel">Analog Output 3</span>. Connect the voltage signal from
+<span class="guilabel">Analog Output 1</span> to <span class="guilabel">Analog Input 1</span>, and connect the
+current signal from <span class="guilabel">Analog Output 1</span> to <span class="guilabel">Analog Input 2</span>. Set the range of <span class="guilabel">Analog Input 1</span> to <span class="math notranslate nohighlight">\(10\)</span>, and the range of
+<span class="guilabel">Analog Input 2</span> to <span class="math notranslate nohighlight">\(1\)</span> (middle position). Allow the motor to
+settle to a stable equilibrium position.</p></li>
+</ol>
+<ol class="arabic" start="3">
+<li><p>Open <code class="file docutils literal notranslate"><span class="pre">L_vs_pos_host.slx</span></code> and <span class="guilabel">Run</span> to begin the host
+simulation. This simulation is configured as a <span class="guilabel">Normal</span> simulation.
+This host model samples the selected signals in the target code
+<code class="file docutils literal notranslate"><span class="pre">L_vs_pos_tgt.slx</span></code> and displays the measured values in numerical
+display blocks.  Using both hands, rotate the motor rotor slowly and
+smoothly. Choose and record the direction of rotation (either CW or CCW) when
+looking from the motor toward the torque transducer.  As the rotor rotates,
+the computer calculates a new value of inductance for each rotor position and
+updates the digital displays in the host model.  After rotating the rotor
+through one complete revolution, stop the host simulation. In the MATLAB
+command window, type <code class="docutils literal notranslate"><span class="pre">plot(position,</span> <span class="pre">inductance)</span></code> to verify that the position
+and inductance data have been written to the MATLAB workspace. Use the
+following MATLAB command to save the inductance-versus-position data:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">stepind</span><span class="w"> </span><span class="p">(</span><span class="s">&#39;la.mat&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">inductance</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The resulting data file <code class="file docutils literal notranslate"><span class="pre">la.mat</span></code> can be used for subsequent plotting
+and analysis using MATLAB.</p>
+</li>
+<li><p>Disconnect the <span class="math notranslate nohighlight">\(a\)</span>-phase from <span class="guilabel">Analog Output 1</span> and connect the
+<span class="math notranslate nohighlight">\(b\)</span>-phase to <span class="guilabel">Analog Output 1</span>. Restart the host simulation.
+Measure the inductance versus position of the phase <span class="math notranslate nohighlight">\(b\)</span> winding as done with
+the <span class="math notranslate nohighlight">\(a\)</span> winding, being sure to rotate the rotor in the same direction as
+before. Again, save the data in file <code class="file docutils literal notranslate"><span class="pre">lb.mat</span></code>. Repeat the previous
+steps for the phase <span class="math notranslate nohighlight">\(c\)</span> winding, saving the data in <code class="file docutils literal notranslate"><span class="pre">lc.mat</span></code>.  Load
+<code class="file docutils literal notranslate"><span class="pre">la.mat</span></code> into MATLAB with the command <code class="docutils literal notranslate"><span class="pre">load</span> <span class="pre">la.mat</span></code> in your plotting
+script. The data will be stored as 2-column matrices of position (radians)
+and inductance (Henries).  Separate the data into vectors of inductance and
+position, i.e.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">qrma</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">position</span>
+<span class="n">las</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">inductance</span>
+</pre></div>
+</div>
+<p>After separating the data, repeat these MATLAB commands for phases <span class="math notranslate nohighlight">\(b\)</span> and
+<span class="math notranslate nohighlight">\(c\)</span> by loading <code class="file docutils literal notranslate"><span class="pre">lb.mat</span></code> and <code class="file docutils literal notranslate"><span class="pre">lc.mat</span></code>, substituting the
+appropriate letter for the <code class="docutils literal notranslate"><span class="pre">a</span></code> in <code class="docutils literal notranslate"><span class="pre">qrma</span></code> and <code class="docutils literal notranslate"><span class="pre">las</span></code>. Plot the three inductance
+curves on one axis, and add appropriate labels.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">plot</span><span class="p">(</span><span class="n">qrma</span><span class="p">,</span><span class="w"> </span><span class="n">las</span><span class="p">,</span><span class="w"> </span><span class="n">qrmb</span><span class="p">,</span><span class="w"> </span><span class="n">lbs</span><span class="p">,</span><span class="w"> </span><span class="n">qrmc</span><span class="p">,</span><span class="w"> </span><span class="n">lcs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Print the results and save your MATLAB workspace by typing <code class="docutils literal notranslate"><span class="pre">save</span> <span class="pre">lab5_ind</span></code>.
+Send the file <code class="file docutils literal notranslate"><span class="pre">lab5_ind.mat</span></code> and the provided file <code class="file docutils literal notranslate"><span class="pre">fit8.m</span></code> to a
+zipped folder and E-mail them to your partner. You will need these files to
+complete the post lab.</p>
+</li>
+</ol>
+</section>
+</section>
+<section id="postlab">
+<h2><span class="section-number">5.4. </span>Postlab<a class="headerlink" href="#postlab" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Use the provided function <code class="file docutils literal notranslate"><span class="pre">fit8.m</span></code> (described in <a class="reference internal" href="#appendix-5b"><span class="std std-ref">Appendix B: Fitting Parameters to Measured Data</span></a>) to
+fit a sinusoidal function to the measured inductance-versus-position data.
+Express each of the phase inductances in the form</p>
+<div class="math notranslate nohighlight" id="equation-eq-5-inductance-fit">
+<span class="eqno">(5.10)<a class="headerlink" href="#equation-eq-5-inductance-fit" title="Permalink to this equation">#</a></span>\[L = L_A + L_C \cos RT\theta_{rm} + L_S \sin RT\theta_{rm}\]</div>
+<p>where <span class="math notranslate nohighlight">\(L_A\)</span>, <span class="math notranslate nohighlight">\(L_C\)</span>, and <span class="math notranslate nohighlight">\(L_S\)</span> are contained in the output of <code class="file docutils literal notranslate"><span class="pre">fit8.m</span></code>.</p>
+</li>
+<li><p>Using the calculated values of <span class="math notranslate nohighlight">\(L_A\)</span>, <span class="math notranslate nohighlight">\(L_C\)</span>, and <span class="math notranslate nohighlight">\(L_S\)</span>, generate arrays of
+data for the fitted inductance-versus-position characteristics. Plot
+<span class="math notranslate nohighlight">\(L_{asas}\)</span> versus <span class="math notranslate nohighlight">\(\theta_{rm}\)</span> for both the fitted and measured data, e.g.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">lascurvefit</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">L_A</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">L_C</span><span class="o">*</span><span class="nb">cos</span><span class="p">(</span><span class="n">RT</span><span class="o">*</span><span class="n">qrma</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">L_S</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="n">RT</span><span class="o">*</span><span class="n">qrma</span><span class="p">)</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">qrma</span><span class="p">,</span><span class="w"> </span><span class="n">las</span><span class="p">,</span><span class="w"> </span><span class="n">qrma</span><span class="p">,</span><span class="w"> </span><span class="n">lascurvefit</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Repeat the previous steps for the phase-<span class="math notranslate nohighlight">\(b\)</span> and phase-<span class="math notranslate nohighlight">\(c\)</span> windings.  Compare
+the measured and fitted data. Provide possible explanations for any
+differences.</p></li>
+<li><p>On the basis of the fitted inductance-versus-position characteristics,
+calculate and plot the predicted torque-versus-position for
+one-phase-on-at-a-time excitation.  Specifically, based upon
+<a class="reference internal" href="#equation-eq-5-inductance-fit">(5.10)</a>, calculate coenergy and then <span class="math notranslate nohighlight">\(T_e\)</span> assuming <span class="math notranslate nohighlight">\(I_{as}
+= 10/r_s\)</span> and <span class="math notranslate nohighlight">\(I_{bs} = I_{cs} = 0\)</span>.  Repeat the torque-versus-position
+calculations for phase-<span class="math notranslate nohighlight">\(b\)</span> and phase-<span class="math notranslate nohighlight">\(c\)</span> windings individually. Store the
+calculated torques in vectors <code class="docutils literal notranslate"><span class="pre">Teacalc</span></code>, <code class="docutils literal notranslate"><span class="pre">Tebcalc</span></code>, and <code class="docutils literal notranslate"><span class="pre">Teccalc</span></code>. You will
+need these plots to complete
+<a class="reference internal" href="lab_06.html#postlab-variable-reluctance-stepper-motor-b"><span class="std std-numref">Section 6.4</span></a>, so retain your M-file
+and check your torque plots with your TA during the next lab session.</p></li>
+</ol>
+</section>
+<section id="appendix-a-measuring-inductance-versus-position">
+<span id="appendix-5a"></span><h2><span class="section-number">5.5. </span>Appendix A: Measuring Inductance Versus Position<a class="headerlink" href="#appendix-a-measuring-inductance-versus-position" title="Permalink to this heading">#</a></h2>
+<p>In order to establish the winding inductance, we apply a <span class="math notranslate nohighlight">\(20\)</span>-<span class="math notranslate nohighlight">\(\hertz\)</span> voltage
+to the winding, i.e.</p>
+<div class="math notranslate nohighlight">
+\[v = 5 \cos(40 \pi t)\]</div>
+<p>In phasor form<a class="footnote-reference brackets" href="#id3" id="id2">1</a></p>
+<div class="math notranslate nohighlight">
+\[\tilde{V} = 5\enclose{phasorangle}{0}\]</div>
+<p>The measured signal can be expressed in the following general form</p>
+<div class="math notranslate nohighlight" id="equation-eq-5-measured-signal">
+<span class="eqno">(5.11)<a class="headerlink" href="#equation-eq-5-measured-signal" title="Permalink to this equation">#</a></span>\[f = A_f \cos 40 \pi t + B_f \sin 40 \pi t\]</div>
+<p>where <span class="math notranslate nohighlight">\(f\)</span> can be substituted for <span class="math notranslate nohighlight">\(v\)</span> or <span class="math notranslate nohighlight">\(i\)</span>. It is important to measure <span class="math notranslate nohighlight">\(v\)</span>,
+since the voltage applied may not match the voltage measured. To establish <span class="math notranslate nohighlight">\(A\)</span>,
+we multiply the measured current waveform by <span class="math notranslate nohighlight">\(\cos 40 \pi t\)</span> and average the
+resulting signal over a period, i.e.</p>
+<div class="math notranslate nohighlight" id="equation-eq-5-af">
+<span class="eqno">(5.12)<a class="headerlink" href="#equation-eq-5-af" title="Permalink to this equation">#</a></span>\[A_f = \frac{2}{T} \int_{t - T}^t f(\tau) \cos 40 \pi \tau d\tau \]</div>
+<p>This formula can be verified by substituting <a class="reference internal" href="#equation-eq-5-measured-signal">(5.11)</a> into <a class="reference internal" href="#equation-eq-5-af">(5.12)</a> and using the identities</p>
+<div class="math notranslate nohighlight">
+\[\cos x \cos y = \frac{1}{2}\left| 1 - \cos(x + y) \right|\]</div>
+<div class="math notranslate nohighlight">
+\[\cos x \sin y = \frac{1}{2} \cos(x + y)\]</div>
+<p>Likewise,</p>
+<div class="math notranslate nohighlight" id="equation-eq-5-bf">
+<span class="eqno">(5.13)<a class="headerlink" href="#equation-eq-5-bf" title="Permalink to this equation">#</a></span>\[B_f = \frac{2}{T} \int_{t - T}^t f(\tau )\sin 40\pi \tau d\tau\]</div>
+<p>Given <span class="math notranslate nohighlight">\(A_i\)</span> and <span class="math notranslate nohighlight">\(B_i\)</span>, the current phasor can be expressed</p>
+<div class="math notranslate nohighlight">
+\[\tilde{I} = A_i - jB_i\]</div>
+<p>and the voltage phasor can be expressed</p>
+<div class="math notranslate nohighlight">
+\[\tilde{V} = A_v - jB_v\]</div>
+<p>The impedance of the winding can be calculated as <span class="math notranslate nohighlight">\(Z = \tilde{V} / \tilde{I}\)</span>.
+The resistance and reactance correspond to the real and imaginary components of
+<span class="math notranslate nohighlight">\(Z\)</span>, i.e.</p>
+<div class="math notranslate nohighlight">
+\[R = {\rm Real}(Z) = \frac{A_v A_i + B_v B_i}{A_i^2 + B_i^2}\]</div>
+<div class="math notranslate nohighlight">
+\[X = {\rm Imag}(Z) = \frac{A_v B_i - A_i B_v}{A_i^2 + B_i^2}\]</div>
+<p>Finally, the inductance can be established from the reactance as</p>
+<div class="math notranslate nohighlight">
+\[L = \frac{X}{40 \pi}\]</div>
+<p>A Simulink model that implements the previous procedure is shown in
+<a class="reference internal" href="#fig-5-6"><span class="std std-numref">Fig. 5.6</span></a>.  Therein, the blocks labeled <code class="docutils literal notranslate"><span class="pre">maf</span></code> implement <a class="reference internal" href="#equation-eq-5-af">(5.12)</a>
+and <a class="reference internal" href="#equation-eq-5-bf">(5.13)</a>.  The resistance and reactance, along with the encoder
+position are sampled by the host model, which is responsible for plotting and
+storing the results.</p>
+<figure class="align-default" id="fig-5-6">
+<img alt="_images/L_vs_pos_tgt_RL_calc.png" src="_images/L_vs_pos_tgt_RL_calc.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 5.6 </span><span class="caption-text">Simulink subsystem block that calculates resistance and reactance.</span><a class="headerlink" href="#fig-5-6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="appendix-b-fitting-parameters-to-measured-data">
+<span id="appendix-5b"></span><h2><span class="section-number">5.6. </span>Appendix B: Fitting Parameters to Measured Data<a class="headerlink" href="#appendix-b-fitting-parameters-to-measured-data" title="Permalink to this heading">#</a></h2>
+<p>It is assumed that the inductance can be expressed in terms of position as</p>
+<div class="math notranslate nohighlight" id="equation-eq-5-inductance-model">
+<span class="eqno">(5.14)<a class="headerlink" href="#equation-eq-5-inductance-model" title="Permalink to this equation">#</a></span>\[L_s = L_A + L_C \cos{8 \theta_{rm}} + L_S \sin{8 \theta_{rm}}\]</div>
+<p>In the lab, we measured an array of inductances and a corresponding array of
+positions.  Substituting the measured inductances and positions into
+<a class="reference internal" href="#equation-eq-5-inductance-model">(5.14)</a> results in the following over-specified system of
+equations.</p>
+<div class="math notranslate nohighlight" id="equation-eq-5-inductance-model-matrix">
+<span class="eqno">(5.15)<a class="headerlink" href="#equation-eq-5-inductance-model-matrix" title="Permalink to this equation">#</a></span>\[\begin{split}\left[
+  \begin{array}{ccc}
+    1 &amp; \cos 8{\theta _1} &amp; \sin 8{\theta _1} \\
+    1 &amp; \cos 8{\theta _2} &amp; \sin 8{\theta _2} \\
+    \cdots &amp; \cdots &amp; \cdots  \\ 
+    1 &amp; \cos 8{\theta _N} &amp; \sin 8{\theta _N}
+  \end{array}
+\right]_{N \times 3}
+\left[
+  \begin{array}{c}
+  L_A \\
+  L_C \\
+  L_S
+  \end{array}
+\right]
+= \left[
+  \begin{array}{c}
+    L_{1m} \\
+    L_{2m} \\
+    \cdots \\
+    L_{Nm}
+  \end{array}
+\right]_{N \times 1}\end{split}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(N\)</span> is the number of data points. This set of equations is called
+over-specified since there are more equations (<span class="math notranslate nohighlight">\(N\)</span>) than unknowns (<span class="math notranslate nohighlight">\(L_A\)</span>, <span class="math notranslate nohighlight">\(L_C\)</span>,
+and <span class="math notranslate nohighlight">\(L_S\)</span>). Symbolically, <a class="reference internal" href="#equation-eq-5-inductance-model-matrix">(5.15)</a> can be expressed</p>
+<div class="math notranslate nohighlight" id="equation-eq-5-ax-b">
+<span class="eqno">(5.16)<a class="headerlink" href="#equation-eq-5-ax-b" title="Permalink to this equation">#</a></span>\[\mathbf{Ax} = \mathbf{b}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is a vector of unknown parameters, while <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> and
+<span class="math notranslate nohighlight">\(\mathbf{b}\)</span> are known. Since <a class="reference internal" href="#equation-eq-5-inductance-model-matrix">(5.15)</a> only
+approximates the inductance-versus-position characteristics, <a class="reference internal" href="#equation-eq-5-ax-b">(5.16)</a> is
+not exact. Denote the error as <span class="math notranslate nohighlight">\(\mathbf{e}\)</span>. Equation <a class="reference internal" href="#equation-eq-5-ax-b">(5.16)</a> can be
+rewritten as</p>
+<div class="math notranslate nohighlight" id="equation-eq-5-ax-b-e">
+<span class="eqno">(5.17)<a class="headerlink" href="#equation-eq-5-ax-b-e" title="Permalink to this equation">#</a></span>\[\mathbf{Ax} - \mathbf{b} = \mathbf{e}\]</div>
+<p>The objective is to find <span class="math notranslate nohighlight">\({\mathbf{x}}\)</span> such that</p>
+<div class="math notranslate nohighlight" id="equation-eq-5-minimize-e">
+<span class="eqno">(5.18)<a class="headerlink" href="#equation-eq-5-minimize-e" title="Permalink to this equation">#</a></span>\[\left\| \mathbf{e} \right\|^2
+= e_1^2 + e_2^2 + \cdots e_N^2
+= \mathbf{e}^T\mathbf{e}\]</div>
+<p>is minimized. Substituting <a class="reference internal" href="#equation-eq-5-ax-b-e">(5.17)</a> into <a class="reference internal" href="#equation-eq-5-minimize-e">(5.18)</a> yields</p>
+<div class="math notranslate nohighlight" id="equation-eq-5-minimize-e2">
+<span class="eqno">(5.19)<a class="headerlink" href="#equation-eq-5-minimize-e2" title="Permalink to this equation">#</a></span>\[\left\| \mathbf{e} \right\|^2
+= \left( \mathbf{Ax} - \mathbf{b} \right)^T
+  \left( \mathbf{Ax} - \mathbf{b} \right)
+= \mathbf{x}^T \mathbf{A}^T \mathbf{Ax}
+- \mathbf{x}^T \mathbf{A}^T \mathbf{b}
+- \mathbf{b}^T \mathbf{Ax}
++ \mathbf{b}^T \mathbf{b}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-5-minimize-e3">
+<span class="eqno">(5.20)<a class="headerlink" href="#equation-eq-5-minimize-e3" title="Permalink to this equation">#</a></span>\[\left\| \mathbf{e} \right\|^2
+=   \mathbf{x}^T \mathbf{A}^T \mathbf{Ax}
+- 2 \mathbf{x}^T \mathbf{A}^T \mathbf{b}
++ \mathbf{b}^T\mathbf{b}\]</div>
+<p>Since <span class="math notranslate nohighlight">\(\mathbf{b}^T \mathbf{b}\)</span> is constant, it suffices to minimize the
+following scalar-valued function</p>
+<div class="math notranslate nohighlight" id="equation-eq-5-minimize-f">
+<span class="eqno">(5.21)<a class="headerlink" href="#equation-eq-5-minimize-f" title="Permalink to this equation">#</a></span>\[f(\mathbf{x})
+=   \mathbf{x}^T \mathbf{A}^T \mathbf{Ax}
+- 2 \mathbf{x}^T \mathbf{A}^T \mathbf{b}\]</div>
+<p>with respect to <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> where <span class="math notranslate nohighlight">\(\mathbf{Q} = \mathbf{A}^T \mathbf{A}\)</span> and
+<span class="math notranslate nohighlight">\(\mathbf{y} = \mathbf{A}^T\mathbf{b}\)</span> . To minimize <a class="reference internal" href="#equation-eq-5-minimize-f">(5.21)</a> with
+respect to <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, we differentiate with respect to <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and set
+the result to zero. With a little work, it can be shown that this procedure
+results in the matrix equation</p>
+<div class="math notranslate nohighlight" id="equation-eq-5-qx-y">
+<span class="eqno">(5.22)<a class="headerlink" href="#equation-eq-5-qx-y" title="Permalink to this equation">#</a></span>\[\mathbf{Qx} = \mathbf{y}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> is a nonsingular square matrix (<span class="math notranslate nohighlight">\(3 \times 3\)</span>).  Thus, there
+exists a unique solution <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> that is established by solving
+<a class="reference internal" href="#equation-eq-5-qx-y">(5.22)</a>.  A simple MATLAB script that evaluates the vector of unknown
+parameters is given below.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span>x<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">fit8</span><span class="p">(</span>las, theta<span class="p">)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">las</span><span class="p">)</span>
+<span class="w">        </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">cos</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">theta</span><span class="p">(</span><span class="nb">i</span><span class="p">));</span>
+<span class="w">        </span><span class="n">A</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">theta</span><span class="p">(</span><span class="nb">i</span><span class="p">));</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="n">Q</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="o">&#39;*</span><span class="n">A</span><span class="p">;</span>
+<span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">A</span><span class="o">&#39;*</span><span class="n">las</span><span class="p">;</span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Q</span><span class="o">\</span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="c">% solve Q*x = y for x</span>
+</pre></div>
+</div>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dd><p>Unlike the EE321 text, we will assume the magnitude of the phasor
+corresponds to the peak (not RMS) amplitude of the corresponding sinusoid.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab_04.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Electromagnetic Forces (B)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab_06.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Variable Reluctance Stepper Motor (B)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">5.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prelab">5.2. Prelab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-laboratory">5.3. In the Laboratory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-number-of-rotor-teeth">5.3.1. Measuring Number of Rotor Teeth</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-step-length">5.3.2. Measuring Step Length</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-dc-resistance">5.3.3. Measuring DC Resistance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-inductance-versus-position">5.3.4. Measuring Inductance-Versus-Position</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postlab">5.4. Postlab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-a-measuring-inductance-versus-position">5.5. Appendix A: Measuring Inductance Versus Position</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-b-fitting-parameters-to-measured-data">5.6. Appendix B: Fitting Parameters to Measured Data</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href="contributors.html">Contributors</a>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

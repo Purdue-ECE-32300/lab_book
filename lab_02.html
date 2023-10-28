@@ -1,0 +1,1008 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>2. Inductance and Magnetic Circuits &#8212; Purdue University ECE 32300</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lab_02';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3. Electromagnetic Forces (A)" href="lab_03.html" />
+    <link rel="prev" title="1. Introduction to Lab Experiments" href="lab_01.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/323logo.png" class="logo__image only-light" alt="Purdue University ECE 32300 - Home"/>
+    <script>document.write(`<img src="_static/323logo.png" class="logo__image only-dark" alt="Purdue University ECE 32300 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lab_01.html">1. Introduction to Lab Experiments</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Inductance and Magnetic Circuits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_03.html">3. Electromagnetic Forces (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_04.html">4. Electromagnetic Forces (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_05.html">5. Variable Reluctance Stepper Motor (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_06.html">6. Variable Reluctance Stepper Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_07.html">7. DC Motor (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_08.html">8. DC Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_09.html">9. Permanent Magnet Synchronous Motor (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_10.html">10. Permanent Magnet Synchronous Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_11.html">11. Brushless DC Motor (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_12.html">12. Brushless DC Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_13.html">13. Induction Motors and Two Phase Servo Motors (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_14.html">14. Induction Motors and Two Phase Servo Motors (B)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="contributors.html">Contributors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/lab_02.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Inductance and Magnetic Circuits</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">2.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prelab">2.2. Prelab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-laboratory">2.3. In the Laboratory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inductance-versus-frequency">2.3.1. Inductance versus frequency</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-coil-resistance">Measure coil resistance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-coil-impedance-versus-frequency">Measure coil impedance versus frequency</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-inductance-versus-frequency">Calculate inductance versus frequency</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inductance-versus-position">2.3.2. Inductance versus position</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-coil-impedance-vs-position">Measure coil impedance vs position</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-inductance-versus-position">Calculate inductance versus position</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-k-and-k-0">Calculate <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(k_0\)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postlab">2.4. Postlab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-a-plotting-measured-data">2.5. Appendix A: Plotting Measured Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-b-establishing-analytical-approximation-of-measured-data">2.6. Appendix B: Establishing Analytical Approximation of Measured Data</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p><span class="raw-html"><div class="d-none"></span></p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\newcommand\blank{~\underline{\hspace{1.2cm}}~}
+\newcommand\phase[1]{\enclose{phasorangle}{#1}}
+\newcommand\RE{\mathrm{Re}}
+\newcommand\IM{\mathrm{Im}}\\% Bold symbols (vectors)
+\newcommand\bs[1]{\mathbf{#1}}\\% Poor man's siunitx
+\newcommand\unit[1]{\mathrm{#1}}
+\newcommand\num[1]{#1}
+\newcommand\qty[2]{#1~\unit{#2}}\\\newcommand\per{/}
+\newcommand\squared{{}^2}
+%
+% Scale
+\newcommand\milli{\unit{m}}
+\newcommand\kilo{\unit{k}}
+\newcommand\mega{\unit{M}}
+%
+% Angle
+\newcommand\radian{\unit{rad}}
+\newcommand\degree{\unit{\kern{-0.5ex}{}^\circ}}
+%
+% Time
+\newcommand\second{\unit{s}}
+%
+% Distance
+\newcommand\meter{\unit{m}}
+\newcommand\m{\meter}
+\newcommand\inch{\unit{in}}
+%
+% Mass
+\newcommand\gram{\unit{g}}
+\newcommand\g{\gram}
+%
+% Frequency
+\newcommand\hertz{\unit{Hz}}
+\newcommand\rpm{\unit{rpm}}
+%
+% Voltage
+\newcommand\volt{\unit{V}}
+\newcommand\V{\volt}
+\newcommand\millivolt{\milli\volt}
+\newcommand\mV{\milli\volt}
+\newcommand\kilovolt{\kilo\volt}
+\newcommand\kV{\kilo\volt}
+%
+% Current
+\newcommand\ampere{\unit{A}}
+\newcommand\A{\ampere}
+\newcommand\milliampereA{\milli\ampere}
+\newcommand\mA{\milli\ampere}
+\newcommand\kiloampereA{\kilo\ampere}
+\newcommand\kA{\kilo\ampere}
+%
+% Resistance
+\newcommand\ohm{\Omega}
+\newcommand\milliohm{\milli\ohm}
+\newcommand\kiloohm{\kilo\ohm} % correct SI spelling
+\newcommand\kilohm{\kilo\ohm} % &quot;American&quot; spelling used in siunitx
+\newcommand\megaohm{\mega\ohm} % correct SI spelling
+\newcommand\megohm{\mega\ohm} % &quot;American&quot; spelling used in siunitx
+%
+% Inductance
+\newcommand\henry{\unit{H}}
+\newcommand\H{\henry}
+\newcommand\millihenry{\milli\henry}
+\newcommand\mH{\milli\henry}
+%
+% Power
+\newcommand\watt{\unit{W}}
+\newcommand\W{\watt}
+\newcommand\milliwatt{\milli\watt}
+\newcommand\mW{\milli\watt}
+\newcommand\kilowatt{\kilo\watt}
+\newcommand\kW{\kilo\watt}
+%
+% Torque
+\newcommand\ozin{\unit{oz}\text{-}\unit{in}}
+\newcommand\newtonmeter{\unit{N\text{-}m}}\end{aligned}\end{align} \]</div>
+<p><span class="raw-html"></div></span></p>
+<section class="tex2jax_ignore mathjax_ignore" id="inductance-and-magnetic-circuits">
+<span id="id1"></span><h1><span class="section-number">2. </span>Inductance and Magnetic Circuits<a class="headerlink" href="#inductance-and-magnetic-circuits" title="Permalink to this heading">#</a></h1>
+<div class="note admonition">
+<p class="admonition-title">Objective</p>
+<p>The main objective of this experiment is to analyze a simple magnetic system
+with mechanical motion. In particular, a cylindrical electromechanical relay
+(solenoid) will be analyzed to predict its electromagnetic characteristics. The
+results of the analysis will be compared with measured results.</p>
+</div>
+<section id="introduction">
+<h2><span class="section-number">2.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>In this experiment, we will investigate the electromagnetic properties of a
+cylindrical solenoid. A simplified cutaway view of the solenoid is shown in
+<a class="reference internal" href="#fig-2-1"><span class="std std-numref">Fig. 2.1</span></a>. The coil is wound such that an axial magnetic field is
+produced in the moveable plunger. This magnetic field circulates around the
+outer shell forming closed flux lines.</p>
+<figure class="align-default" id="fig-2-1">
+<a class="reference internal image-reference" href="_images/fig1.png"><img alt="_images/fig1.png" src="_images/fig1.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.1 </span><span class="caption-text">Simplified cutaway view of cylindrical solenoid.</span><a class="headerlink" href="#fig-2-1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>A cross-sectional view of the solenoid along with representative lines of
+magnetic flux are shown in <a class="reference internal" href="#fig-2-2"><span class="std std-numref">Fig. 2.2</span></a>. The strength of the magnetic field
+is dependent upon the amount of current in the coil and the displacement of the
+plunger, <span class="math notranslate nohighlight">\(x\)</span>. In the prelab, it will be shown that the inductance of the coil
+(ratio of flux linking the coil to the current flowing in the coil) may be
+approximated for this solenoid as</p>
+<div class="math notranslate nohighlight" id="equation-eq-solenoid-inductance">
+<span class="eqno">(2.1)<a class="headerlink" href="#equation-eq-solenoid-inductance" title="Permalink to this equation">#</a></span>\[L(x) = L_l + (K/(k_0 + x))\]</div>
+<p>Hopefully, our experimental measurements will confirm the general form of this equation.</p>
+<figure class="align-default" id="fig-2-2">
+<a class="reference internal image-reference" href="_images/fig2.png"><img alt="_images/fig2.png" src="_images/fig2.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.2 </span><span class="caption-text">Simplified cross-sectional view of cylindrical solenoid.</span><a class="headerlink" href="#fig-2-2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="prelab">
+<h2><span class="section-number">2.2. </span>Prelab<a class="headerlink" href="#prelab" title="Permalink to this heading">#</a></h2>
+<p>Before you begin this prelab, it is necessary to be familiar with the material
+in Sections 1.2 and 1.7 of Electromechanical Motion Devices by Krause and
+Wasynczuk (hereafter abbreviated as KWP). If you are currently taking EE321, you
+should read these sections first.  It would be beneficial to read Section 1.4 as
+well.</p>
+<p>In this experiment, we will investigate the electrical properties of the
+solenoid shown in <a class="reference internal" href="#fig-2-1"><span class="std std-numref">Fig. 2.1</span></a>Figure 2-1. The coil is wound such that an
+axial magnetic field is produced in the movable plunger (i.e. along the length
+of the plunger).  This magnetic field crosses the air gap and circulates around
+the outer shell forming closed flux lines as shown in the sideway
+cross-sectional view of <a class="reference internal" href="#fig-2-2"><span class="std std-numref">Fig. 2.2</span></a>. The magnetic flux density is
+dependent upon the amount of current in the coil and the displacement of the
+plunger, <span class="math notranslate nohighlight">\(x\)</span>. In this prelab, we will establish an expression for the
+self-inductance of the coil in terms of the displacement, <span class="math notranslate nohighlight">\(x\)</span>, of the plunger.
+Using this expression, we will later relate the electromagnetic force to the
+current <span class="math notranslate nohighlight">\(i\)</span> and displacement <span class="math notranslate nohighlight">\(x\)</span>. This will be done in the next lab.</p>
+<p>In the following analysis, we will assume that the magnetic materials (plunger,
+outer shell, end plates) have infinite permeability (i.e. <span class="math notranslate nohighlight">\(\mu_r = \infty\)</span>).
+Otherwise, we would have an analytical mess. Also, we will assume that the lines
+of magnetic flux in the air gap between the plunger and the end plate on the
+right-hand side of <a class="reference internal" href="#fig-2-1"><span class="std std-numref">Fig. 2.1</span></a> are uniformly distributed and are
+constrained to the volume whose cross sectional area is equal to that of the
+plunger and whose length is <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p><em>Using these assumptions, establish and express, in terms of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(r_0\)</span>,
+the reluctance of the magnetic circuit associated with the air gap between the
+plunger and right-hand plate</em>}. Specifically, express</p>
+<div class="math notranslate nohighlight" id="equation-eq-reluctance-1">
+<span class="eqno">(2.2)<a class="headerlink" href="#equation-eq-reluctance-1" title="Permalink to this equation">#</a></span>\[\mathcal{R}_1 = (\text{some function of $r_0$ and $x$})\]</div>
+<p>A second air gap exists in the end plate on the left-hand side of
+<a class="reference internal" href="#fig-2-2"><span class="std std-numref">Fig. 2.2</span></a>.  The cross-sectional area of this air gap is <span class="math notranslate nohighlight">\(2\pi(r_0+g) w
+\approx 2\pi r_0 w\)</span> and the length is <span class="math notranslate nohighlight">\(g\)</span>.  <em>Establish and express the
+reluctance associated with the gap <span class="math notranslate nohighlight">\(g\)</span></em>. Specifically,</p>
+<div class="math notranslate nohighlight" id="equation-eq-reluctance-2">
+<span class="eqno">(2.3)<a class="headerlink" href="#equation-eq-reluctance-2" title="Permalink to this equation">#</a></span>\[\mathcal{R}_2 = (\text{some function fo $g$, $w$, and $r_0$})\]</div>
+<figure class="align-default" id="fig-2-3">
+<a class="reference internal image-reference" href="_images/fig1.png"><img alt="_images/fig1.png" src="_images/fig1.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.3 </span><span class="caption-text">Simplified cutaway view of cylindrical solenoid.</span><a class="headerlink" href="#fig-2-3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="fig-2-4">
+<a class="reference internal image-reference" href="_images/fig2.png"><img alt="_images/fig2.png" src="_images/fig2.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.4 </span><span class="caption-text">Simplified cross-sectional view of cylindrical solenoid.</span><a class="headerlink" href="#fig-2-4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Let <span class="math notranslate nohighlight">\(N\)</span> represent the total number of turns associated with the coil. The
+self-inductance may be expressed as</p>
+<div class="math notranslate nohighlight" id="equation-eq-solenoid-self-inductance">
+<span class="eqno">(2.4)<a class="headerlink" href="#equation-eq-solenoid-self-inductance" title="Permalink to this equation">#</a></span>\[L(x) = \frac{N^2}{\mathcal{R}(x)}\]</div>
+<p>Relate <span class="math notranslate nohighlight">\(K\)</span> and to the geometric variables <span class="math notranslate nohighlight">\(g\)</span>, <span class="math notranslate nohighlight">\(r_0\)</span>, and <span class="math notranslate nohighlight">\(w\)</span>.</p>
+<div class="math notranslate nohighlight" id="equation-eq-k">
+<span class="eqno">(2.5)<a class="headerlink" href="#equation-eq-k" title="Permalink to this equation">#</a></span>\[K = \blank \henry\meter\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-k-0">
+<span class="eqno">(2.6)<a class="headerlink" href="#equation-eq-k-0" title="Permalink to this equation">#</a></span>\[k_0 = \blank \meter\]</div>
+<p>Using the following parameters, calculate <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(k_0\)</span> (in metric units).
+Using <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(k_0\)</span> in metric units, plot the inductance versus position from 0
+to <span class="math notranslate nohighlight">\(\qty{0.0127}{\meter}\)</span> (<span class="math notranslate nohighlight">\(\qty{1/2}{\inch}\)</span>).</p>
+<table class="colwidths-auto table" id="tab-2-1-prelab-model-parameters">
+<caption><span class="caption-number">Table 2.1 </span><span class="caption-text">Solenoid inductance model parameters.</span><a class="headerlink" href="#tab-2-1-prelab-model-parameters" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="text-right head"><p>N</p></th>
+<th class="text-right head"><p>g</p></th>
+<th class="text-right head"><p><span class="math notranslate nohighlight">\(r_0\)</span></p></th>
+<th class="text-right head"><p>w</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>3740</p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(\qty{0.0045}{\inch}\)</span></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(\qty{0.21}{\inch}\)</span></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(\qty{0.48}{\inch}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p><span class="math notranslate nohighlight">\(\mu_0 = 4\pi \times 10^{-7} \henry\per\meter\)</span> (Henries/meter). Watch units
+when calculating inductance.</p>
+</div>
+<p>Let <span class="math notranslate nohighlight">\(v\)</span> be the voltage applied to the coil. Express the voltage equation in the form</p>
+<div class="math notranslate nohighlight" id="equation-eq-solenoid-voltage-equation">
+<span class="eqno">(2.7)<a class="headerlink" href="#equation-eq-solenoid-voltage-equation" title="Permalink to this equation">#</a></span>\[\frac{di}{dt} = (\text{some function of $x$, $i$, $v$, and $\frac{dx}{dt}$})\]</div>
+<div class="hint admonition">
+<p class="admonition-title">Hint</p>
+<p>Apply Product and Chain rules of differentiation to <span class="math notranslate nohighlight">\(\displaystyle{v = ri+\frac{d}{dt}[L(x)i]}\)</span>.</p>
+</div>
+<p>You should also read through the experiment and postlab sections before coming to the laboratory.</p>
+</section>
+<section id="in-the-laboratory">
+<h2><span class="section-number">2.3. </span>In the Laboratory<a class="headerlink" href="#in-the-laboratory" title="Permalink to this heading">#</a></h2>
+<section id="inductance-versus-frequency">
+<h3><span class="section-number">2.3.1. </span>Inductance versus frequency<a class="headerlink" href="#inductance-versus-frequency" title="Permalink to this heading">#</a></h3>
+<p>Our first objective in the laboratory will be to measure the inductance of the
+coil at various frequencies using a sinusoidal applied voltage.  To set the
+position to <span class="math notranslate nohighlight">\(x=0\)</span>, remove the screw completely. Then hold the plunger against
+its stop and reinsert the screw turning it until it makes contact with the
+plunger. Each subsequent turn increases <span class="math notranslate nohighlight">\(x\)</span> by <span class="math notranslate nohighlight">\(\qty{1/32}{\inch}\)</span>.  However, we
+will initially want <span class="math notranslate nohighlight">\(x=0\)</span>.</p>
+<section id="measure-coil-resistance">
+<h4>Measure coil resistance<a class="headerlink" href="#measure-coil-resistance" title="Permalink to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>Determine the patch panel voltage and current offset by measuring the current
+and voltage out of Channel 3 with no voltage applied. Be sure to subtract
+this offset from your voltage and current values when calculating the
+resistance.</p></li>
+<li><p>Create a Simulink model such that Real Time Workshop will provide a DC signal
+to Channel 3. Apply <span class="math notranslate nohighlight">\(\qty{12}{\volt}\)</span> DC to the solenoid coil.</p></li>
+<li><p>Measure the DC current flowing though the coil. Note: keep current probe away
+from the magnetic field of the solenoid.</p></li>
+<li><p>Calculate the coil resistance <span class="math notranslate nohighlight">\(R = V/I\)</span>.</p></li>
+</ol>
+</section>
+<section id="measure-coil-impedance-versus-frequency">
+<h4>Measure coil impedance versus frequency<a class="headerlink" href="#measure-coil-impedance-versus-frequency" title="Permalink to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>Create a Simulink model such that Real Time Workshop will provide a sine wave
+to Channel 3.</p></li>
+<li><p>Generate a <span class="math notranslate nohighlight">\(10\)</span>-<span class="math notranslate nohighlight">\(\volt\)</span> zero to peak (<span class="math notranslate nohighlight">\(\qty{10}{\volt}\)</span> amplitude)
+<span class="math notranslate nohighlight">\(1\)</span>-<span class="math notranslate nohighlight">\(\hertz\)</span> sine wave. Connect the amplifier output to the solenoid and
+measure the voltage with the oscilloscope. Make sure the solenoid plunger is
+completely in (at <span class="math notranslate nohighlight">\(x = 0\)</span>). Measure the peak-to-peak solenoid current with
+the oscilloscope.</p></li>
+<li><p>Repeat the current measurement at higher frequencies (<span class="math notranslate nohighlight">\(1\)</span>, <span class="math notranslate nohighlight">\(2\)</span>, <span class="math notranslate nohighlight">\(4\)</span>, <span class="math notranslate nohighlight">\(7\)</span>,
+<span class="math notranslate nohighlight">\(10\)</span>, <span class="math notranslate nohighlight">\(20\)</span>, <span class="math notranslate nohighlight">\(40\)</span>, <span class="math notranslate nohighlight">\(70\)</span>, and <span class="math notranslate nohighlight">\(\qty{100}{\hertz}\)</span>). Double check that the
+frequency inputted into Simulink is in converted to <span class="math notranslate nohighlight">\(\radian\per\second\)</span>.</p></li>
+</ol>
+</section>
+<section id="calculate-inductance-versus-frequency">
+<h4>Calculate inductance versus frequency<a class="headerlink" href="#calculate-inductance-versus-frequency" title="Permalink to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>Calculate the impedance <span class="math notranslate nohighlight">\(Z\)</span> at each frequency by taking the ratio of
+peak-to-peak voltage (<span class="math notranslate nohighlight">\(\qty{20}{\volt}\)</span>) to the measured peak-to-peak
+current.</p>
+</li>
+<li><p>Plot impedance magnitude versus frequency. This may be accomplished with the
+help of Matlab. A sample set of Matlab instructions is given in
+<a class="reference internal" href="#appendix-a"><span class="std std-ref">Appendix A</span></a>.</p></li>
+<li><p>Establish the solenoid’s inductance from the magnitude of impedance at each
+frequency.  Record the largest value for use in the postlab.  (Hint: what
+should the plot look like when <span class="math notranslate nohighlight">\(\left | Z \right | = \left | r + j \omega L
+\right| =   \sqrt{r^2 + \omega_e^2 L^2}\)</span> is plotted as a function of
+<span class="math notranslate nohighlight">\(\omega_e\)</span>)</p></li>
+</ol>
+</section>
+</section>
+<section id="inductance-versus-position">
+<h3><span class="section-number">2.3.2. </span>Inductance versus position<a class="headerlink" href="#inductance-versus-position" title="Permalink to this heading">#</a></h3>
+<p>Our next objective in the laboratory will be to measure the inductance of the
+coil at various mechanical displacements.</p>
+<section id="measure-coil-impedance-vs-position">
+<h4>Measure coil impedance vs position<a class="headerlink" href="#measure-coil-impedance-vs-position" title="Permalink to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>Use the sine wave generator Simulink model to provide a sine wave to Channel
+3.</p></li>
+<li><p>Generate a <span class="math notranslate nohighlight">\(10\)</span>-<span class="math notranslate nohighlight">\(\volt\)</span> (zero to peak) <span class="math notranslate nohighlight">\(10\)</span>-<span class="math notranslate nohighlight">\(\hertz\)</span> sine wave using the
+power amplifier.</p></li>
+<li><p>Connect the patch panel output to the solenoid and measure peak-to-peak solenoid
+voltage with the oscilloscope.</p></li>
+<li><p>Position the solenoid plunger at <span class="math notranslate nohighlight">\(x = 0\)</span> (all the way in).</p></li>
+<li><p>Measure the peak-to-peak solenoid current with the oscilloscope.</p></li>
+<li><p>Repeat the current measurements by extending the plunger from <span class="math notranslate nohighlight">\(0\)</span> to
+<span class="math notranslate nohighlight">\(\qty{1/2}{\inch}\)</span> in <span class="math notranslate nohighlight">\(\qty{1/32}{\inch}\)</span> increments (<span class="math notranslate nohighlight">\(1\)</span> turn of set screw =
+<span class="math notranslate nohighlight">\(\qty{1/32}{\inch}\)</span>).</p></li>
+</ol>
+</section>
+<section id="calculate-inductance-versus-position">
+<h4>Calculate inductance versus position<a class="headerlink" href="#calculate-inductance-versus-position" title="Permalink to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>Calculate the solenoid inductance at each position [Hint: <span class="math notranslate nohighlight">\(\left| Z \right| =
+\sqrt{r^2 + (\omega_e L)^2}\)</span>].  This may be accomplished with the help of
+Matlab. A sample set of Matlab instructions is given in <a class="reference internal" href="#appendix-a"><span class="std std-ref">Appendix
+A</span></a>.</p></li>
+<li><p>Plot the inductance versus plunger position.</p></li>
+</ol>
+</section>
+<section id="calculate-k-and-k-0">
+<h4>Calculate <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(k_0\)</span><a class="headerlink" href="#calculate-k-and-k-0" title="Permalink to this heading">#</a></h4>
+<p>Carefully examine the numerical procedure described in <a class="reference internal" href="#appendix-b"><span class="std std-ref">Appendix B</span></a>.</p>
+<ol class="arabic">
+<li><p>Using the data for inductance versus position obtained above, define <code class="docutils literal notranslate"><span class="pre">x</span></code> and
+<code class="docutils literal notranslate"><span class="pre">L_meas</span></code> in Matlab.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="k">...</span><span class="c">]&#39;;</span>
+<span class="n">L_meas</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="k">...</span><span class="c">]&#39;;</span>
+</pre></div>
+</div>
+<p>Make sure that <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">L_meas</span></code> are column vectors. Transpose them if they
+are row vectors.</p>
+</li>
+<li><p>Define the initial guess vector for <span class="math notranslate nohighlight">\(a = \begin{bmatrix} L_l &amp; K &amp; k_0
+\end{bmatrix}'\)</span>.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0.001</span><span class="w"> </span><span class="mf">0.001</span><span class="w"> </span><span class="mf">0.0001</span><span class="p">]</span><span class="o">&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Call the solenoid function <span class="math notranslate nohighlight">\(20\)</span> times to iterate to a final value for
+<span class="math notranslate nohighlight">\(\begin{bmatrix} L_l &amp; K &amp; k_0 \end{bmatrix}'\)</span>.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">20</span>
+<span class="w">    </span><span class="p">[</span><span class="n">a_new</span><span class="p">,</span><span class="w"> </span><span class="n">L_fit</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">solenoid</span><span class="p">(</span><span class="n">L_meas</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">);</span>
+<span class="w">    </span><span class="n">a</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a_new</span><span class="p">;</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</li>
+<li><p>Plot the fitted and measured inductance versus position on a single plot.
+These plots should agree. If not, repeat with smaller values in the initial
+guess vector.</p></li>
+<li><p>Record the final values of <span class="math notranslate nohighlight">\(L_l\)</span>, <span class="math notranslate nohighlight">\(K\)</span>, and <span class="math notranslate nohighlight">\(k_0\)</span>. These are the final
+converged values in <code class="docutils literal notranslate"><span class="pre">a</span></code>.</p></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="postlab">
+<h2><span class="section-number">2.4. </span>Postlab<a class="headerlink" href="#postlab" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Plot the measured impedance-versus-frequency characteristics with <span class="math notranslate nohighlight">\(x=0\)</span>.
+Superimpose the calculated impedance-versus-frequency characteristics of an
+ideal circuit using the largest value of inductance from your <span class="math notranslate nohighlight">\(\left | Z
+\right |\)</span> versus <span class="math notranslate nohighlight">\(\omega_e\)</span> data. Describe the differences.</p></li>
+<li><p>The deviations that should be observed in 1., may be attributed to eddy
+currents induced in the plunger. The presence of eddy currents may be
+explained with reference to <a class="reference internal" href="#fig-2-5"><span class="std std-numref">Fig. 2.5</span></a>. Assume the current in the coil
+is increasing with respect to time in accordance with the reference direction
+shown in <a class="reference internal" href="#fig-2-5"><span class="std std-numref">Fig. 2.5</span></a>. This will cause the flux to increase in the
+direction shown (determined by the right-hand rule).  The plunger is made of
+magnetic steel, which is a good conductor. Currents will be induced in the
+plunger to oppose the increase in flux – this is Lenz’s law. These currents
+are shown in <a class="reference internal" href="#fig-2-5"><span class="std std-numref">Fig. 2.5</span></a> as dots and crosses but in reality they are
+continuously distributed inside the plunger. We could calculate these
+currents using Maxwell’s equations, but this would be a non-trivial task even
+for an experienced “magneticist”. We will not do this, but we must
+acknowledge the presence of these currents. Since these eddy currents oppose
+changes in flux, what effect would they have upon the
+impedance-versus-frequency characteristics when compared to the case where
+eddy currents do not exist, which would occur if the plunger were made of a
+nonconductive material?  Explain briefly.</p>
+<figure class="align-default" id="fig-2-5">
+<a class="reference internal image-reference" href="_images/fig4.png"><img alt="_images/fig4.png" src="_images/fig4.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.5 </span><span class="caption-text">Simplified cross-sectional view of cylindrical solenoid illustrating eddy
+currents and flux lines.</span><a class="headerlink" href="#fig-2-5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>For low frequencies, the induced eddy currents will be small because the flux
+does not change very rapidly. Therefore, they may be ignored. However, if the
+frequency is too small, it is difficult to extract the inductance from using
+the formula. Why? Explain briefly.</p></li>
+<li><p>Based upon the measured impedance-versus-frequency characteristics, for what
+frequency or range of frequencies would you expect the formula to give an
+accurate measure of the DC or low-frequency inductance?</p></li>
+<li><p>Why does the solenoid inductance decrease as the air gap increases?</p></li>
+<li><p>How does the assumption that the magnetic materials have infinite
+permeability affect the inductance?</p></li>
+<li><p>How would saturation affect the inductance?</p></li>
+<li><p>How could we determine whether magnetic saturation affected our results (e.g.
+what additional data might we measure)? Hint: saturation is a nonlinear
+phenomenon.  If a sinusoidal voltage is applied to a nonlinear inductor, do
+you expect the current to be sinusoidal?</p></li>
+</ol>
+</section>
+<section id="appendix-a-plotting-measured-data">
+<span id="appendix-a"></span><h2><span class="section-number">2.5. </span>Appendix A: Plotting Measured Data<a class="headerlink" href="#appendix-a-plotting-measured-data" title="Permalink to this heading">#</a></h2>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Plotting Impedance versus Frequency. Calculating Inductance</span>
+<span class="n">freq</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">100</span><span class="p">]</span><span class="o">&#39;</span><span class="p">;</span>
+<span class="n">omega_vector</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="n">freq</span><span class="p">;</span>
+<span class="n">r</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">measured</span><span class="w"> </span><span class="n">resistance</span><span class="p">;</span>
+<span class="n">v1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">Your</span><span class="w"> </span><span class="n">Data</span><span class="w"> </span><span class="n">Points</span><span class="w"> </span><span class="n">seperated</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">commas</span><span class="p">]</span><span class="o">&#39;</span><span class="p">;</span><span class="w"> </span><span class="c">% Volts (Peak-to-Peak)</span>
+<span class="n">ipeak1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">Your</span><span class="w"> </span><span class="n">Data</span><span class="w"> </span><span class="n">Points</span><span class="w"> </span><span class="n">seperated</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">commas</span><span class="p">]</span><span class="o">&#39;</span><span class="p">;</span><span class="w"> </span><span class="c">% Amperes (Peak-to-Peak)</span>
+<span class="n">z1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">v1</span><span class="o">./</span><span class="n">ipeak1</span><span class="p">;</span>
+<span class="n">L_vs_f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="n">z1</span><span class="o">.^</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">r</span>^<span class="mi">2</span><span class="p">)</span><span class="o">./</span><span class="n">omega_vector</span><span class="p">;</span>
+<span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span><span class="n">z1</span><span class="p">,</span><span class="s">&#39;*&#39;</span><span class="p">)</span>
+
+<span class="c">% Plotting Inductance versus Position</span>
+<span class="n">omega_constant</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="o">*</span><span class="mi">10</span><span class="p">;</span>
+<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">16</span><span class="p">]</span><span class="o">&#39;</span><span class="p">;</span>
+<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="o">/</span><span class="mi">32</span><span class="p">;</span><span class="w"> </span><span class="c">% Convert to Inches</span>
+<span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="o">/</span><span class="mf">39.37</span><span class="p">;</span><span class="w"> </span><span class="c">% Convert to Meters</span>
+<span class="n">v2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"> </span><span class="c">% Volts (Peak-to-peak)</span>
+<span class="n">ipeak2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">Your</span><span class="w"> </span><span class="n">Data</span><span class="w"> </span><span class="n">Points</span><span class="w"> </span><span class="n">seperated</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="n">commas</span><span class="p">]</span><span class="o">&#39;</span><span class="p">;</span><span class="w"> </span><span class="c">% Amperes (Peak-to-Peak)</span>
+<span class="n">z2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">v2</span><span class="o">./</span><span class="n">ipeak2</span><span class="p">;</span>
+<span class="n">L_vs_pos</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="n">z2</span><span class="o">.^</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">r</span>^<span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">omega_constant</span><span class="p">;</span>
+<span class="nb">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">L_vs_pos</span><span class="p">,</span><span class="s">&#39;*&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="appendix-b-establishing-analytical-approximation-of-measured-data">
+<span id="appendix-b"></span><h2><span class="section-number">2.6. </span>Appendix B: Establishing Analytical Approximation of Measured Data<a class="headerlink" href="#appendix-b-establishing-analytical-approximation-of-measured-data" title="Permalink to this heading">#</a></h2>
+<p>It is desired to approximate the inductance in the form</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-inductance-approximation">
+<span class="eqno">(2.8)<a class="headerlink" href="#equation-eq-2-inductance-approximation" title="Permalink to this equation">#</a></span>\[L(x) = L_l + \frac{K}{k_0 + x}\]</div>
+<p>where <span class="math notranslate nohighlight">\(L_l\)</span> represents stray or leakage inductance. Equivalently,</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-inductance-approximation-2">
+<span class="eqno">(2.9)<a class="headerlink" href="#equation-eq-2-inductance-approximation-2" title="Permalink to this equation">#</a></span>\[L(x) = a_1 + \frac{a_2}{a_3 + x}\]</div>
+<p>Define <span class="math notranslate nohighlight">\(e_i\)</span> as the difference between the calculated and measured inductances at <span class="math notranslate nohighlight">\(x_i\)</span></p>
+<div class="math notranslate nohighlight" id="equation-eq-2-residual">
+<span class="eqno">(2.10)<a class="headerlink" href="#equation-eq-2-residual" title="Permalink to this equation">#</a></span>\[e_i = a_1 + \frac{a_2}{a_3 + x} - L_i\]</div>
+<p>Define <span class="math notranslate nohighlight">\(E\)</span> as</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-residual-sum">
+<span class="eqno">(2.11)<a class="headerlink" href="#equation-eq-2-residual-sum" title="Permalink to this equation">#</a></span>\[E
+= \sum\limits_{i = 1}^N (e_i)^2
+= \sum\limits_{i = 1}^N (a_1 + \frac{a_2}{a_3 + x_i} - L_i)^2 \]</div>
+<p>where <span class="math notranslate nohighlight">\(N\)</span> is the total number of measured data points. The values of <span class="math notranslate nohighlight">\(a_1\)</span>,
+<span class="math notranslate nohighlight">\(a_2\)</span>, and <span class="math notranslate nohighlight">\(a_3\)</span> that minimize <span class="math notranslate nohighlight">\(E\)</span>, satisfy the following equations</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-partial-derivatives">
+<span class="eqno">(2.12)<a class="headerlink" href="#equation-eq-2-partial-derivatives" title="Permalink to this equation">#</a></span>\[0
+= \frac{\partial E}{\partial a_1}
+= \sum\limits_{i = 1}^N 2\left( a_1 + \frac{a_2}{a_3 + x_i} - L_i \right)
+= f_1(a_1,a_2,a_3)\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-2-partial-derivatives-2">
+<span class="eqno">(2.13)<a class="headerlink" href="#equation-eq-2-partial-derivatives-2" title="Permalink to this equation">#</a></span>\[0
+= \frac{\partial E}{\partial a_2}
+= \sum\limits_{i = 1}^N 2\left( a_1 + \frac{a_2}{a_3 + x_i} - L_i \right) \frac{1}{a_3 + x_i}
+= f_2(a_1,a_2,a_3)\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-2-partial-derivatives-3">
+<span class="eqno">(2.14)<a class="headerlink" href="#equation-eq-2-partial-derivatives-3" title="Permalink to this equation">#</a></span>\[0
+= \frac{\partial E}{\partial a_3}
+= \sum\limits_{i = 1}^N 2\left( a_1 + \frac{a_2}{a_3 + x_i} - L_i \right) \frac{1}{(a_3 + x_i)^2}
+= f_3(a_1,a_2,a_3)\]</div>
+<p>Symbolically,</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-partial-derivatives-symbolic">
+<span class="eqno">(2.15)<a class="headerlink" href="#equation-eq-2-partial-derivatives-symbolic" title="Permalink to this equation">#</a></span>\[\bs{0} = \bs{f}(\bs{a})\]</div>
+<p>Taylor series gives</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-taylor-series">
+<span class="eqno">(2.16)<a class="headerlink" href="#equation-eq-2-taylor-series" title="Permalink to this equation">#</a></span>\[\bs{0}
+= \bs{f}(\bs{a}_\text{guess})
++ \left. \frac{\partial \bs{f}}{\partial \bs{a}} \right|_{\bs{a}_\text{guess}}
+  \left( \bs{a} - \bs{a}_\text{guess} \right)
++ \cdots \]</div>
+<p>Rearranging</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-rearrange">
+<span class="eqno">(2.17)<a class="headerlink" href="#equation-eq-2-rearrange" title="Permalink to this equation">#</a></span>\[\bs{a}
+\approx \bs{a}_\text{guess}
++ \left. \frac{\partial \bs{f}}{\partial \bs{a}} \right|_{\bs{a}_\text{guess}}^{-1}\bs{f}
+  (\bs{a}_\text{guess})
+=\bf a_\text{new}\]</div>
+<p>The previous equation defines an iterative method of estimating <span class="math notranslate nohighlight">\(\textbf{a}\)</span>,
+given an initial guess, <span class="math notranslate nohighlight">\(\textbf{a}_{\rm guess}\)</span>. A printout of a Matlab
+function which calculates given is attached.  This function is stored in the
+file <code class="file docutils literal notranslate"><span class="pre">solenoid.m</span></code>. This function may be called repeatedly (each time
+replacing <span class="math notranslate nohighlight">\(\textbf{a}_{\rm guess}\)</span> with <span class="math notranslate nohighlight">\(\textbf{a}_{\rm new}\)</span>) until
+<span class="math notranslate nohighlight">\(\textbf{a}_{\rm new}\)</span> converges to <span class="math notranslate nohighlight">\({\bf a}\)</span>.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="nf">[a_new, L_fitted] = solenoid</span><span class="p">(</span>L_meas,x,a<span class="p">);</span>
+<span class="w">    </span><span class="c">% L_meas = n vector of measured inductances</span>
+<span class="w">    </span><span class="c">% x = n vector of displacements</span>
+<span class="w">    </span><span class="c">% a = Initial guess vector of fitted parameters</span>
+<span class="w">    </span><span class="c">% a_new = Better guess vector of fitted parameters</span>
+<span class="w">    </span><span class="c">% L_fitted(i) = n vector of fitted inductances</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">N</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">L_meas</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c">% Calculate residual and Jacobian</span>
+<span class="w">    </span><span class="n">F</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c">% 3*1 vector</span>
+<span class="w">    </span><span class="n">J</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span><span class="w"> </span><span class="c">% 3*3 vector</span>
+<span class="w">    </span><span class="n">L_fitted</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">N</span>
+<span class="w">        </span><span class="n">F</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">F</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">L_meas</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">)));</span>
+<span class="w">        </span><span class="n">F</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">F</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">L_meas</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">)))</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">+</span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">));</span>
+<span class="w">        </span><span class="n">F</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">F</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">L_meas</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">)))</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">+</span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">))</span>^<span class="mi">2</span><span class="p">;</span>
+
+<span class="w">        </span><span class="n">J</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">N</span><span class="p">;</span>
+<span class="w">        </span><span class="n">J</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">J</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">+</span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">));</span>
+<span class="w">        </span><span class="n">J</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">J</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">+</span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">))</span>^<span class="mi">2</span><span class="p">;</span>
+
+<span class="w">        </span><span class="n">J</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">J</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">+</span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">));</span>
+<span class="w">        </span><span class="n">J</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">J</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">+</span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">))</span>^<span class="mi">2</span><span class="p">;</span>
+<span class="w">        </span><span class="n">J</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">J</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">+</span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">))</span>^<span class="mi">3</span><span class="p">;</span>
+
+<span class="w">        </span><span class="n">J</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">J</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">+</span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">))</span>^<span class="mi">2</span><span class="p">;</span>
+<span class="w">        </span><span class="n">J</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">J</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">+</span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">))</span>^<span class="mi">3</span><span class="p">;</span>
+<span class="w">        </span><span class="n">J</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">J</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">+</span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">))</span>^<span class="mi">4</span><span class="p">;</span><span class="w">        </span>
+<span class="w">    </span><span class="k">end</span><span class="w"> </span>
+
+<span class="w">    </span><span class="c">% Update</span>
+<span class="w">    </span><span class="n">a_new</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">inv</span><span class="p">(</span><span class="n">J</span><span class="p">)</span><span class="o">*</span><span class="n">F</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c">% Calculate fitted inductance</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">n</span>
+<span class="w">        </span><span class="n">L_fitted</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">a_new</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a_new</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">a_new</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">));</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">return</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab_01.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Introduction to Lab Experiments</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab_03.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Electromagnetic Forces (A)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">2.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prelab">2.2. Prelab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-laboratory">2.3. In the Laboratory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inductance-versus-frequency">2.3.1. Inductance versus frequency</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-coil-resistance">Measure coil resistance</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-coil-impedance-versus-frequency">Measure coil impedance versus frequency</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-inductance-versus-frequency">Calculate inductance versus frequency</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inductance-versus-position">2.3.2. Inductance versus position</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#measure-coil-impedance-vs-position">Measure coil impedance vs position</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-inductance-versus-position">Calculate inductance versus position</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-k-and-k-0">Calculate <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(k_0\)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postlab">2.4. Postlab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-a-plotting-measured-data">2.5. Appendix A: Plotting Measured Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-b-establishing-analytical-approximation-of-measured-data">2.6. Appendix B: Establishing Analytical Approximation of Measured Data</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href="contributors.html">Contributors</a>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

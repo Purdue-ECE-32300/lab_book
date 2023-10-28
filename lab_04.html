@@ -1,0 +1,769 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>4. Electromagnetic Forces (B) &#8212; Purdue University ECE 32300</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lab_04';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. Variable Reluctance Stepper Motor (A)" href="lab_05.html" />
+    <link rel="prev" title="3. Electromagnetic Forces (A)" href="lab_03.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/323logo.png" class="logo__image only-light" alt="Purdue University ECE 32300 - Home"/>
+    <script>document.write(`<img src="_static/323logo.png" class="logo__image only-dark" alt="Purdue University ECE 32300 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lab_01.html">1. Introduction to Lab Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_02.html">2. Inductance and Magnetic Circuits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_03.html">3. Electromagnetic Forces (A)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Electromagnetic Forces (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_05.html">5. Variable Reluctance Stepper Motor (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_06.html">6. Variable Reluctance Stepper Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_07.html">7. DC Motor (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_08.html">8. DC Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_09.html">9. Permanent Magnet Synchronous Motor (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_10.html">10. Permanent Magnet Synchronous Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_11.html">11. Brushless DC Motor (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_12.html">12. Brushless DC Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_13.html">13. Induction Motors and Two Phase Servo Motors (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_14.html">14. Induction Motors and Two Phase Servo Motors (B)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="contributors.html">Contributors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/lab_04.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Electromagnetic Forces (B)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">4.1. Introduction:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prelab">4.2. Prelab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-laboratory">4.3. In the Laboratory:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solenoid-dynamics">4.3.1. Solenoid Dynamics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-plunger-pull-in-time">4.3.2. Measuring Plunger Pull-In Time</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postlab">4.4. Postlab</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p><span class="raw-html"><div class="d-none"></span></p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\newcommand\blank{~\underline{\hspace{1.2cm}}~}
+\newcommand\phase[1]{\enclose{phasorangle}{#1}}
+\newcommand\RE{\mathrm{Re}}
+\newcommand\IM{\mathrm{Im}}\\% Bold symbols (vectors)
+\newcommand\bs[1]{\mathbf{#1}}\\% Poor man's siunitx
+\newcommand\unit[1]{\mathrm{#1}}
+\newcommand\num[1]{#1}
+\newcommand\qty[2]{#1~\unit{#2}}\\\newcommand\per{/}
+\newcommand\squared{{}^2}
+%
+% Scale
+\newcommand\milli{\unit{m}}
+\newcommand\kilo{\unit{k}}
+\newcommand\mega{\unit{M}}
+%
+% Angle
+\newcommand\radian{\unit{rad}}
+\newcommand\degree{\unit{\kern{-0.5ex}{}^\circ}}
+%
+% Time
+\newcommand\second{\unit{s}}
+%
+% Distance
+\newcommand\meter{\unit{m}}
+\newcommand\m{\meter}
+\newcommand\inch{\unit{in}}
+%
+% Mass
+\newcommand\gram{\unit{g}}
+\newcommand\g{\gram}
+%
+% Frequency
+\newcommand\hertz{\unit{Hz}}
+\newcommand\rpm{\unit{rpm}}
+%
+% Voltage
+\newcommand\volt{\unit{V}}
+\newcommand\V{\volt}
+\newcommand\millivolt{\milli\volt}
+\newcommand\mV{\milli\volt}
+\newcommand\kilovolt{\kilo\volt}
+\newcommand\kV{\kilo\volt}
+%
+% Current
+\newcommand\ampere{\unit{A}}
+\newcommand\A{\ampere}
+\newcommand\milliampereA{\milli\ampere}
+\newcommand\mA{\milli\ampere}
+\newcommand\kiloampereA{\kilo\ampere}
+\newcommand\kA{\kilo\ampere}
+%
+% Resistance
+\newcommand\ohm{\Omega}
+\newcommand\milliohm{\milli\ohm}
+\newcommand\kiloohm{\kilo\ohm} % correct SI spelling
+\newcommand\kilohm{\kilo\ohm} % &quot;American&quot; spelling used in siunitx
+\newcommand\megaohm{\mega\ohm} % correct SI spelling
+\newcommand\megohm{\mega\ohm} % &quot;American&quot; spelling used in siunitx
+%
+% Inductance
+\newcommand\henry{\unit{H}}
+\newcommand\H{\henry}
+\newcommand\millihenry{\milli\henry}
+\newcommand\mH{\milli\henry}
+%
+% Power
+\newcommand\watt{\unit{W}}
+\newcommand\W{\watt}
+\newcommand\milliwatt{\milli\watt}
+\newcommand\mW{\milli\watt}
+\newcommand\kilowatt{\kilo\watt}
+\newcommand\kW{\kilo\watt}
+%
+% Torque
+\newcommand\ozin{\unit{oz}\text{-}\unit{in}}
+\newcommand\newtonmeter{\unit{N\text{-}m}}\end{aligned}\end{align} \]</div>
+<p><span class="raw-html"></div></span></p>
+<section class="tex2jax_ignore mathjax_ignore" id="electromagnetic-forces-b">
+<span id="id1"></span><h1><span class="section-number">4. </span>Electromagnetic Forces (B)<a class="headerlink" href="#electromagnetic-forces-b" title="Permalink to this heading">#</a></h1>
+<div class="note admonition">
+<p class="admonition-title">Objective</p>
+<p>The objective of this experiment is to study the interaction between electrical
+and mechanical systems that are coupled magnetically.  The electromechanical
+relay (solenoid) studied in <a class="reference internal" href="lab_02.html#inductance-and-magnetic-circuits"><span class="std std-numref">Experiment 2</span></a> will be analyzed to predict its steady-state
+force-versus-position and force-versus-current characteristics.  Moreover,
+computer simulation will be used to predict its dynamic force-versus-time
+characteristics. The analytical and simulated results will be compared with
+laboratory measurements.</p>
+</div>
+<figure class="align-default" id="fig-4-lab-setup">
+<img alt="_images/fig1n1.png" src="_images/fig1n1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 4.1 </span><span class="caption-text">Setup for <a class="reference internal" href="#electromagnetic-forces-b"><span class="std std-numref">Experiment 4</span></a>.</span><a class="headerlink" href="#fig-4-lab-setup" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="introduction">
+<h2><span class="section-number">4.1. </span>Introduction:<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>In this lab, we will consider the cylindrical solenoid depicted in
+<a class="reference internal" href="#fig-4-solenoid-cross-section"><span class="std std-numref">Fig. 4.2</span></a>.  In the previous experiment, it was
+shown that the self-inductance can be approximated as</p>
+<div class="math notranslate nohighlight" id="equation-eq-4-solenoid-inductance">
+<span class="eqno">(4.1)<a class="headerlink" href="#equation-eq-4-solenoid-inductance" title="Permalink to this equation">#</a></span>\[L(x) = L_l + \frac{K}{k_0+x}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(k_0\)</span> are assumed to be known constants and <span class="math notranslate nohighlight">\(L_l\)</span> is the leakage
+inductance.  In the prelab, we will establish an expression for force versus
+position and express the electrical and mechanical equations in state-space
+form.</p>
+<figure class="align-default" id="fig-4-solenoid-cross-section">
+<a class="reference internal image-reference" href="_images/fig2n.png"><img alt="_images/fig2n.png" src="_images/fig2n.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4.2 </span><span class="caption-text">Simplified cross-sectional view of cylindrical solenoid.</span><a class="headerlink" href="#fig-4-solenoid-cross-section" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Hopefully, our experimental measurements will confirm the general form of this
+equation.</p>
+</section>
+<section id="prelab">
+<span id="prelab-electromagnetic-forces-b"></span><h2><span class="section-number">4.2. </span>Prelab<a class="headerlink" href="#prelab" title="Permalink to this heading">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(M\)</span> denote the mass of the plunger and <span class="math notranslate nohighlight">\(f\)</span> the externally applied force
+(<a class="reference internal" href="#fig-4-solenoid-cross-section"><span class="std std-numref">Fig. 4.2</span></a>).  Newton’s law of motion may be expressed.</p>
+<div class="math notranslate nohighlight" id="equation-eq-4-newtons-law">
+<span class="eqno">(4.2)<a class="headerlink" href="#equation-eq-4-newtons-law" title="Permalink to this equation">#</a></span>\[f + f_e(i,x) = M\frac{d^2x}{dt^2}\]</div>
+<p>This second-order differential equation may be expressed as two first-order
+equations</p>
+<div class="math notranslate nohighlight" id="equation-eq-4-mechanical-differential1">
+<span class="eqno">(4.3)<a class="headerlink" href="#equation-eq-4-mechanical-differential1" title="Permalink to this equation">#</a></span>\[\frac{dv_x}{dt}=\frac{1}{M}\left[ f_e(i,x)+f\right]\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-4-mechanical-differential2">
+<span class="eqno">(4.4)<a class="headerlink" href="#equation-eq-4-mechanical-differential2" title="Permalink to this equation">#</a></span>\[\frac{dx}{dt} = v_x\]</div>
+<p>where <span class="math notranslate nohighlight">\(v_x\)</span> is the velocity, <span class="math notranslate nohighlight">\(x\)</span> is the position, <span class="math notranslate nohighlight">\(i\)</span> is the current, <span class="math notranslate nohighlight">\(v\)</span> is the
+applied voltage and <span class="math notranslate nohighlight">\(f\)</span> is the externally applied force.  The electrical
+equation may be expressed symbolically as</p>
+<div class="math notranslate nohighlight" id="equation-eq-4-electrical-differential">
+<span class="eqno">(4.5)<a class="headerlink" href="#equation-eq-4-electrical-differential" title="Permalink to this equation">#</a></span>\[\frac{d\lambda}{dt} = g(\lambda,v,x)\]</div>
+<p>where <span class="math notranslate nohighlight">\(g\)</span> is a function of the indicated arguments.</p>
+<p>Starting with <span class="math notranslate nohighlight">\(\displaystyle v = ri + \frac{d \lambda}{dt}\)</span> and <span class="math notranslate nohighlight">\(\lambda =
+L(x)i\)</span>, derive an expression for <span class="math notranslate nohighlight">\(g\)</span> in terms of <span class="math notranslate nohighlight">\(\lambda\)</span>, <span class="math notranslate nohighlight">\(v\)</span>, and <span class="math notranslate nohighlight">\(x\)</span>.
+Equations <a class="reference internal" href="#equation-eq-4-mechanical-differential1">(4.3)</a>-<a class="reference internal" href="#equation-eq-4-electrical-differential">(4.5)</a>
+represent the state equations of the electromechanical system where <span class="math notranslate nohighlight">\(v_x\)</span> and
+<span class="math notranslate nohighlight">\(x\)</span>, and are state variables, while <span class="math notranslate nohighlight">\(v\)</span> and <span class="math notranslate nohighlight">\(f\)</span> are inputs. The parameters are
+<span class="math notranslate nohighlight">\(K\)</span>, <span class="math notranslate nohighlight">\(k_0\)</span>, and <span class="math notranslate nohighlight">\(r\)</span> (coil resistance).</p>
+<p>The three coupled first-order differential equations contain nonlinear terms and
+are therefore difficult to solve analytically. A technique that can be used to
+solve the differential equations numerically is outlined below.  A Simulink
+model of the solenoid is shown in <a class="reference internal" href="#fig-4-simulink-model"><span class="std std-numref">Fig. 4.3</span></a>. This model is
+based upon the equations set forth in
+<a class="reference internal" href="#equation-eq-4-newtons-law">(4.2)</a>-<a class="reference internal" href="#equation-eq-4-electrical-differential">(4.5)</a>.
+Additional logic is provided to prevent the solenoid position from becoming
+negative (an impossibility, at least in classic Physics).  In particular, when
+<span class="math notranslate nohighlight">\(x\)</span> tries to go negative, the output Q of the SR flip-flop is set high, which,
+in turn, sets and holds the integrator that calculates <span class="math notranslate nohighlight">\(v_x\)</span> to zero.  When the
+net applied force is greater than zero, the flip-flop is reset, which “releases”
+the integrator that calculates <span class="math notranslate nohighlight">\(v_x\)</span> (allowing <span class="math notranslate nohighlight">\(v_x\)</span> to become positive).</p>
+<p>Look at this Simulink model and compare with the equations found in prelabs
+<a class="reference internal" href="lab_03.html#prelab-electromagnetic-forces-a"><span class="std std-numref">3.2</span></a> and
+<a class="reference internal" href="#prelab-electromagnetic-forces-b"><span class="std std-numref">4.2</span></a> Be prepared to take a quiz on these
+equations based with respect to electromagnetic and electromechanical force at
+the beginning of the lab period.</p>
+<figure class="align-default" id="fig-4-simulink-model">
+<a class="reference internal image-reference" href="_images/fig3.png"><img alt="_images/fig3.png" src="_images/fig3.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4.3 </span><span class="caption-text">Simulink model of solenoid.</span><a class="headerlink" href="#fig-4-simulink-model" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="in-the-laboratory">
+<h2><span class="section-number">4.3. </span>In the Laboratory:<a class="headerlink" href="#in-the-laboratory" title="Permalink to this heading">#</a></h2>
+<p>Try to resolve gross discrepancies between measured and calculated plots by
+repeating necessary measurements. Identify the discrepancies encountered. Our
+final objective will be to investigate the solenoid dynamics.</p>
+<section id="solenoid-dynamics">
+<h3><span class="section-number">4.3.1. </span>Solenoid Dynamics<a class="headerlink" href="#solenoid-dynamics" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Execute the program <code class="file docutils literal notranslate"><span class="pre">proj3.mdl</span></code> that should be in the <code class="file docutils literal notranslate"><span class="pre">Lab</span> <span class="pre">4</span></code>
+directory.  This opens a Simulink project window.</p></li>
+<li><p>Simulate the solenoid pull-in characteristics for each combination of <span class="math notranslate nohighlight">\(x_0\)</span>
+at <span class="math notranslate nohighlight">\(\qty{1/8}{\inch}\)</span> and <span class="math notranslate nohighlight">\(\qty{3/8}{\inch}\)</span> and <span class="math notranslate nohighlight">\(M\)</span> at <span class="math notranslate nohighlight">\(0\)</span>, <span class="math notranslate nohighlight">\(50\)</span>, <span class="math notranslate nohighlight">\(100\)</span>, and
+<span class="math notranslate nohighlight">\(\qty{150}{\g}\)</span>. In <code class="file docutils literal notranslate"><span class="pre">proj3.mdl</span></code>, <span class="math notranslate nohighlight">\(M\)</span> is the external mass. The plunger
+mass is <span class="math notranslate nohighlight">\(\qty{35}{\g}\)</span>. Double-click the <span class="guilabel">Subsystem</span> block to open
+a dialog window and fill in the parameters (<span class="math notranslate nohighlight">\(x_0\)</span>, <span class="math notranslate nohighlight">\(M\)</span>, <span class="math notranslate nohighlight">\(r\)</span>, <span class="math notranslate nohighlight">\(L_l\)</span>, <span class="math notranslate nohighlight">\(K\)</span>,
+and <span class="math notranslate nohighlight">\(k_0\)</span>). Right-selecting the block in the Simulink project window and
+choosing <span class="guilabel">Look Under Mask</span> opens a second window that displays the
+model shown in <a class="reference internal" href="#fig-4-simulink-model"><span class="std std-numref">Fig. 4.3</span></a>.  Run the model as a normal
+Simulink model (that is, do not build a target model). Record the time for
+the plunger to reach <span class="math notranslate nohighlight">\(x=0\)</span>.  Make printouts of the waveforms for the
+(<span class="math notranslate nohighlight">\(\qty{1/8}{\inch}\)</span>, <span class="math notranslate nohighlight">\(\qty{150}{\g}\)</span>), and (<span class="math notranslate nohighlight">\(\qty{3/8}{\inch}\)</span>,
+<span class="math notranslate nohighlight">\(\qty{0}{\g}\)</span>) simulations.</p></li>
+</ol>
+</section>
+<section id="measuring-plunger-pull-in-time">
+<h3><span class="section-number">4.3.2. </span>Measuring Plunger Pull-In Time<a class="headerlink" href="#measuring-plunger-pull-in-time" title="Permalink to this heading">#</a></h3>
+<p>Remove the weights from the solenoid plunger. Position the plunger at
+<span class="math notranslate nohighlight">\(\qty{1/8}{\inch}\)</span> using the set screw for calibration. Position the
+mechanical stop (<a class="reference internal" href="#fig-4-lab-setup"><span class="std std-numref">Fig. 4.1</span></a>) so that <span class="math notranslate nohighlight">\(x\)</span> cannot exceed
+<span class="math notranslate nohighlight">\(\qty{1/8}{\inch}\)</span>. Then, remove the set screw. Apply a <span class="math notranslate nohighlight">\(12\)</span>-<span class="math notranslate nohighlight">\(\volt\)</span> step to
+the solenoid coil. The solenoid should “pull in”. Set the oscilloscope to
+single-sweep mode and set the timescale to <span class="math notranslate nohighlight">\(\qty{20}{\milli\second\per
+   div}\)</span>.  Capture the measured current waveform as the solenoid “pulls in”. You
+will with near certainty have to repeat this step several times to capture
+the desired data.</p>
+<p>Measure the time from application of the step voltage to the “dip” in the
+current waveform using paired cursors.</p>
+<p>Add <span class="math notranslate nohighlight">\(50\)</span>, <span class="math notranslate nohighlight">\(100\)</span>, and <span class="math notranslate nohighlight">\(\qty{150}{\g}\)</span> weights to the solenoid plunger and
+repeat the pull-in time measurements. Use <strong class="program">BenchVue</strong> to get and
+print a snapshot of the <span class="math notranslate nohighlight">\(\qty{1/8}{\inch}\)</span>, <span class="math notranslate nohighlight">\(\qty{150}{\g}\)</span> response showing
+the paired cursor measurement.</p>
+<p>Repeat the transition time measurements using a starting position of
+<span class="math notranslate nohighlight">\(\qty{3/8}{\inch}\)</span>.  Using <strong class="program">BenchVue</strong>, capture and print the
+simulated and measured current-versus-time data for the <span class="math notranslate nohighlight">\(\qty{3/8}{\inch}\)</span>,
+<span class="math notranslate nohighlight">\(\qty{0}{\g}\)</span> trial.  Explain the discrepancies between the simulated and
+experimental results.</p>
+<table class="colwidths-auto colwidths-given table" id="tab-4-pull-in-time" style="width: 80%">
+<caption><span class="caption-number">Table 4.1 </span><span class="caption-text">Pull-in Time Data</span><a class="headerlink" href="#tab-4-pull-in-time" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="text-center head"><p><span class="math notranslate nohighlight">\(x_0\)</span> (<span class="math notranslate nohighlight">\(\inch\)</span>)</p></th>
+<th class="text-center head"><p>Mass (<span class="math notranslate nohighlight">\(\g\)</span>)</p></th>
+<th class="text-center head"><p>Simulated<br> Pull-in Time (<span class="math notranslate nohighlight">\(\milli\second\)</span>)</p></th>
+<th class="text-center head"><p>Measured<br> Pull-in Time (<span class="math notranslate nohighlight">\(\milli\second\)</span>)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(1/8\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(50\)</span></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(100\)</span></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(150\)</span></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(3/8\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(50\)</span></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(100\)</span></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(150\)</span></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="postlab">
+<h2><span class="section-number">4.4. </span>Postlab<a class="headerlink" href="#postlab" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Provide an explanation for the “dip” in solenoid current when the plunger
+pulls in.</p>
+<div class="admonition-hint admonition">
+<p class="admonition-title">Hint</p>
+<div class="math notranslate nohighlight" id="equation-eq-4-current-dip">
+<span class="eqno">(4.6)<a class="headerlink" href="#equation-eq-4-current-dip" title="Permalink to this equation">#</a></span>\[v
+= ri + \frac{d}{dt}[L(x)i]
+= ri + L(x) \frac{di}{dt} + \frac{dL(x)}{dx}\frac{dx}{dt}\]</div>
+</div>
+<p>How do <span class="math notranslate nohighlight">\(L(x)\)</span>, <span class="math notranslate nohighlight">\(\displaystyle\frac{dL}{dx}\)</span>, and <span class="math notranslate nohighlight">\(\displaystyle\frac{dx}{dt}\)</span>
+vary during the pull-in transient?</p>
+</li>
+</ol>
+<p>Use relevant equations to provide answers to the following questions:</p>
+<ol class="arabic simple" start="2">
+<li><p>Why does solenoid inductance decrease as the plunger position increases?</p></li>
+<li><p>Why does the solenoid force decrease as the plunger position increases?</p></li>
+<li><p>What is the relationship between force and current? What is the relationship between
+force and position?</p></li>
+<li><p>What happens to the plunger if the solenoid coil polarity is reversed?</p></li>
+<li><p>Can the plunger be made to “push out” instead of “pull in”? Explain.</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab_03.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Electromagnetic Forces (A)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab_05.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Variable Reluctance Stepper Motor (A)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">4.1. Introduction:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prelab">4.2. Prelab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-laboratory">4.3. In the Laboratory:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solenoid-dynamics">4.3.1. Solenoid Dynamics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-plunger-pull-in-time">4.3.2. Measuring Plunger Pull-In Time</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postlab">4.4. Postlab</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href="contributors.html">Contributors</a>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

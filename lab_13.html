@@ -1,0 +1,760 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>13. Induction Motors and Two Phase Servo Motors (A) &#8212; Purdue University ECE 32300</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lab_13';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="14. Induction Motors and Two Phase Servo Motors (B)" href="lab_14.html" />
+    <link rel="prev" title="12. Brushless DC Motor (B)" href="lab_12.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/323logo.png" class="logo__image only-light" alt="Purdue University ECE 32300 - Home"/>
+    <script>document.write(`<img src="_static/323logo.png" class="logo__image only-dark" alt="Purdue University ECE 32300 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lab_01.html">1. Introduction to Lab Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_02.html">2. Inductance and Magnetic Circuits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_03.html">3. Electromagnetic Forces (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_04.html">4. Electromagnetic Forces (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_05.html">5. Variable Reluctance Stepper Motor (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_06.html">6. Variable Reluctance Stepper Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_07.html">7. DC Motor (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_08.html">8. DC Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_09.html">9. Permanent Magnet Synchronous Motor (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_10.html">10. Permanent Magnet Synchronous Motor (B)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_11.html">11. Brushless DC Motor (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_12.html">12. Brushless DC Motor (B)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">13. Induction Motors and Two Phase Servo Motors (A)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_14.html">14. Induction Motors and Two Phase Servo Motors (B)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="contributors.html">Contributors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/lab_13.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Induction Motors and Two Phase Servo Motors (A)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">13.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prelab">13.2. Prelab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-laboratory">13.3. In the Laboratory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stator-resistance">13.3.1. Stator Resistance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blocked-rotor-test">13.3.2. Blocked Rotor Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#no-load-test">13.3.3. No-Load Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blocked-rotor-frequency-response">13.3.4. Blocked-Rotor Frequency Response</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postlab">13.4. Postlab</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p><span class="raw-html"><div class="d-none"></span></p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\newcommand\blank{~\underline{\hspace{1.2cm}}~}
+\newcommand\phase[1]{\enclose{phasorangle}{#1}}
+\newcommand\RE{\mathrm{Re}}
+\newcommand\IM{\mathrm{Im}}\\% Bold symbols (vectors)
+\newcommand\bs[1]{\mathbf{#1}}\\% Poor man's siunitx
+\newcommand\unit[1]{\mathrm{#1}}
+\newcommand\num[1]{#1}
+\newcommand\qty[2]{#1~\unit{#2}}\\\newcommand\per{/}
+\newcommand\squared{{}^2}
+%
+% Scale
+\newcommand\milli{\unit{m}}
+\newcommand\kilo{\unit{k}}
+\newcommand\mega{\unit{M}}
+%
+% Angle
+\newcommand\radian{\unit{rad}}
+\newcommand\degree{\unit{\kern{-0.5ex}{}^\circ}}
+%
+% Time
+\newcommand\second{\unit{s}}
+%
+% Distance
+\newcommand\meter{\unit{m}}
+\newcommand\m{\meter}
+\newcommand\inch{\unit{in}}
+%
+% Mass
+\newcommand\gram{\unit{g}}
+\newcommand\g{\gram}
+%
+% Frequency
+\newcommand\hertz{\unit{Hz}}
+\newcommand\rpm{\unit{rpm}}
+%
+% Voltage
+\newcommand\volt{\unit{V}}
+\newcommand\V{\volt}
+\newcommand\millivolt{\milli\volt}
+\newcommand\mV{\milli\volt}
+\newcommand\kilovolt{\kilo\volt}
+\newcommand\kV{\kilo\volt}
+%
+% Current
+\newcommand\ampere{\unit{A}}
+\newcommand\A{\ampere}
+\newcommand\milliampereA{\milli\ampere}
+\newcommand\mA{\milli\ampere}
+\newcommand\kiloampereA{\kilo\ampere}
+\newcommand\kA{\kilo\ampere}
+%
+% Resistance
+\newcommand\ohm{\Omega}
+\newcommand\milliohm{\milli\ohm}
+\newcommand\kiloohm{\kilo\ohm} % correct SI spelling
+\newcommand\kilohm{\kilo\ohm} % &quot;American&quot; spelling used in siunitx
+\newcommand\megaohm{\mega\ohm} % correct SI spelling
+\newcommand\megohm{\mega\ohm} % &quot;American&quot; spelling used in siunitx
+%
+% Inductance
+\newcommand\henry{\unit{H}}
+\newcommand\H{\henry}
+\newcommand\millihenry{\milli\henry}
+\newcommand\mH{\milli\henry}
+%
+% Power
+\newcommand\watt{\unit{W}}
+\newcommand\W{\watt}
+\newcommand\milliwatt{\milli\watt}
+\newcommand\mW{\milli\watt}
+\newcommand\kilowatt{\kilo\watt}
+\newcommand\kW{\kilo\watt}
+%
+% Torque
+\newcommand\ozin{\unit{oz}\text{-}\unit{in}}
+\newcommand\newtonmeter{\unit{N\text{-}m}}\end{aligned}\end{align} \]</div>
+<p><span class="raw-html"></div></span></p>
+<section class="tex2jax_ignore mathjax_ignore" id="induction-motors-and-two-phase-servo-motors-a">
+<span id="induction-and-servo-motors-a"></span><h1><span class="section-number">13. </span>Induction Motors and Two Phase Servo Motors (A)<a class="headerlink" href="#induction-motors-and-two-phase-servo-motors-a" title="Permalink to this heading">#</a></h1>
+<div class="note admonition">
+<p class="admonition-title">Objective</p>
+<p>The purpose of this experiment is to demonstrate the operating principles of
+induction and two-phase servo motors.  The basic parameters of a 2-phase servo
+motor will be measured and used to predict its torque-versus-speed
+characteristics for balanced operating conditions.  The steady-state
+characteristics will be measured and compared with analytical predictions.
+Servo operation will be illustrated by varying the amplitude of one of the phase
+voltages.</p>
+</div>
+<section id="introduction">
+<span id="induction-and-servo-motors-a-introduction"></span><h2><span class="section-number">13.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>The steady-state equivalent circuit of a 2-phase induction machine, as it will
+be established in Chapter 8 of ECE 32100 text, is shown in
+<a class="reference internal" href="#fig-13-equivalent-cuicuit"><span class="std std-numref">Fig. 13.1</span></a> below.</p>
+<figure class="align-default" id="fig-13-equivalent-cuicuit">
+<a class="reference internal image-reference" href="_images/equivalent_circuit.png"><img alt="_images/equivalent_circuit.png" src="_images/equivalent_circuit.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 13.1 </span><span class="caption-text">Induction motor steady-state equivalent circuit.</span><a class="headerlink" href="#fig-13-equivalent-cuicuit" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The electromagnetic torque can be expressed</p>
+<div class="math notranslate nohighlight" id="equation-eq-13-torque">
+<span class="eqno">(13.1)<a class="headerlink" href="#equation-eq-13-torque" title="Permalink to this equation">#</a></span>\[T_e
+= 2 \left( \frac{P}{2} \right) L_{ms} \RE{\left[
+   j \tilde I_{as}^* \tilde I_{ar}^\prime
+\right]}.\]</div>
+<p>With constant-amplitude constant-frequency balanced voltages applied to the stator windings</p>
+<div class="math notranslate nohighlight" id="equation-eq-13-torque-2">
+<span class="eqno">(13.2)<a class="headerlink" href="#equation-eq-13-torque-2" title="Permalink to this equation">#</a></span>\[T_e
+= \frac
+   {2 ( P / 2 ) (X_{ms}^2 / \omega_e) r_r^\prime s |\tilde V_{as}|^2}
+   {
+      \left[ r_s r_r^\prime + s (X_{ms}^2 - X_{ss} X_{rr}^\prime) \right]^2
+      + \left( r_r^\prime X_{ss} + s r_s X_{rr}^\prime \right)^2
+   }.\]</div>
+<p>Where <span class="math notranslate nohighlight">\(s = \dfrac{\omega_e - \omega_r}{\omega_e}\)</span> is the slip (not to be confused
+with the Laplace operator).</p>
+<p>In <a class="reference internal" href="#equation-eq-13-torque-2">(13.2)</a> and <a class="reference internal" href="#fig-13-equivalent-cuicuit"><span class="std std-numref">Fig. 13.1</span></a>, all <span class="math notranslate nohighlight">\(X\)</span>’s represent <span class="math notranslate nohighlight">\(L\)</span>’s multiplied by the source frequency, <span class="math notranslate nohighlight">\(X = \omega_e L\)</span>. Also,</p>
+<div class="math notranslate nohighlight" id="equation-eq-13-stator-impedance">
+<span class="eqno">(13.3)<a class="headerlink" href="#equation-eq-13-stator-impedance" title="Permalink to this equation">#</a></span>\[X_{ss}=X_{ls}+X_{ms}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-13-rotor-impedance">
+<span class="eqno">(13.4)<a class="headerlink" href="#equation-eq-13-rotor-impedance" title="Permalink to this equation">#</a></span>\[X_{rr}^\prime=X_{lr}^\prime+X_{ms}\]</div>
+</section>
+<section id="prelab">
+<h2><span class="section-number">13.2. </span>Prelab<a class="headerlink" href="#prelab" title="Permalink to this heading">#</a></h2>
+<p>Read the preceding <a class="reference internal" href="#induction-and-servo-motors-a-introduction"><span class="std std-ref">Introduction</span></a>, and
+subsequent <a class="reference internal" href="#induction-and-servo-motors-a-in-lab"><span class="std std-ref">In the Laboratory</span></a> portions of this
+experiment.</p>
+</section>
+<section id="in-the-laboratory">
+<span id="induction-and-servo-motors-a-in-lab"></span><h2><span class="section-number">13.3. </span>In the Laboratory<a class="headerlink" href="#in-the-laboratory" title="Permalink to this heading">#</a></h2>
+<p>Our first objective will be to measure the electrical parameters of the motor.
+This can be accomplished by taking impedance measurements of the stator at stall
+and no-load conditions.</p>
+<section id="stator-resistance">
+<h3><span class="section-number">13.3.1. </span>Stator Resistance<a class="headerlink" href="#stator-resistance" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Using the Simulink model
+<a class="reference download internal" download="" href="_downloads/3322ac8abff32d3cedea689a48015899/resistance_target.slx"><code class="xref download docutils literal notranslate"><span class="pre">resistance_target.slx</span></code></a>,
+apply a <span class="math notranslate nohighlight">\(10\)</span>-<span class="math notranslate nohighlight">\(\V\)</span> DC voltage to one of the AC windings. Measure the winding
+current.</p></li>
+<li><p>Calculate the DC resistance of the stator. This represents an approximation
+to <span class="math notranslate nohighlight">\(r_s\)</span>.</p></li>
+</ol>
+</section>
+<section id="blocked-rotor-test">
+<h3><span class="section-number">13.3.2. </span>Blocked Rotor Test<a class="headerlink" href="#blocked-rotor-test" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Connect the current transducer (bottom BNC connector) outputs to <em>Analog
+Input Channels 1</em> and <em>2</em>.  Set the range switch of <em>Analog Inputs Channels
+1</em> and <em>2</em> to <span class="math notranslate nohighlight">\(1\)</span>.  Connect the power amplifier outputs <em>Channels 1</em> and <em>2</em>
+to the two stator phases of the induction motor.</p></li>
+</ol>
+<ol class="arabic" start="2">
+<li><p>Use the Simulink model
+<a class="reference download internal" download="" href="_downloads/773e0952def054872b89fce9ad951177/impedance_target.slx"><code class="xref download docutils literal notranslate"><span class="pre">impedance_target.slx</span></code></a>
+(<a class="reference internal" href="#fig-13-impedance-target"><span class="std std-numref">Fig. 13.2</span></a>) to provide a <span class="math notranslate nohighlight">\(10\)</span>-<span class="math notranslate nohighlight">\(\V\)</span> balanced 2-phase
+set of voltages to the stator windings connected to the power amplifier
+outputs, <em>Channels 1</em> and <em>2</em>, with a frequency of <span class="math notranslate nohighlight">\(\qty{10}{\hertz}\)</span>.</p>
+<figure class="align-default" id="fig-13-impedance-target">
+<img alt="_images/impedance_target.png" src="_images/impedance_target.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 13.2 </span><span class="caption-text">Target model for measuring impedance.</span><a class="headerlink" href="#fig-13-impedance-target" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Prior to energizing the motor, block the rotor with your hands to prevent it
+from turning.  With the Simulink model, <code class="file docutils literal notranslate"><span class="pre">impedance_target.slx</span></code>, running
+the on the target, open and start the Simulink model
+<a class="reference download internal" download="" href="_downloads/746b08ce8a11c8f8385fb67b82c06096/impedance_host.slx"><code class="xref download docutils literal notranslate"><span class="pre">impedance_host.slx</span></code></a>
+(<a class="reference internal" href="#fig-13-impedance-host"><span class="std std-numref">Fig. 13.3</span></a>).  The host model will display the
+resistance and reactance for both the <span class="math notranslate nohighlight">\(a\)</span>- and <span class="math notranslate nohighlight">\(b\)</span>-phases. Allow the measured
+values to settle down (approx. <span class="math notranslate nohighlight">\(\qty{30}{\second}\)</span>) then flip the manual
+switch from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(0\)</span> to record the resistance, reactance and frequency data
+in the <strong class="program">MATLAB</strong> workspace.  Save your <strong class="program">MATLAB</strong> workspace by
+stopping the host model and typing <code class="code highlight matlab docutils literal highlight-matlab"><span class="nb">save</span><span class="w"> </span><span class="n">lab_13_br</span></code>.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">save</span><span class="w"> </span><span class="n">lab_13_br</span>
+</pre></div>
+</div>
+<figure class="align-default" id="fig-13-impedance-host">
+<img alt="_images/impedance_host.png" src="_images/impedance_host.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 13.3 </span><span class="caption-text">Simulink host model for measuring impedance.</span><a class="headerlink" href="#fig-13-impedance-host" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>From the equivalent circuit, the blocked-rotor impedance may be approximated as</p>
+<div class="math notranslate nohighlight">
+\[(r_s + r_r^\prime) + j \omega_e ( L_{ls} + L_{lr}^\prime )\]</div>
+<p>Assuming <span class="math notranslate nohighlight">\(L_{ls} = L_{lr}^\prime\)</span>, establish the parameters <span class="math notranslate nohighlight">\(r_r^\prime\)</span>,
+<span class="math notranslate nohighlight">\(L_{ls}\)</span>, and <span class="math notranslate nohighlight">\(L_{lr}^\prime\)</span>.</p>
+</li>
+</ol>
+</section>
+<section id="no-load-test">
+<h3><span class="section-number">13.3.3. </span>No-Load Test<a class="headerlink" href="#no-load-test" title="Permalink to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>Now, repeat the blocked-rotor test, using the same procedure as the
+blocked-rotor test, but allowing the rotor to rotate freely.</p></li>
+<li><p>The host model will display the resistance and reactance for both the <span class="math notranslate nohighlight">\(a\)</span> and
+<span class="math notranslate nohighlight">\(b\)</span> phases.  Remember to let the measured values settle down then flip the
+manual switch from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(0\)</span> to record the resistance, reactance, and
+frequency data in the <strong class="program">MATLAB</strong> workspace. Save your
+<strong class="program">MATLAB</strong> workspace by stopping the host model and typing
+<code class="code highlight matlab docutils literal highlight-matlab"><span class="nb">save</span><span class="w"> </span><span class="n">lab_13_nl</span></code>.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">save</span><span class="w"> </span><span class="n">lab_13_nl</span>
+</pre></div>
+</div>
+</li>
+<li><p>Copy and save the file <code class="file docutils literal notranslate"><span class="pre">lab_13_nl.mat</span></code>. You will need this file to
+complete the postlab.</p></li>
+<li><p>From the steady-state equivalent circuit, the no-load impedance may be
+approximated as</p>
+<div class="math notranslate nohighlight" id="eq-z-nl">
+<span id="equation-eq-z-nl"></span><span class="eqno">(13.5)<a class="headerlink" href="#eq-z-nl" title="Permalink to this equation">#</a></span>\[r_s + j \omega_e ( L_{ls} + L_{ms} )\]</div>
+<p>Approximate <span class="math notranslate nohighlight">\(L_{ms}\)</span>.</p>
+</li>
+</ol>
+</section>
+<section id="blocked-rotor-frequency-response">
+<h3><span class="section-number">13.3.4. </span>Blocked-Rotor Frequency Response<a class="headerlink" href="#blocked-rotor-frequency-response" title="Permalink to this heading">#</a></h3>
+<p>Our next objective will be to calculate the frequency response of the stator.</p>
+<ol class="arabic">
+<li><p>Block the rotor with your hands to prevent it from turning.</p></li>
+<li><p>Use the same <strong class="program">Simulink</strong> models as used for the blocked-rotor test.
+Start the real-time code.</p></li>
+<li><p>Step the frequencies from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(\qty{100}{\hertz}\)</span> (using intervals <span class="math notranslate nohighlight">\(1\)</span>,
+<span class="math notranslate nohighlight">\(1.5\)</span>, <span class="math notranslate nohighlight">\(2\)</span>, <span class="math notranslate nohighlight">\(3\)</span>, <span class="math notranslate nohighlight">\(4\)</span>, <span class="math notranslate nohighlight">\(6\)</span>, <span class="math notranslate nohighlight">\(8\)</span>, <span class="math notranslate nohighlight">\(10\)</span>, <span class="math notranslate nohighlight">\(15\)</span>, <span class="math notranslate nohighlight">\(20\)</span>, <span class="math notranslate nohighlight">\(30\)</span>, <span class="math notranslate nohighlight">\(40\)</span>, <span class="math notranslate nohighlight">\(60\)</span>, <span class="math notranslate nohighlight">\(80\)</span>,
+<span class="math notranslate nohighlight">\(100\)</span>) by clicking on the 2-phase source block in
+<code class="file docutils literal notranslate"><span class="pre">impedance_target.slx</span></code>. Let the measured values settle (approx.
+<span class="math notranslate nohighlight">\(\qty{30}{\second}\)</span>).  At each frequency, add the resistance, reactance, and
+frequency data to the workspace by flipping the manual switch from <span class="math notranslate nohighlight">\(1\)</span> to <span class="math notranslate nohighlight">\(0\)</span> in
+<code class="file docutils literal notranslate"><span class="pre">impedance_host.slx</span></code>.  Save your <strong class="program">MATLAB</strong> workspace by
+stopping the host model and typing <code class="code highlight matlab docutils literal highlight-matlab"><span class="nb">save</span><span class="w"> </span><span class="n">lab_13_fr</span></code>.</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">save</span><span class="w"> </span><span class="n">lab_13_fr</span>
+</pre></div>
+</div>
+</li>
+<li><p>Copy and save the file <code class="file docutils literal notranslate"><span class="pre">lab_13_fr.mat</span></code>. You will need this file to
+complete the post lab.</p></li>
+<li><p>Plot the stator impedance as a function of frequency. Make a printout of the
+frequency response.</p></li>
+</ol>
+</section>
+</section>
+<section id="postlab">
+<h2><span class="section-number">13.4. </span>Postlab<a class="headerlink" href="#postlab" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>For the values of <span class="math notranslate nohighlight">\(r_s\)</span>, <span class="math notranslate nohighlight">\(L_{ls}\)</span>, <span class="math notranslate nohighlight">\(L_{ms}\)</span>, <span class="math notranslate nohighlight">\(L_{lr}^\prime\)</span>, and
+<span class="math notranslate nohighlight">\(r_r^\prime\)</span> established using the no-load and blocked-rotor tests, write a
+<strong class="program">MATLAB</strong> script that calculates and plots the blocked rotor (<span class="math notranslate nohighlight">\( \omega_r = 0\)</span>)
+impedance versus frequency as measured from the stator, i.e.</p>
+<div class="math notranslate nohighlight" id="equation-eq-z">
+<span class="eqno">(13.6)<a class="headerlink" href="#equation-eq-z" title="Permalink to this equation">#</a></span>\[Z
+= (r_s + j \omega_e L_{ls})
++ (j \omega_e L_{ms}) \parallel (r_r^\prime + j \omega_e L_{lr}^\prime)\]</div>
+<p>Where the “<span class="math notranslate nohighlight">\(\parallel\)</span>” operator refers to the parallel combination of the two
+impedances.  Compare this plot with measured impedance versus frequency.
+Explain discrepancies.</p>
+</li>
+<li><p>For a given frequency <span class="math notranslate nohighlight">\(\omega_e\)</span>, why does the impedance of the motor change
+with rotor speed <span class="math notranslate nohighlight">\(\omega_r\)</span>?</p></li>
+<li><p>How much torque will the induction motor generate with a DC input current
+when the rotor is stationary? How much torque is produced with a DC input
+current when the rotor is moving?</p></li>
+<li><p>Plot the predicted torque-versus-speed characteristics described in (8a.2)
+with <span class="math notranslate nohighlight">\(V_s = \qty{10 / \sqrt 2}{\V}\)</span>, RMS. Let <span class="math notranslate nohighlight">\(\omega_r\)</span> vary from <span class="math notranslate nohighlight">\(-2
+\omega_e\)</span> to <span class="math notranslate nohighlight">\(3 \omega_e\)</span>.</p>
+<div class="hint dropdown admonition">
+<p class="admonition-title">Hint</p>
+<p><span class="math notranslate nohighlight">\(P=4\)</span> and <span class="math notranslate nohighlight">\(\omega_e = \qty{2\pi 10}{\radian\per\second}\)</span>.</p>
+</div>
+</li>
+<li><p>At what rotor speed(s) will the electromagnetic torque be zero? Explain briefly.</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab_12.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Brushless DC Motor (B)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab_14.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>Induction Motors and Two Phase Servo Motors (B)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">13.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prelab">13.2. Prelab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-laboratory">13.3. In the Laboratory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stator-resistance">13.3.1. Stator Resistance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blocked-rotor-test">13.3.2. Blocked Rotor Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#no-load-test">13.3.3. No-Load Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blocked-rotor-frequency-response">13.3.4. Blocked-Rotor Frequency Response</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#postlab">13.4. Postlab</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <a href="contributors.html">Contributors</a>
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
